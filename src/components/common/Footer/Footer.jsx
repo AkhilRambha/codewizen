@@ -272,7 +272,7 @@ function Footer() {
                 <FaEnvelope />
 
                 <span>
-                  codewizen.academy@gmail.com
+                  info@codewizen.com
                 </span>
 
               </div>
@@ -356,14 +356,14 @@ function Footer() {
 
 
         </div>
-          <a
+        <a
 
-    href="https://wa.me/918464025086"
-    target="_blank"rel="noopener noreferrer"
-    className="whatsapp-float"
-     aria-label="Chat with us on WhatsApp">
-<FaWhatsapp />
-</a>
+          href="https://wa.me/918464025086"
+          target="_blank" rel="noopener noreferrer"
+          className="whatsapp-float"
+          aria-label="Chat with us on WhatsApp">
+          <FaWhatsapp />
+        </a>
 
       </footer>
     </>

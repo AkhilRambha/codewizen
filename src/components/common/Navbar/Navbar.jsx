@@ -6,7 +6,7 @@ import "./Navbar.css";
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  
+
   const closeMenu = () => {
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
@@ -25,7 +25,7 @@ function Navbar() {
         <div className="top-bar-container">
           <div className="tb-contact">
             <a href="tel:+917993819211"><FaPhoneAlt /> +91 7993819211</a>
-            <a href="mailto:codewizen.academy@gmail.com"><FaEnvelope /> codewizen.academy@gmail.com</a>
+            <a href="mailto:info@codewizen.com"><FaEnvelope /> info@codewizen.com</a>
           </div>
           <div className="tb-socials">
             <a href="/" aria-label="Facebook"><FaFacebookF /></a>

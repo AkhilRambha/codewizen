@@ -29,7 +29,7 @@ const ContactUs = () => {
     e.preventDefault();
 
     // WhatsApp Target Number
-    const waNumber = "918464025086"; // User's actual whatsapp number from footer
+    const waNumber = "917993819211"; // User's actual whatsapp number from footer
 
     // Construct Message
     const text = `Hello Codewizen! 
@@ -105,7 +105,7 @@ I would like to inquire about a course.
                 <div className="ci-icon ci-orange"><FaEnvelope /></div>
                 <div>
                   <div className="ci-label">Email Address</div>
-                  <div className="ci-value">codewizen.academy@gmail.com</div>
+                  <div className="ci-value">info@codewizen.com</div>
                 </div>
               </div>
 
