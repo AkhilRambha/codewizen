@@ -1,0 +1,153 @@
+.companies-section {
+  padding: 100px 0;
+  background-color: #f8fafc;
+  overflow: hidden;
+}
+
+.companies-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Glassmorphism Dashboard Container */
+.companies-dashboard {
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 60px 0;
+  box-shadow: 0 20px 60px rgba(17, 34, 85, 0.05);
+  border: 1px solid rgba(17, 34, 85, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.companies-heading {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 2;
+  padding: 0 40px;
+}
+
+.companies-heading h2 {
+  font-size: 36px;
+  color: #112255;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.companies-heading p {
+  font-size: 18px;
+  color: #475569;
+}
+
+/* Marquee Tracks */
+.companies-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+  /* Soft gradient fade on edges */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.company-row {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.company-track {
+  display: inline-flex;
+  gap: 30px;
+  padding-left: 30px;
+}
+
+.company-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  background: #f8fafc;
+  padding: 10px 25px 10px 10px;
+  border-radius: 50px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.company-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+}
+
+.company-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.company-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.company-item span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #112255;
+}
+
+/* Animations */
+.move-left {
+  animation: scrollLeft 40s linear infinite;
+}
+.move-right {
+  animation: scrollRight 40s linear infinite;
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 15px)); }
+}
+
+@keyframes scrollRight {
+  0% { transform: translateX(calc(-50% - 15px)); }
+  100% { transform: translateX(0); }
+}
+
+/* Subtle glow behind the dashboard */
+.dashboard-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(232, 117, 0, 0.05) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .companies-heading h2 {
+    font-size: 28px;
+  }
+  .companies-dashboard {
+    padding: 40px 0;
+  }
+  .company-item {
+    padding: 8px 20px 8px 8px;
+  }
+  .company-circle {
+    width: 36px;
+    height: 36px;
+  }
+  .company-item span {
+    font-size: 14px;
+  }
+}

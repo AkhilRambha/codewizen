@@ -1,0 +1,311 @@
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  /* very subtle shadow */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* TOP BAR */
+.top-bar {
+  width: 100%;
+  background-color: #112255;
+  /* Dark blue background */
+  color: #ffffff;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.top-bar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tb-contact {
+  display: flex;
+  gap: 25px;
+}
+
+.tb-contact a {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+
+.tb-contact a:hover {
+  color: #e87500;
+}
+
+.tb-socials {
+  display: flex;
+  gap: 15px;
+}
+
+.tb-socials a {
+  color: #e2e8f0;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.tb-socials a:hover {
+  color: #e87500;
+}
+
+/* MAIN NAVBAR */
+.main-navbar {
+  width: 100%;
+  height: 60px;
+}
+
+.navbar-container {
+  max-width: 1400px;
+  /* wider container like the image */
+  margin: 0 auto;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  background-color: #3b307f;
+  /* Matching the deep purple/blue of the reference */
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.logo-text {
+  color: #3b307f;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* Navigation Menu */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  /* wide spacing */
+}
+
+/* Base Nav Link Style */
+.nav-link {
+  color: #444f5c;
+  /* Dark grayish blue from the image */
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+  /* Regular weight, not bold */
+  padding: 8px 0;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #3b307f;
+}
+
+.dropdown-chevron {
+  opacity: 0.6;
+  margin-top: 2px;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-chevron.rotate {
+  transform: rotate(180deg);
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+/* Button-style Pill Link (Matching "Our Achievers") */
+.nav-btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  font-size: 15px;
+  font-weight: 400;
+  /* Keeping it light like the image */
+  color: #444f5c;
+  background-color: transparent;
+  border: 1px solid #7d8597;
+  /* thin border */
+  border-radius: 30px;
+  /* PILL shape */
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-btn-pill:hover {
+  background-color: #f8f9fa;
+  border-color: #3b307f;
+  color: #3b307f;
+}
+
+/* Dropdown */
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  min-width: 200px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.2s ease;
+  z-index: 1001;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu a {
+  padding: 10px 20px;
+  color: #444f5c;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  transition: background-color 0.2s;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f4f6f9;
+  color: #3b307f;
+}
+
+/* Mobile */
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #3b307f;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .nav-menu {
+    position: fixed;
+    top: 100px; /* Below top bar and navbar */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px;
+    gap: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+  }
+
+  .nav-menu.open {
+    transform: translateX(0);
+  }
+
+  .nav-dropdown {
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    padding-left: 20px;
+    display: none; /* Can be toggled if needed, or shown by default on mobile */
+  }
+
+  .dropdown-menu.mobile-open {
+    display: flex;
+  }
+
+  .nav-dropdown:hover .dropdown-menu {
+    /* Prevent hover from showing menu on mobile */
+    display: none;
+  }
+  
+  .nav-dropdown:hover .dropdown-menu.mobile-open {
+    display: flex;
+  }
+
+  .mobile-menu-button {
+    display: block;
+  }
+
+  .tb-socials {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .tb-contact {
+    gap: 15px;
+  }
+
+  .tb-contact a {
+    font-size: 11px;
+  }
+}
+
+/* Fix global horizontal scrolling */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}

@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --color-primary: #1e3a8a;
+  --color-secondary: #0ea5e9;
+  --color-accent: #FF8A00;
+  
+  --bg-white: #ffffff;
+  --bg-light-cool: #f8fafc;
+  --bg-light-warm: #fffbeb;
+  --bg-light-accent: #eff6ff;
+  --bg-light-neutral: #f1f5f9;
+  --bg-dark: #0f172a;
+  
+  --text-dark: #0f172a;
+  --text-muted: #475569;
+  --text-light: #f8fafc;
+  
+  --font-main: 'Inter', sans-serif;
+}
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background: var(--bg-white);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Global Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background-color: #112255;
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(17, 34, 85, 0.2);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #1a3680;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(17, 34, 85, 0.3);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  color: #112255 !important;
+  border: 1.5px solid #112255;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background-color: rgba(17, 34, 85, 0.05);
+}

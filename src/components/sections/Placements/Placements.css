@@ -1,0 +1,85 @@
+.placements-section {
+  padding: 80px 20px;
+  background-color: var(--bg-light-neutral);
+}
+
+.placements-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.placements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.placement-card {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.placement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.placement-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 15px;
+}
+
+.placement-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.placement-info h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.placement-course {
+  font-size: 13px;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.placement-details p {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.placement-details strong {
+  color: var(--text-dark);
+}
+
+.placement-role {
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+@media (max-width: 1024px) {
+  .placements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .placements-grid {
+    grid-template-columns: 1fr;
+  }
+}

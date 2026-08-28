@@ -1,0 +1,113 @@
+.testimonials-section {
+  padding: 100px 0;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.testimonials-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* MARQUEE STYLES */
+.marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+  /* Faded edges for premium feel */
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: marqueeScroll 35s linear infinite;
+  padding-left: 30px;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused; /* Pause on hover */
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 15px)); }
+}
+
+/* REVIEW CARD */
+.review-card {
+  width: 400px;
+  background: #f8fafc;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(17, 34, 85, 0.03);
+  border: 1px solid rgba(17, 34, 85, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(17, 34, 85, 0.08);
+  background: #ffffff;
+}
+
+.review-stars {
+  font-size: 16px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.review-text {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 30px;
+  flex: 1;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 20px;
+}
+
+.review-author img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-info h4 {
+  font-size: 16px;
+  color: #112255;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.author-info span {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testimonials-section {
+    padding: 80px 0;
+  }
+  
+  .review-card {
+    width: 320px;
+    padding: 25px;
+  }
+}

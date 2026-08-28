@@ -1,0 +1,224 @@
+/* ================================================
+   OUR TRAINERS PAGE
+================================================ */
+
+.trainers-page {
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+.trainers-hero {
+  position: relative;
+  background: linear-gradient(135deg, #071525 0%, #112a52 100%);
+  padding: 160px 20px 80px;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.trainers-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+
+.trainers-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.trainers-eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e87500;
+  margin-bottom: 16px;
+  padding: 4px 12px;
+  background: rgba(232, 117, 0, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(232, 117, 0, 0.2);
+}
+
+.trainers-hero h1 {
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.trainers-hero p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+}
+
+/* ── GRID SECTION ── */
+.trainers-section {
+  padding: 80px 20px 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.trainers-section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.trainers-section-header h2 {
+  font-size: 32px;
+  color: #0f172a;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.trainers-section-header p {
+  font-size: 16px;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.trainers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* ── CARD ── */
+.trainer-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.trainer-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.trainer-img-wrapper {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+
+.trainer-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.trainer-card:hover .trainer-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.trainer-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+
+.trainer-company {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.trainer-company svg {
+  color: #e87500;
+}
+
+.trainer-info {
+  padding: 24px;
+}
+
+.trainer-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.trainer-role {
+  font-size: 15px;
+  color: #0ea5a4;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.trainer-desc {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.trainer-tags-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.trainer-tags-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 1px;
+}
+
+.trainer-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.t-tag {
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .trainers-hero {
+    padding: 120px 20px 60px;
+  }
+  
+  .trainers-section {
+    padding: 60px 20px;
+  }
+}

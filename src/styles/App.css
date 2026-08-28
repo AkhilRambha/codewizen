@@ -1,0 +1,1227 @@
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero-section {
+  width: 100%;
+  max-width: 100%;
+  
+  background: #ffffff;
+}
+
+
+/* =========================================
+   HERO BANNER
+========================================= */
+
+.hero-banner {
+  width: 100%;
+  max-width: 100%;
+  min-height: 480px;
+
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: 55px 8%;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      #FF8A00 0%,
+      #D94A16 25%,
+      #7A2E0B 48%,
+      #35170A 72%,
+      #20110A 100%
+    );
+
+  color: #ffffff;
+}
+
+
+/* Decorative circles */
+
+.hero-banner::before {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  right: -180px;
+  top: -160px;
+
+  border: 1px solid rgba(255, 210, 31, 0.45);
+
+  border-radius: 50%;
+}
+
+.hero-banner::after {
+  content: "";
+
+  position: absolute;
+
+  width: 380px;
+  height: 380px;
+
+  right: 30px;
+  bottom: -250px;
+
+  border: 1px solid rgba(255, 107, 0, 0.45);
+
+  border-radius: 50%;
+}
+
+
+/* =========================================
+   HERO CONTENT
+========================================= */
+
+.hero-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.hero-tagline {
+  margin-bottom: 18px;
+
+  color: #FFD21F;
+
+  font-size: 20px;
+  font-weight: 400;
+
+  letter-spacing: 1px;
+}
+
+
+.hero-content h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(42px, 4.2vw, 68px);
+
+  line-height: 1.08;
+
+  font-weight: 500;
+
+  letter-spacing: -1px;
+}
+
+
+.hero-description {
+  max-width: 650px;
+
+  margin-top: 24px;
+
+  color: #F3DCCB;
+
+  font-size: 18px;
+
+  line-height: 1.7;
+
+  font-weight: 400;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 16px;
+
+  margin-top: 32px;
+}
+
+
+.hero-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 155px;
+
+  padding: 14px 25px;
+
+  border-radius: 6px;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  transition: 0.25s ease;
+}
+
+
+.hero-btn.primary {
+  background: #FF6B00;
+
+  color: #ffffff;
+}
+
+.hero-btn.primary:hover {
+  background: #FF8A00;
+
+  transform: translateY(-2px);
+}
+
+
+.hero-btn.secondary {
+  border: 1px solid #FFD21F;
+
+  color: #FFD21F;
+
+  background: transparent;
+}
+
+.hero-btn.secondary:hover {
+  background: #FFD21F;
+
+  color: #35170A;
+}
+
+
+/* =========================================
+   HERO VISUAL
+========================================= */
+
+.hero-visual {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  min-height: 400px;
+  margin-top: 40px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 2;
+}
+
+
+.hero-circle {
+  width: 330px;
+  height: 330px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #FFD21F,
+      #FF8A00,
+      #FF6B00,
+      #C93D12
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 20px 60px rgba(255, 107, 0, 0.35);
+}
+
+
+.student-card {
+  width: 220px;
+  height: 240px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.16);
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+.student-icon {
+  font-size: 65px;
+
+  margin-bottom: 15px;
+}
+
+
+.student-card h3 {
+  color: #ffffff;
+
+  font-size: 22px;
+
+  line-height: 1.25;
+
+  font-weight: 500;
+}
+
+
+/* =========================================
+   BADGES
+========================================= */
+
+.experience-badge,
+.trainer-badge {
+  position: absolute;
+
+  padding: 14px 20px;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  color: #35170A;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25);
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+.experience-badge {
+  top: 30px;
+  right: 40px;
+}
+
+
+.trainer-badge {
+  bottom: 35px;
+  left: 20px;
+}
+
+
+.experience-badge strong,
+.trainer-badge strong {
+  color: #FF6B00;
+
+  font-size: 18px;
+
+  font-weight: 600;
+}
+
+
+.experience-badge span,
+.trainer-badge span {
+  margin-top: 3px;
+
+  font-size: 12px;
+
+  color: #6B625B;
+}
+
+
+/* =========================================
+   TRUST / CERTIFICATION SECTION
+   ONLY THIS SECTION CHANGED
+========================================= */
+
+.trust-wrapper {
+  width: 100%;
+
+  background: #ffffff;
+
+  overflow: hidden;
+
+  border-bottom: 1px solid #E8DED5;
+}
+
+
+.trust-title {
+  text-align: center;
+
+  padding-top: 16px;
+
+  color: #7A5A42;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+.trust-marquee {
+  width: 100%;
+
+  overflow: hidden;
+
+  padding: 15px 0 18px;
+}
+
+
+.trust-track {
+  display: flex;
+
+  align-items: center;
+
+  width: max-content;
+
+  animation: trustScroll 25s linear infinite;
+}
+
+
+.trust-track:hover {
+  animation-play-state: paused;
+}
+
+
+.trust-item {
+  width: 185px;
+
+  height: 58px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-right: 1px solid #E8DED5;
+}
+
+
+/* Professional logo base */
+
+.trust-logo {
+  text-align: center;
+
+  color: #4A2817;
+
+  font-size: 21px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* MSME */
+
+.trust-logo.government {
+  font-size: 23px;
+
+  font-weight: 600;
+
+  letter-spacing: 1px;
+
+  color: #D85B16;
+}
+
+
+/* Startup India */
+
+.trust-logo.startup {
+  color: #F15A29;
+
+  font-size: 22px;
+
+  font-weight: 500;
+}
+
+
+/* Industry Partners */
+
+.trust-logo.industry {
+  color: #5B3928;
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  line-height: 1.2;
+}
+
+
+.trust-logo small {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #7A6A5E;
+
+  font-size: 9px;
+
+  font-weight: 400;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* Skill India */
+
+.trust-logo.skill {
+  color: #6C9E21;
+
+  font-size: 20px;
+
+  font-weight: 500;
+}
+
+
+/* ISO */
+
+.trust-logo.iso {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #D08A00;
+}
+
+
+.trust-logo.iso strong {
+  font-size: 27px;
+
+  font-weight: 600;
+}
+
+
+/* Moving animation */
+
+@keyframes trustScroll {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+
+}
+
+
+/* =========================================
+   STATISTICS
+   ONLY THIS SECTION CHANGED
+========================================= */
+
+.stats-section {
+  min-height: 185px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(6, 1fr);
+
+  align-items: stretch;
+
+  background: #FFF9F1;
+
+  border-bottom: 3px solid #FFD21F;
+}
+
+
+.stat-card {
+  min-height: 165px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 15px 8px;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+
+  transition: 0.3s ease;
+}
+
+
+.stat-card:last-child {
+  border-right: none;
+}
+
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+
+/* Professional icon box */
+
+.stat-icon {
+  width: 40px;
+
+  height: 40px;
+
+  margin-bottom: 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 9px;
+
+  font-size: 21px;
+}
+
+.stat-card:nth-child(1) .stat-icon {
+  background: #FFF0D9;
+  border: 1px solid #FFB347;
+  color: #E87500;
+}
+
+.stat-card:nth-child(2) .stat-icon {
+  background: #EAF6D5;
+  border: 1px solid #91C83E;
+  color: #5F8F18;
+}
+
+.stat-card:nth-child(3) .stat-icon {
+  background: #FFE1D8;
+  border: 1px solid #FF8A6B;
+  color: #D94A2B;
+}
+
+.stat-card:nth-child(4) .stat-icon {
+  background: #FFF5C2;
+  border: 1px solid #E7C52F;
+  color: #A98900;
+}
+
+.stat-card:nth-child(5) .stat-icon {
+  background: #F4E3D3;
+  border: 1px solid #C98A55;
+  color: #8A4F21;
+}
+
+.stat-card:nth-child(6) .stat-icon {
+  background: #E2F0C8;
+  border: 1px solid #8DBB42;
+  color: #507B16;
+}
+
+
+/* Numbers */
+
+.stat-card h2 {
+  margin: 0;
+
+  color: #3A2115;
+
+  font-size: 30px;
+
+  line-height: 1;
+
+  font-weight: 500;
+
+  letter-spacing: 0.3px;
+}
+
+
+.stat-card h2 span {
+  color: #FFD21F;
+
+  font-size: 23px;
+
+  margin-left: 1px;
+}
+
+
+/* Labels */
+
+.stat-card p {
+  margin-top: 9px;
+
+  color: #7A6658;
+
+  font-size: 14px;
+
+  line-height: 1.3;
+
+  font-weight: 400;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+
+  .hero-banner {
+    padding: 50px 5%;
+  }
+
+  .hero-content {
+    width: 55%;
+  }
+
+  .hero-visual {
+    width: 45%;
+  }
+
+  .hero-circle {
+    width: 280px;
+    height: 280px;
+  }
+
+  .trust-section,
+  .stats-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+@media (max-width: 800px) {
+
+  .hero-banner {
+    flex-direction: column;
+
+    text-align: center;
+
+    padding: 60px 25px;
+  }
+
+  .hero-content {
+    width: 100%;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    width: 100%;
+
+    margin-top: 40px;
+  }
+
+  .trust-section,
+  .stats-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 500px) {
+
+  .hero-content h1 {
+    font-size: 38px;
+  }
+
+  .hero-tagline {
+    font-size: 16px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .hero-btn {
+    width: 100%;
+  }
+
+  .hero-circle {
+    width: 240px;
+    height: 240px;
+  }
+
+  .student-card {
+    width: 170px;
+    height: 190px;
+  }
+
+  .trust-section,
+  .stats-section {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stat-card h2 {
+    font-size: 24px;
+  }
+
+  .stat-card p {
+    font-size: 13px;
+  }
+}
+
+
+
+
+
+/* =========================================
+   ABOUT / LEARNING JOURNEY
+========================================= */
+
+.about-section {
+  width: 100%;
+  background:
+    radial-gradient(
+      circle at 35% 45%,
+      #0875C9 0%,
+      #07579B 35%,
+      #063F73 65%,
+      #052F56 100%
+    );
+
+  padding: 55px 0;
+
+  border-top: 3px solid #FFD21F;
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   ABOUT CONTAINER
+========================================= */
+
+.about-container {
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  padding: 0 40px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  text-align: center;
+}
+
+
+/* =========================================
+   LEFT CONTENT
+========================================= */
+
+.about-content {
+  padding-right: 0;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.about-label {
+  margin: 0 0 14px 0;
+
+  color: #FFD21F;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+.about-content h2 {
+  margin: 0;
+
+  color: #FFFFFF;
+
+  font-size: clamp(38px, 4vw, 54px);
+
+  line-height: 1.08;
+
+  font-weight: 700;
+
+  letter-spacing: -1px;
+}
+
+
+.about-content h2 span {
+  display: block;
+
+  color: #FF8A00;
+}
+
+
+.about-text {
+  max-width: 700px;
+
+  margin-top: 20px;
+
+  color: #E5F1FF;
+
+  font-size: 15px;
+
+  line-height: 1.65;
+
+  font-weight: 400;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* =========================================
+   LEARNING JOURNEY
+========================================= */
+
+.learning-journey {
+  position: relative;
+
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.journey-line {
+  display: none;
+}
+
+
+/* =========================================
+   JOURNEY ITEMS
+========================================= */
+
+.journey-item {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  align-items: center;
+
+  min-height: 90px;
+
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+
+/* =========================================
+   NUMBER CIRCLES
+========================================= */
+
+.journey-number {
+  position: relative;
+
+  z-index: 2;
+
+  width: 62px;
+
+  height: 62px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color: #FFFFFF;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.22);
+
+  transition: 0.25s ease;
+}
+
+
+/* =========================================
+   JOURNEY COLORS
+========================================= */
+
+.journey-number.orange {
+  background: #FF7A00;
+}
+
+.journey-number.yellow {
+  background: #F2B400;
+}
+
+.journey-number.green {
+  background: #58B51B;
+}
+
+.journey-number.coral {
+  background: #FF5733;
+}
+
+.journey-number.brown {
+  background: #B66A2C;
+}
+
+
+/* =========================================
+   JOURNEY CONTENT
+========================================= */
+
+.journey-content {
+  padding-left: 0;
+  padding-top: 15px;
+
+  max-width: 520px;
+}
+
+
+.journey-content h3 {
+  margin: 0;
+
+  color: #FFD21F;
+
+  font-size: 22px;
+
+  line-height: 1.2;
+
+  font-weight: 700;
+}
+
+
+/* Different heading colors */
+
+.journey-item:nth-child(3) .journey-content h3 {
+  color: #FFD21F;
+}
+
+.journey-item:nth-child(4) .journey-content h3 {
+  color: #69C51F;
+}
+
+.journey-item:nth-child(5) .journey-content h3 {
+  color: #FF6340;
+}
+
+.journey-item:nth-child(6) .journey-content h3 {
+  color: #FF8A2A;
+}
+
+
+.journey-content p {
+  margin: 6px 0 0 0;
+
+  color: #E5F1FF;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+.journey-item:hover .journey-number {
+  transform: scale(1.05);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .about-section {
+    padding: 50px 0;
+  }
+
+  .about-container {
+    grid-template-columns: 1fr 1fr;
+
+    padding: 0 30px;
+  }
+
+  .about-content {
+    padding-right: 25px;
+  }
+
+  .about-content h2 {
+    font-size: 44px;
+  }
+
+  .journey-content h3 {
+    font-size: 20px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+  .about-section {
+    padding: 50px 0;
+  }
+
+  .about-container {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+
+    padding: 0 25px;
+  }
+
+  .about-content {
+    padding-right: 0;
+  }
+
+  .about-content h2 {
+    font-size: 42px;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
+
+  .learning-journey {
+    width: 100%;
+  }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .about-section {
+    padding: 45px 0;
+  }
+
+  .about-container {
+    padding: 0 20px;
+
+    gap: 35px;
+  }
+
+  .about-label {
+    font-size: 13px;
+  }
+
+  .about-content h2 {
+    font-size: 36px;
+  }
+
+  .about-text {
+    font-size: 14px;
+
+    line-height: 1.6;
+  }
+
+  .journey-line {
+    left: 28px;
+  }
+
+  .journey-item {
+    min-height: 85px;
+  }
+
+  .journey-number {
+    width: 56px;
+
+    height: 56px;
+
+    font-size: 14px;
+  }
+
+  .journey-content {
+    padding-left: 18px;
+  }
+
+  .journey-content h3 {
+    font-size: 18px;
+  }
+
+  .journey-content p {
+    font-size: 13px;
+
+    line-height: 1.45;
+  }
+
+}
+
+
+/* =========================================
+   ABOUT / LEARNING JOURNEY
+   
+========================================= */

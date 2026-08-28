@@ -1,0 +1,229 @@
+/* ================================================
+   DYNAMIC PRICING CALCULATOR PAGE
+================================================ */
+
+.prices-page {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+.prices-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  padding: 160px 20px 140px;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+}
+
+.prices-hero-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.prices-hero h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.prices-hero p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+}
+
+.pricing-calc-container {
+  max-width: 800px;
+  margin: -80px auto 0;
+  padding: 0 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.pricing-calc-card {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  overflow: hidden;
+}
+
+/* ── LEFT: CONTROLS ── */
+.calc-controls {
+  flex: 1;
+  padding: 40px;
+  background: #ffffff;
+}
+
+.calc-controls h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.calc-controls>p {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.custom-select-wrapper {
+  position: relative;
+}
+
+.custom-select-wrapper select {
+  width: 100%;
+  appearance: none;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #0f172a;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.custom-select-wrapper select:focus {
+  outline: none;
+  border-color: #112255;
+  background: #ffffff;
+}
+
+.select-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  pointer-events: none;
+}
+
+/* ── RIGHT: RESULT DISPLAY ── */
+.calc-result {
+  flex: 0 0 340px;
+  background: linear-gradient(135deg, #0b1f4f 0%, #1e3a8a 100%);
+  padding: 40px 30px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #e87500;
+  margin-bottom: 20px;
+}
+
+.price-amount {
+  font-size: 42px;
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.price-currency {
+  font-size: 22px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: -16px;
+  margin-right: 6px;
+}
+
+.price-subtitle {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.result-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+  flex: 1;
+}
+
+.p-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+}
+
+.p-icon {
+  color: #25d366;
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.result-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  background: #e87500;
+  color: #ffffff;
+  transition: all 0.3s;
+}
+
+.result-btn:hover {
+  background: #cc6600;
+  transform: translateY(-2px);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .pricing-calc-card {
+    flex-direction: column;
+  }
+
+  .calc-result {
+    flex: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .calc-controls {
+    padding: 30px 20px;
+  }
+
+  .calc-result {
+    padding: 40px 20px;
+  }
+}
