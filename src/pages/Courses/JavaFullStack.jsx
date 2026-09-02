@@ -1,42 +1,81 @@
-import React, { useState } from 'react';
-import PageHero from '../../components/common/PageHero/PageHero';
-import { 
-  FaUser, 
-  FaPhoneAlt, 
-  FaChalkboardTeacher, 
-  FaWhatsapp, 
-  FaCheckCircle, 
-  FaCode, 
-  FaDatabase, 
-  FaServer, 
-  FaProjectDiagram 
-} from 'react-icons/fa';
-import './CourseLayout.css';
+import React from 'react';
+import CourseHero from '../../components/common/CourseHero/CourseHero';
+import BatchDetails from '../../components/sections/BatchDetails/BatchDetails';
+import CourseFeatures from '../../components/sections/CourseFeatures/CourseFeatures';
+import SkillsMastered from '../../components/sections/SkillsMastered/SkillsMastered';
+import CourseCurriculum from '../../components/sections/CourseCurriculum/CourseCurriculum';
+import WhyChooseUsCourse from '../../components/sections/WhyChooseUsCourse/WhyChooseUsCourse';
+import Certification from '../../components/sections/Certification/Certification';
+import ReadyToStart from '../../components/sections/ReadyToStart/ReadyToStart';
 
 const JavaFullStack = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    mode: ''
-  });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const skillsData = [
+    {
+      title: "Frontend Development",
+      skills: ["HTML5", "CSS3", "JavaScript", "React.js", "Redux", "Material UI"]
+    },
+    {
+      title: "Core Java",
+      skills: ["OOP Concepts", "Collections", "Exception Handling", "Multithreading", "Java 8 Features"]
+    },
+    {
+      title: "Advanced Java & Frameworks",
+      skills: ["JDBC", "Servlets & JSP", "Spring Core", "Spring Boot", "Hibernate (JPA)"]
+    },
+    {
+      title: "Microservices & APIs",
+      skills: ["RESTful APIs", "Microservices Architecture", "Spring Cloud", "API Gateway"]
+    },
+    {
+      title: "Database Management",
+      skills: ["MySQL", "Oracle", "MongoDB", "Database Design", "SQL Queries"]
+    },
+    {
+      title: "Testing & DevOps",
+      skills: ["JUnit", "Mockito", "Maven/Gradle", "Git", "Jenkins", "Docker"]
+    }
+  ];
 
-  const handleWhatsAppSubmit = (e) => {
-    e.preventDefault();
-    const waNumber = "918464025086";
-    const courseName = "Java Full Stack Development";
-    const text = `Hello Codewizen!\nI am interested in the *${courseName}* course.\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Mode:* ${formData.mode}`;
-    const uri = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
-    window.open(uri, '_blank');
-  };
+  const curriculumData = [
+    {
+      title: "Module 1: Web Development Basics (Frontend)",
+      topics: ["HTML5 semantic elements", "CSS3 styling and responsive design", "JavaScript fundamentals and DOM", "Building interactive UIs with React.js"]
+    },
+    {
+      title: "Module 2: Core Java Programming",
+      topics: ["Variables, Data Types, and Operators", "Control Flow Statements", "Object-Oriented Programming (Inheritance, Polymorphism)", "Exception Handling and Collections Framework"]
+    },
+    {
+      title: "Module 3: Database & JDBC",
+      topics: ["Relational Database Concepts", "Writing SQL Queries (Joins, Subqueries)", "Connecting Java to Database (JDBC)", "CRUD Operations"]
+    },
+    {
+      title: "Module 4: Spring Framework & Spring Boot",
+      topics: ["Inversion of Control (IoC) & Dependency Injection", "Spring MVC Architecture", "Spring Boot auto-configuration", "Building REST APIs"]
+    },
+    {
+      title: "Module 5: Hibernate & Data Persistence",
+      topics: ["Object-Relational Mapping (ORM) concepts", "Configuring Hibernate", "Entity Mapping and Relationships", "Spring Data JPA"]
+    },
+    {
+      title: "Module 6: Microservices & Capstone Project",
+      topics: ["Introduction to Microservices Architecture", "Service Discovery and API Gateway", "Securing APIs with Spring Security (JWT)", "End-to-End E-commerce Application"]
+    }
+  ];
 
   return (
     <>
-      <PageHero 
+      <CourseHero 
         title="Java Full Stack Development" 
+        subtitleList={[
+          "Core Java",
+          "Advanced Java",
+          "Spring Boot",
+          "Microservices",
+          "React Integration",
+          "AWS Basics"
+        ]}
         description="Master front-end and back-end development with Java, Spring Boot, and React. Become an enterprise-ready software engineer."
         breadcrumbs={[
           { label: "Courses", link: "/courses" },
@@ -44,129 +83,23 @@ const JavaFullStack = () => {
         ]}
       />
       
-      <div className="course-page-wrapper">
-        <div className="course-content-grid">
-          
-          {/* ── LEFT COLUMN: DESCRIPTION ── */}
-          <div className="course-main-content">
-            
-            <div className="course-section-card" data-aos="fade-up">
-              <h2>Course Overview</h2>
-              <p>
-                Our comprehensive Java Full Stack Development course is designed to take you from a beginner to a highly skilled enterprise developer. You will learn to build scalable, secure, and robust web applications from scratch.
-              </p>
-              <p>
-                Unlike generic coding bootcamps, this program focuses heavily on real-time MNC architectures, including Microservices, REST APIs, and modern frontend frameworks like React JS.
-              </p>
+      <BatchDetails 
+        nextBatch="Upcoming Week"
+        sessionTime="06:00 PM TO 08:00 PM"
+        duration="4 months"
+      />
 
-              <div className="course-features-grid">
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>100% Practical Training:</strong> No boring PPTs, just live coding.</div>
-                </div>
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>Real-time Projects:</strong> Build 3 enterprise-grade applications.</div>
-                </div>
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>Interview Prep:</strong> Mock interviews with technical architects.</div>
-                </div>
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>Placement Support:</strong> Direct referrals to 300+ partner IT companies.</div>
-                </div>
-              </div>
-            </div>
+      <CourseFeatures />
 
-            <div className="course-section-card" data-aos="fade-up">
-              <h2>What You Will Learn (Syllabus)</h2>
-              <ul className="course-syllabus-list">
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaCode /></div>
-                  <div className="syllabus-text">Core & Advanced Java (OOPs, Collections, Multithreading)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaDatabase /></div>
-                  <div className="syllabus-text">Database Management (MySQL, Oracle, JDBC, Hibernate)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaServer /></div>
-                  <div className="syllabus-text">Spring Framework & Spring Boot (REST APIs, Security)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaProjectDiagram /></div>
-                  <div className="syllabus-text">Microservices Architecture & API Gateway</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaCode /></div>
-                  <div className="syllabus-text">Frontend Development (HTML, CSS, JavaScript, React JS)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaServer /></div>
-                  <div className="syllabus-text">Deployment & DevOps Basics (AWS, Docker, Jenkins)</div>
-                </li>
-              </ul>
-            </div>
+      <SkillsMastered skillsData={skillsData} />
 
-          </div>
+      <CourseCurriculum curriculumData={curriculumData} />
 
-          {/* ── RIGHT COLUMN: INQUIRY FORM ── */}
-          <div className="course-sidebar" data-aos="fade-left">
-            <h3>Request Course Details</h3>
-            <p>Fill out the form below and we will send you the complete syllabus and fee details instantly on WhatsApp.</p>
-            
-            <form className="course-inquiry-form" onSubmit={handleWhatsAppSubmit}>
-              <div className="c-form-field">
-                <div className="c-field-icon"><FaUser /></div>
-                <input 
-                  type="text" 
-                  name="name" 
-                  placeholder="Your Full Name" 
-                  required 
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-              </div>
+      <WhyChooseUsCourse />
 
-              <div className="c-form-field">
-                <div className="c-field-icon"><FaPhoneAlt /></div>
-                <input 
-                  type="tel" 
-                  name="phone" 
-                  placeholder="Phone Number" 
-                  required 
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
-              </div>
+      <Certification />
 
-              <div className="c-form-field">
-                <div className="c-field-icon"><FaChalkboardTeacher /></div>
-                <select 
-                  name="mode" 
-                  required 
-                  value={formData.mode}
-                  onChange={handleChange}
-                >
-                  <option value="" disabled>Select Training Mode</option>
-                  <option value="Classroom Training">Classroom Training</option>
-                  <option value="Online Training">Online Training</option>
-                </select>
-              </div>
-
-              <button type="submit" className="c-submit-btn">
-                Send via WhatsApp <FaWhatsapp size={20} />
-              </button>
-
-              <div className="c-form-footer">
-                100% Secure. We do not spam.
-              </div>
-            </form>
-          </div>
-
-        </div>
-      </div>
+      <ReadyToStart />
     </>
   );
 };

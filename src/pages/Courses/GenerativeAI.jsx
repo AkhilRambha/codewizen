@@ -1,145 +1,105 @@
-import React, { useState } from 'react';
-import PageHero from '../../components/common/PageHero/PageHero';
-import { 
-  FaUser, 
-  FaPhoneAlt, 
-  FaChalkboardTeacher, 
-  FaWhatsapp, 
-  FaCheckCircle, 
-  FaRobot, 
-  FaCode, 
-  FaBrain, 
-  FaCloud,
-  FaDatabase
-} from 'react-icons/fa';
-import './CourseLayout.css';
+import React from 'react';
+import CourseHero from '../../components/common/CourseHero/CourseHero';
+import BatchDetails from '../../components/sections/BatchDetails/BatchDetails';
+import CourseFeatures from '../../components/sections/CourseFeatures/CourseFeatures';
+import SkillsMastered from '../../components/sections/SkillsMastered/SkillsMastered';
+import CourseCurriculum from '../../components/sections/CourseCurriculum/CourseCurriculum';
+import WhyChooseUsCourse from '../../components/sections/WhyChooseUsCourse/WhyChooseUsCourse';
+import Certification from '../../components/sections/Certification/Certification';
+import ReadyToStart from '../../components/sections/ReadyToStart/ReadyToStart';
 
 const GenerativeAI = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    mode: ''
-  });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const skillsData = [
+    {
+      title: "Foundations of AI",
+      skills: ["Machine Learning Basics", "Deep Learning Concepts", "Neural Networks", "NLP Fundamentals"]
+    },
+    {
+      title: "LLMs & Architecture",
+      skills: ["Transformer Architecture", "Attention Mechanism", "GPT Models", "Llama 3", "BERT"]
+    },
+    {
+      title: "Prompt Engineering",
+      skills: ["Zero-shot Learning", "Few-shot Prompting", "Chain-of-Thought", "Prompt Optimization"]
+    },
+    {
+      title: "Advanced Generative AI",
+      skills: ["RAG (Retrieval-Augmented Generation)", "Vector Databases", "LangChain", "Agentic AI"]
+    },
+    {
+      title: "Fine-tuning & Evaluation",
+      skills: ["LoRA", "QLoRA", "Model Fine-Tuning", "HuggingFace", "BLEU & ROUGE"]
+    },
+    {
+      title: "Deployment & MLOps",
+      skills: ["Model Deployment", "Docker", "AWS/Azure ML", "API Integration", "FastAPI"]
+    }
+  ];
 
-  const handleWhatsAppSubmit = (e) => {
-    e.preventDefault();
-    const waNumber = "918464025086";
-    const courseName = "Generative AI & Prompt Engineering";
-    const text = `Hello Codewizen!\nI am interested in the *${courseName}* course.\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Mode:* ${formData.mode}`;
-    const uri = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
-    window.open(uri, '_blank');
-  };
+  const curriculumData = [
+    {
+      title: "Module 1: Introduction to AI & Machine Learning",
+      topics: ["History and Evolution of AI", "Supervised vs Unsupervised Learning", "Neural Network Basics", "Introduction to NLP"]
+    },
+    {
+      title: "Module 2: Deep Learning & Transformers",
+      topics: ["RNNs and LSTMs", "The Attention Mechanism", "Transformer Architecture deep-dive", "Overview of GPT, BERT, and T5"]
+    },
+    {
+      title: "Module 3: Advanced Prompt Engineering",
+      topics: ["Designing effective prompts", "Few-shot & Zero-shot learning", "Chain of thought prompting", "Mitigating hallucinations"]
+    },
+    {
+      title: "Module 4: Retrieval-Augmented Generation (RAG)",
+      topics: ["Vector Embeddings & Semantic Search", "Working with Pinecone / Milvus", "LangChain fundamentals", "Building a custom Q&A Chatbot"]
+    },
+    {
+      title: "Module 5: Agentic AI & Autonomous Agents",
+      topics: ["Introduction to AI Agents", "Building agents with LangGraph", "Tool use and API calling", "Multi-agent systems"]
+    },
+    {
+      title: "Module 6: Fine-tuning Large Language Models",
+      topics: ["Parameter-Efficient Fine-Tuning (PEFT)", "LoRA and QLoRA", "Fine-tuning Llama-3 on custom data", "Evaluating model performance"]
+    }
+  ];
 
   return (
     <>
-      <PageHero 
-        title="Generative AI & Prompt Engineering" 
-        description="Learn to build AI-powered applications using LLMs, LangChain, and advanced Prompt Engineering techniques."
+      <CourseHero 
+        title="Generative AI & Agentic AI" 
+        subtitleList={[
+          "Prompt Engineering",
+          "LangChain",
+          "RAG Systems",
+          "LLM Fine-tuning",
+          "Agentic AI",
+          "HuggingFace"
+        ]}
+        description="Master the future of AI. Build intelligent agents, develop custom RAG systems, and fine-tune Large Language Models from scratch."
         breadcrumbs={[
           { label: "Courses", link: "/courses" },
           { label: "Generative AI" }
         ]}
       />
       
-      <div className="course-page-wrapper">
-        <div className="course-content-grid">
-          
-          <div className="course-main-content">
-            
-            <div className="course-section-card" data-aos="fade-up">
-              <h2>Course Overview</h2>
-              <p>
-                Generative AI is revolutionizing how we interact with technology. This cutting-edge course prepares you to build intelligent applications powered by Large Language Models (LLMs) like GPT-4, Claude, and open-source alternatives.
-              </p>
-              <p>
-                You'll learn how to write effective prompts, fine-tune models, and use frameworks like LangChain to connect AI models to your company's private databases (RAG architecture).
-              </p>
+      <BatchDetails 
+        nextBatch="Upcoming Week"
+        sessionTime="08:00 AM TO 10:00 AM"
+        duration="3 months"
+      />
 
-              <div className="course-features-grid">
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>Placement Support:</strong> Direct referrals to 300+ partner IT companies.</div>
-                </div>
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>RAG Architecture:</strong> Build custom chatbots on private data.</div>
-                </div>
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>LangChain & LlamaIndex:</strong> Master the top AI frameworks.</div>
-                </div>
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>Future-Proof Skill:</strong> Stay ahead of the automation curve.</div>
-                </div>
-              </div>
-            </div>
+      <CourseFeatures />
 
-            <div className="course-section-card" data-aos="fade-up">
-              <h2>What You Will Learn (Syllabus)</h2>
-              <ul className="course-syllabus-list">
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaBrain /></div>
-                  <div className="syllabus-text">Introduction to Generative AI & Foundation Models</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaCode /></div>
-                  <div className="syllabus-text">Advanced Prompt Engineering (Zero-shot, Few-shot, Chain of Thought)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaRobot /></div>
-                  <div className="syllabus-text">Working with OpenAI API, Claude API, and HuggingFace</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaCode /></div>
-                  <div className="syllabus-text">LangChain Framework (Chains, Agents, Tools, Memory)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaDatabase /></div>
-                  <div className="syllabus-text">Retrieval Augmented Generation (RAG) & Vector Databases (Pinecone/Chroma)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaCloud /></div>
-                  <div className="syllabus-text">Deploying AI Applications (Streamlit, Gradio, FastAPI)</div>
-                </li>
-              </ul>
-            </div>
+      <SkillsMastered skillsData={skillsData} />
 
-          </div>
+      <CourseCurriculum curriculumData={curriculumData} />
 
-          <div className="course-sidebar" data-aos="fade-left">
-            <h3>Request Course Details</h3>
-            <p>Fill out the form below and we will send you the complete syllabus and fee details instantly on WhatsApp.</p>
-            
-            <form className="course-inquiry-form" onSubmit={handleWhatsAppSubmit}>
-              <div className="c-form-field">
-                <div className="c-field-icon"><FaUser /></div>
-                <input type="text" name="name" placeholder="Your Full Name" required value={formData.name} onChange={handleChange} />
-              </div>
-              <div className="c-form-field">
-                <div className="c-field-icon"><FaPhoneAlt /></div>
-                <input type="tel" name="phone" placeholder="Phone Number" required value={formData.phone} onChange={handleChange} />
-              </div>
-              <div className="c-form-field">
-                <div className="c-field-icon"><FaChalkboardTeacher /></div>
-                <select name="mode" required value={formData.mode} onChange={handleChange}>
-                  <option value="" disabled>Select Training Mode</option>
-                  <option value="Classroom Training">Classroom Training</option>
-                  <option value="Online Training">Online Training</option>
-                </select>
-              </div>
-              <button type="submit" className="c-submit-btn">
-                Send via WhatsApp <FaWhatsapp size={20} />
-              </button>
-            </form>
-          </div>
+      <WhyChooseUsCourse />
 
-        </div>
-      </div>
+      <Certification />
+
+      <ReadyToStart />
     </>
   );
 };

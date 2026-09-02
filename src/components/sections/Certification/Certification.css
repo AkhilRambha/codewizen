@@ -1,0 +1,252 @@
+.certification-section {
+  padding: 80px 20px;
+  background-color: #f8fafc;
+}
+
+.certification-container {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.cert-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.cert-header h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #112255;
+  margin-bottom: 12px;
+}
+
+.cert-header p {
+  font-size: 18px;
+  color: #64748b;
+}
+
+.cert-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* Certificate Mockup */
+.cert-mockup-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cert-mockup {
+  background: #ea580c; /* Bold Orange border/background */
+  padding: 15px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 550px;
+  box-shadow: 0 20px 40px rgba(234, 88, 12, 0.2);
+}
+
+.cert-inner {
+  background: #112255; /* Deep blue interior */
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 40px 30px;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+}
+
+.cert-badge {
+  font-size: 48px;
+  color: #ea580c;
+  margin-bottom: 20px;
+}
+
+.cert-inner h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.cert-inner h4 {
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+.cert-text-small {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+.cert-name {
+  font-size: 32px;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-weight: normal;
+  margin-bottom: 10px;
+  color: #f8fafc;
+}
+
+.cert-program {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ea580c;
+  margin-bottom: 40px;
+}
+
+.cert-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+}
+
+.cert-logo {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.cert-id {
+  text-align: right;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* Features Right Column */
+.cert-features-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cert-includes-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.cert-includes-box h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #112255;
+  margin-bottom: 20px;
+}
+
+.cert-includes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cert-includes-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 15px;
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.cert-check {
+  color: #ea580c;
+  font-size: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.cert-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.cert-small-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.cert-small-icon {
+  font-size: 24px;
+  color: #ea580c;
+  margin-bottom: 10px;
+}
+
+.cert-small-box h5 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #112255;
+  margin-bottom: 8px;
+}
+
+.cert-small-box p {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* Bottom Row */
+.cert-bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cert-bottom-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease;
+}
+
+.cert-bottom-card:hover {
+  transform: translateY(-5px);
+  border-color: #112255;
+}
+
+.cert-b-icon {
+  font-size: 32px;
+  color: #ea580c;
+  margin-bottom: 15px;
+}
+
+.cert-bottom-card h5 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.cert-bottom-card p {
+  font-size: 14px;
+  color: #64748b;
+}
+
+@media (max-width: 1024px) {
+  .cert-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .cert-features-grid,
+  .cert-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}

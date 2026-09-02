@@ -1,0 +1,132 @@
+.course-curriculum-section {
+  padding: 80px 20px;
+  background-color: #f8fafc;
+}
+
+.course-curriculum-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.cc-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.cc-header h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #112255;
+  margin-bottom: 12px;
+}
+
+.cc-header p {
+  font-size: 18px;
+  color: #64748b;
+}
+
+.cc-accordion-wrapper {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  margin-bottom: 40px;
+}
+
+.cc-accordion-item {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.cc-accordion-item:last-child {
+  border-bottom: none;
+}
+
+.cc-accordion-header {
+  padding: 20px 24px;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.cc-accordion-header:hover {
+  background-color: #f1f5f9;
+}
+
+.cc-accordion-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.cc-accordion-icon {
+  color: #112255;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cc-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background-color: #ffffff;
+}
+
+.cc-accordion-body.open {
+  max-height: 1000px; /* arbitrary large value */
+  padding: 20px 24px 20px 50px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.cc-topics-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cc-topics-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #475569;
+}
+
+.cc-topics-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #ea580c; /* Orange bullet */
+  font-weight: bold;
+}
+
+.cc-topics-list li:last-child {
+  margin-bottom: 0;
+}
+
+.cc-modules-banner {
+  background: #ea580c; /* Orange banner */
+  color: #ffffff;
+  text-align: center;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 10px 25px rgba(234, 88, 12, 0.2);
+}
+
+.cc-modules-banner h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.cc-modules-banner p {
+  font-size: 16px;
+  opacity: 0.9;
+}

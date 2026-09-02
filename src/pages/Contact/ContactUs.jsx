@@ -233,7 +233,7 @@ I would like to inquire about a course.
             <span>Our support team is available 24/7 on WhatsApp.</span>
           </div>
           <div className="contact-cta-btns">
-            <a href="https://wa.me/918464025086" target="_blank" rel="noreferrer" className="cta-bar-btn cta-bar-primary">
+            <a href="https://wa.me/917993819211" target="_blank" rel="noreferrer" className="cta-bar-btn cta-bar-primary">
               Chat on WhatsApp
             </a>
           </div>

@@ -1,172 +1,105 @@
-import React, { useState } from 'react';
-import PageHero from '../../components/common/PageHero/PageHero';
-import { 
-  FaUser, 
-  FaPhoneAlt, 
-  FaChalkboardTeacher, 
-  FaWhatsapp, 
-  FaCheckCircle, 
-  FaPython, 
-  FaDatabase, 
-  FaGlobe, 
-  FaBrain 
-} from 'react-icons/fa';
-import './CourseLayout.css';
+import React from 'react';
+import CourseHero from '../../components/common/CourseHero/CourseHero';
+import BatchDetails from '../../components/sections/BatchDetails/BatchDetails';
+import CourseFeatures from '../../components/sections/CourseFeatures/CourseFeatures';
+import SkillsMastered from '../../components/sections/SkillsMastered/SkillsMastered';
+import CourseCurriculum from '../../components/sections/CourseCurriculum/CourseCurriculum';
+import WhyChooseUsCourse from '../../components/sections/WhyChooseUsCourse/WhyChooseUsCourse';
+import Certification from '../../components/sections/Certification/Certification';
+import ReadyToStart from '../../components/sections/ReadyToStart/ReadyToStart';
 
 const PythonFullStack = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    mode: ''
-  });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const skillsData = [
+    {
+      title: "Frontend Development",
+      skills: ["HTML5", "CSS3", "JavaScript", "React.js", "Bootstrap", "Tailwind"]
+    },
+    {
+      title: "Core Python",
+      skills: ["Data Types", "Functions", "OOPs", "Exception Handling", "File I/O"]
+    },
+    {
+      title: "Backend Frameworks",
+      skills: ["Django", "Django REST Framework", "Flask", "FastAPI"]
+    },
+    {
+      title: "Database Management",
+      skills: ["MySQL", "PostgreSQL", "SQLite", "MongoDB", "ORM Concepts"]
+    },
+    {
+      title: "Version Control & Tools",
+      skills: ["Git", "GitHub", "VS Code", "Postman", "Command Line"]
+    },
+    {
+      title: "Deployment & Cloud",
+      skills: ["Docker basics", "AWS EC2", "Heroku", "Nginx", "Gunicorn"]
+    }
+  ];
 
-  const handleWhatsAppSubmit = (e) => {
-    e.preventDefault();
-    const waNumber = "918464025086";
-    const courseName = "Python Full Stack Development";
-    const text = `Hello Codewizen!\nI am interested in the *${courseName}* course.\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Mode:* ${formData.mode}`;
-    const uri = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
-    window.open(uri, '_blank');
-  };
+  const curriculumData = [
+    {
+      title: "Module 1: Web Development Fundamentals (Frontend)",
+      topics: ["HTML5 semantic tags & forms", "CSS3 styling, Flexbox & Grid", "Responsive Design with Bootstrap", "JavaScript ES6+ fundamentals", "DOM Manipulation & Events"]
+    },
+    {
+      title: "Module 2: React.js for Interactive UI",
+      topics: ["React Components & JSX", "State & Props management", "React Hooks (useState, useEffect)", "React Router DOM", "Consuming APIs using Axios"]
+    },
+    {
+      title: "Module 3: Core Python Programming",
+      topics: ["Python Syntax and Data Structures", "Control Flow and Loops", "Object-Oriented Programming (OOP)", "Modules and Packages"]
+    },
+    {
+      title: "Module 4: Django Web Framework",
+      topics: ["Django Architecture (MVT)", "Models and Database Migrations", "Views, URLs, and Templates", "Form handling & Validation"]
+    },
+    {
+      title: "Module 5: REST APIs with DRF",
+      topics: ["Introduction to REST APIs", "Django REST Framework setup", "Serializers and ViewSets", "Authentication and Permissions"]
+    },
+    {
+      title: "Module 6: Database Integration & Deployment",
+      topics: ["PostgreSQL Integration", "Executing raw SQL queries vs ORM", "Deploying the App to AWS/Heroku", "Full Stack Capstone Project"]
+    }
+  ];
 
   return (
     <>
-      <PageHero 
+      <CourseHero 
         title="Python Full Stack Development" 
-        description="Learn Python, Django, REST APIs, and Frontend frameworks. Build highly scalable applications and step into the world of Data Science."
+        subtitleList={[
+          "Python",
+          "Django",
+          "React.js",
+          "SQL",
+          "REST APIs",
+          "AWS"
+        ]}
+        description="Become a complete software engineer. Master front-end with React and back-end with Python & Django."
         breadcrumbs={[
           { label: "Courses", link: "/courses" },
           { label: "Python Full Stack" }
         ]}
       />
       
-      <div className="course-page-wrapper">
-        <div className="course-content-grid">
-          
-          {/* ── LEFT COLUMN: DESCRIPTION ── */}
-          <div className="course-main-content">
-            
-            <div className="course-section-card" data-aos="fade-up">
-              <h2>Course Overview</h2>
-              <p>
-                Python is the undisputed king of modern programming languages. From web development to Artificial Intelligence, Python is everywhere. Our Python Full Stack program teaches you how to leverage this powerful language to build enterprise applications.
-              </p>
-              <p>
-                You will master everything from core Python logic to backend architecture with Django/Flask, integrating seamlessly with modern frontend systems like React JS.
-              </p>
+      <BatchDetails 
+        nextBatch="Upcoming Week"
+        sessionTime="07:00 AM TO 09:00 AM"
+        duration="4 months"
+      />
 
-              <div className="course-features-grid">
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>Zero to Hero:</strong> Perfect for beginners with no coding background.</div>
-                </div>
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>Real-time Projects:</strong> Build E-commerce platforms and APIs.</div>
-                </div>
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>Placement Support:</strong> Direct referrals to 300+ partner IT companies.</div>
-                </div>
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>100% Placement:</strong> Dedicated support until you secure a job.</div>
-                </div>
-              </div>
-            </div>
+      <CourseFeatures />
 
-            <div className="course-section-card" data-aos="fade-up">
-              <h2>What You Will Learn (Syllabus)</h2>
-              <ul className="course-syllabus-list">
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaPython /></div>
-                  <div className="syllabus-text">Core Python (Data Structures, OOPs, Exception Handling)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaDatabase /></div>
-                  <div className="syllabus-text">Database Management (MySQL, PostgreSQL, ORM)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaGlobe /></div>
-                  <div className="syllabus-text">Django & Flask Frameworks (MVT Architecture, REST APIs)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaBrain /></div>
-                  <div className="syllabus-text">Data Science Basics (NumPy, Pandas, Matplotlib)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaGlobe /></div>
-                  <div className="syllabus-text">Frontend Integration (HTML, CSS, JavaScript, React)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaGlobe /></div>
-                  <div className="syllabus-text">Cloud Deployment (AWS EC2, Docker, GitHub)</div>
-                </li>
-              </ul>
-            </div>
+      <SkillsMastered skillsData={skillsData} />
 
-          </div>
+      <CourseCurriculum curriculumData={curriculumData} />
 
-          {/* ── RIGHT COLUMN: INQUIRY FORM ── */}
-          <div className="course-sidebar" data-aos="fade-left">
-            <h3>Request Course Details</h3>
-            <p>Fill out the form below and we will send you the complete syllabus and fee details instantly on WhatsApp.</p>
-            
-            <form className="course-inquiry-form" onSubmit={handleWhatsAppSubmit}>
-              <div className="c-form-field">
-                <div className="c-field-icon"><FaUser /></div>
-                <input 
-                  type="text" 
-                  name="name" 
-                  placeholder="Your Full Name" 
-                  required 
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-              </div>
+      <WhyChooseUsCourse />
 
-              <div className="c-form-field">
-                <div className="c-field-icon"><FaPhoneAlt /></div>
-                <input 
-                  type="tel" 
-                  name="phone" 
-                  placeholder="Phone Number" 
-                  required 
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
-              </div>
+      <Certification />
 
-              <div className="c-form-field">
-                <div className="c-field-icon"><FaChalkboardTeacher /></div>
-                <select 
-                  name="mode" 
-                  required 
-                  value={formData.mode}
-                  onChange={handleChange}
-                >
-                  <option value="" disabled>Select Training Mode</option>
-                  <option value="Classroom Training">Classroom Training</option>
-                  <option value="Online Training">Online Training</option>
-                </select>
-              </div>
-
-              <button type="submit" className="c-submit-btn">
-                Send via WhatsApp <FaWhatsapp size={20} />
-              </button>
-
-              <div className="c-form-footer">
-                100% Secure. We do not spam.
-              </div>
-            </form>
-          </div>
-
-        </div>
-      </div>
+      <ReadyToStart />
     </>
   );
 };

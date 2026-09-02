@@ -1,42 +1,81 @@
-import React, { useState } from 'react';
-import PageHero from '../../components/common/PageHero/PageHero';
-import { 
-  FaUser, 
-  FaPhoneAlt, 
-  FaChalkboardTeacher, 
-  FaWhatsapp, 
-  FaCheckCircle, 
-  FaCode, 
-  FaBug, 
-  FaRobot, 
-  FaTasks 
-} from 'react-icons/fa';
-import './CourseLayout.css';
+import React from 'react';
+import CourseHero from '../../components/common/CourseHero/CourseHero';
+import BatchDetails from '../../components/sections/BatchDetails/BatchDetails';
+import CourseFeatures from '../../components/sections/CourseFeatures/CourseFeatures';
+import SkillsMastered from '../../components/sections/SkillsMastered/SkillsMastered';
+import CourseCurriculum from '../../components/sections/CourseCurriculum/CourseCurriculum';
+import WhyChooseUsCourse from '../../components/sections/WhyChooseUsCourse/WhyChooseUsCourse';
+import Certification from '../../components/sections/Certification/Certification';
+import ReadyToStart from '../../components/sections/ReadyToStart/ReadyToStart';
 
 const SoftwareTesting = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    mode: ''
-  });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const skillsData = [
+    {
+      title: "Manual Testing",
+      skills: ["SDLC & STLC", "Test Cases Design", "Bug Tracking", "Agile & Scrum", "Jira"]
+    },
+    {
+      title: "Core Java for QA",
+      skills: ["Java Basics", "OOP Concepts", "Collections Framework", "Exception Handling"]
+    },
+    {
+      title: "Selenium Automation",
+      skills: ["Selenium WebDriver", "Locators (XPath, CSS)", "Waits & Synchronization", "Handling Alerts & Frames"]
+    },
+    {
+      title: "Test Frameworks",
+      skills: ["TestNG", "JUnit", "Data-Driven Framework", "Page Object Model (POM)", "Cucumber (BDD)"]
+    },
+    {
+      title: "API Testing",
+      skills: ["Postman", "REST Assured", "JSON/XML Parsing", "HTTP Methods & Status Codes"]
+    },
+    {
+      title: "DevOps & CI/CD",
+      skills: ["Git & GitHub", "Jenkins", "Maven", "Docker basics", "Continuous Integration"]
+    }
+  ];
 
-  const handleWhatsAppSubmit = (e) => {
-    e.preventDefault();
-    const waNumber = "918464025086";
-    const courseName = "Software Testing (QA Automation)";
-    const text = `Hello Codewizen!\nI am interested in the *${courseName}* course.\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Mode:* ${formData.mode}`;
-    const uri = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
-    window.open(uri, '_blank');
-  };
+  const curriculumData = [
+    {
+      title: "Module 1: Manual Testing Fundamentals",
+      topics: ["Software Development Life Cycle (SDLC)", "Software Testing Life Cycle (STLC)", "Writing effective Test Cases", "Defect Life Cycle & Bug Tracking with Jira"]
+    },
+    {
+      title: "Module 2: Core Java for Automation",
+      topics: ["Setting up Java and Eclipse/IntelliJ", "Data types, variables, and operators", "Object-Oriented Programming (Classes, Methods, Inheritance)", "Collections Framework (List, Set, Map)"]
+    },
+    {
+      title: "Module 3: Selenium WebDriver",
+      topics: ["Introduction to Selenium architecture", "Locating elements using XPath and CSS Selectors", "Handling dropdowns, alerts, and multiple windows", "Implicit and Explicit Waits"]
+    },
+    {
+      title: "Module 4: Testing Frameworks (TestNG & Cucumber)",
+      topics: ["TestNG annotations and assertions", "Grouping and parallel execution", "Page Object Model (POM) design pattern", "Behavior Driven Development (BDD) with Cucumber"]
+    },
+    {
+      title: "Module 5: API Automation Testing",
+      topics: ["Understanding Web Services and APIs", "Manual API testing using Postman", "Automating API tests using RestAssured framework", "Validating JSON responses"]
+    },
+    {
+      title: "Module 6: CI/CD & Capstone Project",
+      topics: ["Version control with Git & GitHub", "Build management with Maven", "Setting up CI/CD pipelines with Jenkins", "End-to-End Automation Framework Project"]
+    }
+  ];
 
   return (
     <>
-      <PageHero 
+      <CourseHero 
         title="Software Testing (QA Automation)" 
+        subtitleList={[
+          "Manual Testing",
+          "Agile & Jira",
+          "Core Java",
+          "Selenium WebDriver",
+          "API Testing",
+          "TestNG"
+        ]}
         description="Master Manual Testing, Selenium, Java, and API Automation. Become a certified Quality Assurance Engineer and ensure flawless software delivery."
         breadcrumbs={[
           { label: "Courses", link: "/courses" },
@@ -44,129 +83,23 @@ const SoftwareTesting = () => {
         ]}
       />
       
-      <div className="course-page-wrapper">
-        <div className="course-content-grid">
-          
-          {/* ── LEFT COLUMN: DESCRIPTION ── */}
-          <div className="course-main-content">
-            
-            <div className="course-section-card" data-aos="fade-up">
-              <h2>Course Overview</h2>
-              <p>
-                Quality Assurance is a critical phase in any software development lifecycle. Our Software Testing program teaches you how to break software intentionally to find bugs before they reach the customer.
-              </p>
-              <p>
-                You will start with core manual testing methodologies and rapidly progress to writing robust automated test scripts using Selenium Webdriver, TestNG, and Java.
-              </p>
+      <BatchDetails 
+        nextBatch="Upcoming Week"
+        sessionTime="07:30 AM TO 09:30 AM"
+        duration="3.5 months"
+      />
 
-              <div className="course-features-grid">
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>Manual & Automation:</strong> Comprehensive coverage of both testing phases.</div>
-                </div>
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>Real-time Frameworks:</strong> Build Data-Driven and Hybrid frameworks.</div>
-                </div>
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>API Testing:</strong> Master Postman and RestAssured for backend testing.</div>
-                </div>
-                <div className="c-feature">
-                  <FaCheckCircle className="c-feature-icon" />
-                  <div className="c-feature-text"><strong>Placement Support:</strong> Direct referrals to 300+ partner IT companies.</div>
-                </div>
-              </div>
-            </div>
+      <CourseFeatures />
 
-            <div className="course-section-card" data-aos="fade-up">
-              <h2>What You Will Learn (Syllabus)</h2>
-              <ul className="course-syllabus-list">
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaTasks /></div>
-                  <div className="syllabus-text">Manual Testing (SDLC, STLC, Test Cases, Defect Life Cycle)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaBug /></div>
-                  <div className="syllabus-text">Agile Methodology & Bug Tracking (Jira, Bugzilla)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaCode /></div>
-                  <div className="syllabus-text">Core Java for Automation (OOPs, Collections)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaRobot /></div>
-                  <div className="syllabus-text">Selenium WebDriver (Locators, Waits, Action Classes)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaRobot /></div>
-                  <div className="syllabus-text">TestNG, Cucumber (BDD) & Page Object Model (POM)</div>
-                </li>
-                <li className="syllabus-item">
-                  <div className="syllabus-icon"><FaCode /></div>
-                  <div className="syllabus-text">API Testing (Postman, RestAssured)</div>
-                </li>
-              </ul>
-            </div>
+      <SkillsMastered skillsData={skillsData} />
 
-          </div>
+      <CourseCurriculum curriculumData={curriculumData} />
 
-          {/* ── RIGHT COLUMN: INQUIRY FORM ── */}
-          <div className="course-sidebar" data-aos="fade-left">
-            <h3>Request Course Details</h3>
-            <p>Fill out the form below and we will send you the complete syllabus and fee details instantly on WhatsApp.</p>
-            
-            <form className="course-inquiry-form" onSubmit={handleWhatsAppSubmit}>
-              <div className="c-form-field">
-                <div className="c-field-icon"><FaUser /></div>
-                <input 
-                  type="text" 
-                  name="name" 
-                  placeholder="Your Full Name" 
-                  required 
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-              </div>
+      <WhyChooseUsCourse />
 
-              <div className="c-form-field">
-                <div className="c-field-icon"><FaPhoneAlt /></div>
-                <input 
-                  type="tel" 
-                  name="phone" 
-                  placeholder="Phone Number" 
-                  required 
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
-              </div>
+      <Certification />
 
-              <div className="c-form-field">
-                <div className="c-field-icon"><FaChalkboardTeacher /></div>
-                <select 
-                  name="mode" 
-                  required 
-                  value={formData.mode}
-                  onChange={handleChange}
-                >
-                  <option value="" disabled>Select Training Mode</option>
-                  <option value="Classroom Training">Classroom Training</option>
-                  <option value="Online Training">Online Training</option>
-                </select>
-              </div>
-
-              <button type="submit" className="c-submit-btn">
-                Send via WhatsApp <FaWhatsapp size={20} />
-              </button>
-
-              <div className="c-form-footer">
-                100% Secure. We do not spam.
-              </div>
-            </form>
-          </div>
-
-        </div>
-      </div>
+      <ReadyToStart />
     </>
   );
 };

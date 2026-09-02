@@ -1,0 +1,140 @@
+.course-features-section {
+  padding: 80px 20px;
+  background-color: #f8fafc;
+}
+
+.course-features-container {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.cf-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.cf-header h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #112255;
+  margin-bottom: 12px;
+}
+
+.cf-header p {
+  font-size: 18px;
+  color: #64748b;
+}
+
+.cf-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-bottom: 60px;
+}
+
+.cf-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 30px 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.cf-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  border-color: #112255;
+}
+
+.cf-icon {
+  width: 50px;
+  height: 50px;
+  background: #fff7ed;
+  color: #ea580c; /* Orange accent */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.cf-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+}
+
+.cf-card p {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.cf-additional-benefits {
+  background: #112255; /* Codewizen Deep Blue */
+  border-radius: 16px;
+  padding: 40px;
+  color: #ffffff;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(17, 34, 85, 0.15);
+}
+
+.cf-additional-benefits h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+.cf-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cf-benefit-item {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.3s ease;
+}
+
+.cf-benefit-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cf-check {
+  color: #f97316; /* Orange checkmark */
+  font-size: 18px;
+}
+
+@media (max-width: 1024px) {
+  .cf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cf-benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .cf-grid {
+    grid-template-columns: 1fr;
+  }
+  .cf-benefits-grid {
+    grid-template-columns: 1fr;
+  }
+  .cf-additional-benefits {
+    padding: 30px 20px;
+  }
+}
