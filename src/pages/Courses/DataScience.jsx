@@ -6,6 +6,7 @@ import SkillsMastered from '../../components/sections/SkillsMastered/SkillsMaste
 import CourseCurriculum from '../../components/sections/CourseCurriculum/CourseCurriculum';
 import WhyChooseUsCourse from '../../components/sections/WhyChooseUsCourse/WhyChooseUsCourse';
 import Certification from '../../components/sections/Certification/Certification';
+import Testimonials from '../../components/sections/Testimonials/Testimonials';
 import ReadyToStart from '../../components/sections/ReadyToStart/ReadyToStart';
 
 const DataScience = () => {
@@ -84,6 +85,7 @@ const DataScience = () => {
       />
       
       <BatchDetails 
+        courseName="Data Science"
         nextBatch="Upcoming Week"
         sessionTime="10:00 AM TO 12:00 PM"
         duration="6 months"
@@ -98,6 +100,8 @@ const DataScience = () => {
       <WhyChooseUsCourse />
 
       <Certification />
+
+      <Testimonials />
 
       <ReadyToStart />
     </>

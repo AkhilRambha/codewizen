@@ -1,5 +1,6 @@
 import React from "react";
 import Hero from "../../components/sections/Hero/Hero";
+import HomeBatches from "../../components/sections/HomeBatches/HomeBatches";
 import TrendingCourses from "../../components/sections/TrendingCourses/TrendingCourses";
 import AboutSection from "../../components/sections/AboutSection/AboutSection";
 import Benefits from "../../components/sections/Benefits/Benefits";
@@ -15,6 +16,8 @@ function Home() {
       <main id="home">
         <Hero />
       </main>
+
+      <HomeBatches />
 
       <TrendingCourses />
       <AboutSection />

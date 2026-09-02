@@ -1,0 +1,238 @@
+/* ================================================
+   REVIEWS PAGE
+================================================ */
+
+.reviews-page-wrapper {
+  background-color: #f8fafc;
+  padding-bottom: 80px;
+}
+
+.reviews-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── STATS HIGHLIGHT ── */
+.reviews-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-top: -50px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 60px;
+}
+
+.rs-box {
+  text-align: center;
+  flex: 1;
+  border-right: 1px solid #e2e8f0;
+}
+
+.rs-box:last-child {
+  border-right: none;
+}
+
+.rs-box h2 {
+  font-size: 42px;
+  font-weight: 800;
+  color: #112255;
+  margin-bottom: 5px;
+}
+
+.rs-stars {
+  color: #ea580c;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.rs-box p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── REVIEWS GRID ── */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.review-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(17, 34, 85, 0.08);
+}
+
+.review-card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.review-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #f1f5f9;
+}
+
+.review-meta h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+.review-meta span {
+  font-size: 13px;
+  color: #ea580c;
+  font-weight: 600;
+}
+
+.review-platform {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+}
+
+.review-stars {
+  color: #fbbf24;
+  display: flex;
+  gap: 4px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.review-body {
+  position: relative;
+  flex-grow: 1;
+}
+
+.review-quote-icon {
+  position: absolute;
+  top: -5px;
+  left: -10px;
+  font-size: 30px;
+  color: #f1f5f9;
+  z-index: 1;
+}
+
+.review-body p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #475569;
+  position: relative;
+  z-index: 2;
+  font-style: italic;
+}
+
+.review-footer {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px dashed #e2e8f0;
+  font-size: 13px;
+  color: #94a3b8;
+  text-align: right;
+}
+
+/* ── CTA ── */
+.write-review-cta {
+  background: linear-gradient(135deg, #112255 0%, #1e1b4b 100%);
+  border-radius: 16px;
+  padding: 50px 30px;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(17, 34, 85, 0.15);
+}
+
+.wrc-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.wrc-inner h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.wrc-inner p {
+  font-size: 16px;
+  opacity: 0.9;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.wrc-btn {
+  background: #ea580c;
+  color: #ffffff;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.wrc-btn:hover {
+  background: #c2410c;
+  transform: translateY(-2px);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-stats {
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+  }
+  
+  .rs-box {
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 20px;
+  }
+  
+  .rs-box:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}

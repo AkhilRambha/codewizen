@@ -6,6 +6,7 @@ import SkillsMastered from '../../components/sections/SkillsMastered/SkillsMaste
 import CourseCurriculum from '../../components/sections/CourseCurriculum/CourseCurriculum';
 import WhyChooseUsCourse from '../../components/sections/WhyChooseUsCourse/WhyChooseUsCourse';
 import Certification from '../../components/sections/Certification/Certification';
+import Testimonials from '../../components/sections/Testimonials/Testimonials';
 import ReadyToStart from '../../components/sections/ReadyToStart/ReadyToStart';
 
 const PythonFullStack = () => {
@@ -84,6 +85,7 @@ const PythonFullStack = () => {
       />
       
       <BatchDetails 
+        courseName="Python Full Stack"
         nextBatch="Upcoming Week"
         sessionTime="07:00 AM TO 09:00 AM"
         duration="4 months"
@@ -98,6 +100,8 @@ const PythonFullStack = () => {
       <WhyChooseUsCourse />
 
       <Certification />
+
+      <Testimonials />
 
       <ReadyToStart />
     </>

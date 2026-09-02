@@ -6,6 +6,7 @@ import SkillsMastered from '../../components/sections/SkillsMastered/SkillsMaste
 import CourseCurriculum from '../../components/sections/CourseCurriculum/CourseCurriculum';
 import WhyChooseUsCourse from '../../components/sections/WhyChooseUsCourse/WhyChooseUsCourse';
 import Certification from '../../components/sections/Certification/Certification';
+import Testimonials from '../../components/sections/Testimonials/Testimonials';
 import ReadyToStart from '../../components/sections/ReadyToStart/ReadyToStart';
 
 const DataAnalytics = () => {
@@ -83,6 +84,7 @@ const DataAnalytics = () => {
       />
       
       <BatchDetails 
+        courseName="Data Analytics"
         nextBatch="Upcoming Week"
         sessionTime="08:00 AM TO 10:00 AM"
         duration="3 months"
@@ -97,6 +99,8 @@ const DataAnalytics = () => {
       <WhyChooseUsCourse />
 
       <Certification />
+
+      <Testimonials />
 
       <ReadyToStart />
     </>

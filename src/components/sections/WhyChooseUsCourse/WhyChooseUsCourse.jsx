@@ -1,17 +1,13 @@
 import React from 'react';
 import { 
-  FaCalendarAlt, 
-  FaUsers, 
-  FaHandshake, 
-  FaChartLine, 
-  FaAward, 
   FaChalkboardTeacher, 
-  FaBriefcase, 
   FaBookOpen, 
-  FaRocket, 
-  FaMoneyCheckAlt, 
-  FaClock, 
-  FaLaptopCode 
+  FaLaptopCode,
+  FaAward,
+  FaBriefcase,
+  FaRocket,
+  FaMoneyCheckAlt,
+  FaClock
 } from 'react-icons/fa';
 import './WhyChooseUsCourse.css';
 

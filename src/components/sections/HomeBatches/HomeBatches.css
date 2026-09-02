@@ -1,0 +1,167 @@
+.home-batches-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  position: relative;
+}
+
+.home-batches-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.home-batches-section .section-header h2 {
+  color: #112255 !important;
+}
+
+.home-batches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.home-batch-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.home-batch-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ea580c, #f97316);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.home-batch-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(17, 34, 85, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.home-batch-card:hover::before {
+  opacity: 1;
+}
+
+.home-batch-header {
+  background: transparent;
+  color: #112255;
+  padding: 25px 25px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px dashed #cbd5e1;
+}
+
+.home-batch-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.home-batch-badge {
+  background: linear-gradient(135deg, #ea580c, #f97316);
+  color: white;
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(234, 88, 12, 0.3);
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.home-batch-body {
+  padding: 20px 25px;
+  flex: 1;
+}
+
+.home-batch-row {
+  margin-bottom: 15px;
+  color: #475569;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.home-batch-row:last-child {
+  margin-bottom: 0;
+}
+
+.home-batch-row svg {
+  color: #ea580c;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.home-batch-row strong {
+  color: #112255;
+  width: 75px;
+  font-weight: 600;
+}
+
+.home-batch-footer {
+  padding: 0 25px 25px;
+}
+
+.home-batch-btn {
+  display: block;
+  text-align: center;
+  background: transparent;
+  color: #ea580c;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid #ea580c;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.home-batch-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, #ea580c, #f97316);
+  z-index: -1;
+  transition: transform 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.home-batch-btn:hover {
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(234, 88, 12, 0.3);
+}
+
+.home-batch-btn:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.no-batches {
+  text-align: center;
+  padding: 40px;
+  color: #64748b;
+  font-size: 18px;
+}

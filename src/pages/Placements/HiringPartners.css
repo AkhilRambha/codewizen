@@ -1,184 +1,258 @@
 /* ================================================
-   HIRING PARTNERS PAGE
+   HIRING PARTNERS
 ================================================ */
 
 .hp-page-wrapper {
-  background-color: #f8fafc;
-  min-height: 100vh;
-  padding: 80px 20px 100px;
+  background-color: #ffffff;
 }
 
 .hp-container {
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* ── HEADER ── */
-.hp-header {
-  text-align: center;
-  margin-bottom: 60px;
+/* ── STATS SECTION ── */
+.hp-stats-section {
+  background-color: #112255;
+  padding: 60px 0;
+  margin-top: -30px;
+  position: relative;
+  z-index: 2;
 }
 
-.hp-header h2 {
-  font-size: 36px;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 16px;
-}
-
-.hp-header p {
-  font-size: 18px;
-  color: #64748b;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-/* ── LOGOS GRID ── */
-.hp-logos-grid {
+.hp-stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 24px;
-  margin-bottom: 80px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  text-align: center;
 }
 
-.hp-logo-card {
-  background: #ffffff;
-  height: 120px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-  border: 1px solid rgba(0,0,0,0.05);
-  font-size: 22px;
-  font-weight: 800;
-  color: #94a3b8;
-  letter-spacing: 1px;
-  transition: all 0.3s;
-  cursor: default;
+.hp-stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px 20px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.hp-logo-card img {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  margin-right: 12px;
-}
-
-.hp-logo-card:hover {
+.hp-stat-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  color: #112255;
-  border-color: #e2e8f0;
+  border-color: #ea580c;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* ── WHY HIRE FROM US ── */
-.hp-benefits-section {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  border-radius: 24px;
-  padding: 60px;
+.hp-s-icon {
+  font-size: 40px;
+  color: #ea580c;
+  margin-bottom: 15px;
+}
+
+.hp-stat-card h3 {
+  font-size: 48px;
+  font-weight: 800;
   color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.hp-stat-card p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── SIDE BY SIDE LOGOS SECTION ── */
+.hp-logos-section {
+  padding: 80px 0;
+  background-color: #f8fafc;
+}
+
+.hp-side-by-side {
   display: flex;
   align-items: center;
-  gap: 60px;
-  margin-bottom: 80px;
+  gap: 50px;
 }
 
-.hp-benefits-content {
+.hp-text-content {
   flex: 1;
 }
 
-.hp-benefits-content h3 {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 20px;
+.hp-text-content h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #112255;
+  margin-bottom: 15px;
 }
 
-.hp-benefits-content p {
-  font-size: 16px;
-  color: rgba(255,255,255,0.8);
-  line-height: 1.8;
+.hp-text-content > p {
+  font-size: 18px;
+  color: #64748b;
   margin-bottom: 30px;
 }
 
-.hp-features-list {
+.hp-content-box {
+  margin-bottom: 25px;
+  padding-left: 20px;
+  border-left: 4px solid #ea580c;
+}
+
+.hp-content-box h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 5px;
+}
+
+.hp-content-box p {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.hp-btn-primary {
+  background-color: #ea580c;
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.hp-btn-primary:hover {
+  background-color: #c2410c;
+}
+
+.hp-logos-side-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.hp-logo-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.hp-logo-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+  border-color: #112255;
+}
+
+.hp-logo-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.hp-logo-box:hover img {
+  transform: scale(1.05);
+}
+
+/* ── WHY HIRE SECTION ── */
+.hp-why-section {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.hp-why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.hp-why-content h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #112255;
+  margin-bottom: 30px;
+}
+
+.hp-why-list {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.hp-feature-item {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hp-why-list li {
   font-size: 16px;
-  margin-bottom: 16px;
+  color: #475569;
+  line-height: 1.6;
+  padding-left: 20px;
+  position: relative;
 }
 
-.hp-feature-icon {
-  color: #e87500;
-  font-size: 20px;
+.hp-why-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  background: #ea580c;
+  border-radius: 50%;
 }
 
-.hp-benefits-cta {
-  flex: 0 0 350px;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 40px;
-  text-align: center;
+.hp-why-list li strong {
   color: #0f172a;
 }
 
-.hp-benefits-cta h4 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.hp-benefits-cta p {
-  font-size: 14px;
-  color: #64748b;
-  margin-bottom: 24px;
-}
-
-.hp-cta-btn {
-  display: block;
+.hp-why-image img {
   width: 100%;
-  padding: 16px;
-  background: #e87500;
-  color: #ffffff;
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: 10px;
-  transition: background 0.3s;
-}
-
-.hp-cta-btn:hover {
-  background: #cc6600;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 992px) {
-  .hp-benefits-section {
+@media (max-width: 1024px) {
+  .hp-side-by-side {
     flex-direction: column;
-    padding: 40px;
-    gap: 40px;
+    text-align: center;
   }
   
-  .hp-benefits-cta {
-    width: 100%;
-    flex: auto;
+  .hp-content-box {
+    border-left: none;
+    border-top: 4px solid #ea580c;
+    padding-left: 0;
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+
+  .hp-why-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hp-why-image {
+    order: -1;
   }
 }
 
-@media (max-width: 768px) {
-  .hp-header h2 {
-    font-size: 30px;
+@media (max-width: 640px) {
+  .hp-stats-grid {
+    grid-template-columns: 1fr;
   }
-  .hp-logos-grid {
+  
+  .hp-logos-side-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .hp-benefits-section {
-    padding: 30px 20px;
   }
 }

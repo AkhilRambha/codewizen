@@ -63,7 +63,14 @@ function Companies() {
                   {[...row, ...row].map((company, index) => (
                     <div className="company-item" key={index}>
                       <div className="company-circle">
-                        <img src={company.logo} alt={company.name} />
+                        <img 
+                          src={company.logo} 
+                          alt={company.name} 
+                          onError={(e) => {
+                            e.target.onerror = null; // Prevent infinite loops
+                            e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(company.name)}&background=f1f5f9&color=112255&size=128&bold=true`;
+                          }}
+                        />
                       </div>
                       <span>{company.name}</span>
                     </div>

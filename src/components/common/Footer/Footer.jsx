@@ -349,6 +349,10 @@ function Footer() {
               <Link to="/contact-us">
                 Sitemap
               </Link>
+              
+              <Link to="/admin-login" style={{ color: '#ea580c', fontWeight: 'bold' }}>
+                Admin Login
+              </Link>
 
             </div>
 

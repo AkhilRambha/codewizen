@@ -64,16 +64,17 @@ function Navbar() {
                 <Link to="/about-us" onClick={closeMenu}>About Institute</Link>
                 <Link to="/our-trainers" onClick={closeMenu}>Our Trainers</Link>
                 <Link to="/why-choose-us" onClick={closeMenu}>Why Choose Us</Link>
+                <Link to="/student-reviews" onClick={closeMenu}>Student Reviews</Link>
               </div>
             </div>
 
             <div className="nav-dropdown">
-              <Link to="/courses" className="nav-link" onClick={closeMenu}>
+              <span className="nav-link" style={{ cursor: 'pointer' }} onClick={(e) => toggleDropdown(e, 'courses')}>
                 Courses
-                <span className="dropdown-toggle" onClick={(e) => toggleDropdown(e, 'courses')}>
+                <span className="dropdown-toggle">
                   <svg className={`dropdown-chevron ${activeDropdown === 'courses' ? 'rotate' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </span>
-              </Link>
+              </span>
               <div className={`dropdown-menu ${activeDropdown === 'courses' ? 'mobile-open' : ''}`}>
                 <Link to="/java-full-stack" onClick={closeMenu}>Java Full Stack</Link>
                 <Link to="/python-full-stack" onClick={closeMenu}>Python Full Stack</Link>
@@ -81,7 +82,6 @@ function Navbar() {
                 <Link to="/software-testing" onClick={closeMenu}>Software Testing</Link>
                 <Link to="/data-science" onClick={closeMenu}>Data Science & ML</Link>
                 <Link to="/generative-ai" onClick={closeMenu}>Generative AI</Link>
-                <Link to="/courses" onClick={closeMenu}>View All Courses</Link>
               </div>
             </div>
 
@@ -104,24 +104,15 @@ function Navbar() {
               </div>
             </div>
 
+
+
+            <Link to="/success-stories" className="nav-link" onClick={closeMenu}>
+              Success Stories
+            </Link>
+
             <Link to="/contact-us" className="nav-link" onClick={closeMenu}>
               Contact Us
             </Link>
-
-            {/* Outlined Pill Button Link (Matching "Our Achievers") */}
-            <div className="nav-dropdown">
-              <Link to="/contact-us" className="nav-btn-pill" onClick={closeMenu}>
-                Registration
-                <span className="dropdown-toggle" onClick={(e) => toggleDropdown(e, 'registration')}>
-                  <svg className={`dropdown-chevron ${activeDropdown === 'registration' ? 'rotate' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
-              </Link>
-              <div className={`dropdown-menu ${activeDropdown === 'registration' ? 'mobile-open' : ''}`}>
-                <Link to="/contact-us" onClick={closeMenu}>Enroll Now</Link>
-                <Link to="/contact-us" onClick={closeMenu}>Book Free Demo</Link>
-                <Link to="/contact-us" onClick={closeMenu}>Course Registration</Link>
-              </div>
-            </div>
 
           </div>
 

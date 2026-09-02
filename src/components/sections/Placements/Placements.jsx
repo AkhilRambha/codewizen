@@ -1,52 +1,34 @@
 import React from "react";
 import "./Placements.css";
-
-const recentPlacements = [
-  {
-    name: "Rahul Sharma",
-    course: "Java Full Stack",
-    company: "TCS",
-    role: "System Engineer",
-    image: "/images/rahul.jpg"
-  },
-  {
-    name: "Priya Patel",
-    course: "Data Analytics",
-    company: "Deloitte",
-    role: "Data Analyst",
-    image: "/images/priyaa.png"
-  },
-  {
-    name: "Amit Kumar",
-    course: "Generative AI",
-    company: "Infosys",
-    role: "AI Engineer",
-    image: "/images/amit.png"
-  },
-  {
-    name: "Sneha Reddy",
-    course: "Python Full Stack",
-    company: "Wipro",
-    role: "Software Developer",
-    image: "/images/sneha.png"
-  },
-  {
-    name: "Vikram Singh",
-    course: "Multi DevOps",
-    company: "Amazon",
-    role: "Cloud Engineer",
-    image: "/images/vikram.png"
-  },
-  {
-    name: "Anjali Desai",
-    course: "Software Testing",
-    company: "Cognizant",
-    role: "QA Automation Engineer",
-    image: "/images/anjali.png"
-  }
-];
+import useLocalStorage from "../../../hooks/useLocalStorage";
 
 function Placements() {
+  const [placements] = useLocalStorage('codewizen_placements', [
+    {
+      id: 1,
+      name: "Rahul Verma",
+      course: "Java Full Stack Development",
+      company: "TCS",
+      ctc: "8 LPA",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
+    },
+    {
+      id: 2,
+      name: "Sneha Reddy",
+      course: "Data Science & AI",
+      company: "Deloitte",
+      ctc: "12 LPA",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
+    },
+    {
+      id: 3,
+      name: "Karthik Kumar",
+      course: "Python Full Stack",
+      company: "Infosys",
+      ctc: "7.5 LPA",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+    }
+  ]);
   return (
     <section className="placements-section" id="placements">
       <div className="placements-container">
@@ -59,10 +41,10 @@ function Placements() {
         </div>
 
         <div className="placements-grid">
-          {recentPlacements.map((student, index) => (
+          {placements.map((student, index) => (
             <div
               className="placement-card"
-              key={index}
+              key={student.id}
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
@@ -75,7 +57,7 @@ function Placements() {
               </div>
               <div className="placement-details">
                 <p>Placed at <strong>{student.company}</strong></p>
-                <p className="placement-role">{student.role}</p>
+                <p className="placement-role">{student.ctc}</p>
               </div>
             </div>
           ))}

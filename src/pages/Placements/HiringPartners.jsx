@@ -1,38 +1,15 @@
 import React from 'react';
 import PageHero from '../../components/common/PageHero/PageHero';
-import { FaCheckCircle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import ReadyToStart from '../../components/sections/ReadyToStart/ReadyToStart';
+import { FaBuilding, FaChartLine, FaUsers } from 'react-icons/fa';
 import './HiringPartners.css';
 
 const HiringPartners = () => {
-  const partners = [
-    { name: "AMAZON", domain: "amazon.com" },
-    { name: "MICROSOFT", domain: "microsoft.com" },
-    { name: "GOOGLE", domain: "google.com" },
-    { name: "DELOITTE", domain: "deloitte.com" },
-    { name: "TCS", domain: "tcs.com" },
-    { name: "INFOSYS", domain: "infosys.com" },
-    { name: "WIPRO", domain: "wipro.com" },
-    { name: "ACCENTURE", domain: "accenture.com" },
-    { name: "CAPGEMINI", domain: "capgemini.com" },
-    { name: "IBM", domain: "ibm.com" },
-    { name: "COGNIZANT", domain: "cognizant.com" },
-    { name: "TECH MAHINDRA", domain: "techmahindra.com" },
-    { name: "HCL TECH", domain: "hcltech.com" },
-    { name: "MINDTREE", domain: "ltimindtree.com" },
-    { name: "L&T INFOTECH", domain: "lntinfotech.com" },
-    { name: "ZOHO", domain: "zoho.com" },
-    { name: "CISCO", domain: "cisco.com" },
-    { name: "ORACLE", domain: "oracle.com" },
-    { name: "FLIPKART", domain: "flipkart.com" },
-    { name: "ZOMATO", domain: "zomato.com" }
-  ];
-
   return (
     <>
       <PageHero 
         title="Our Hiring Partners" 
-        description="We have partnered with 300+ top IT companies, MNCs, and fast-growing startups to provide our students with the best career opportunities."
+        description="We are proud to collaborate with 300+ leading multinational companies and fast-growing startups who actively recruit our talented alumni."
         breadcrumbs={[
           { label: "Placements", link: "/placement-assistance" },
           { label: "Hiring Partners" }
@@ -40,57 +17,99 @@ const HiringPartners = () => {
       />
       
       <div className="hp-page-wrapper">
-        <div className="hp-container">
-          
-          <div className="hp-header" data-aos="fade-up">
-            <h2>Trusted by the Best</h2>
-            <p>Our curriculum is designed in alignment with industry needs. That's why top companies prefer hiring Codewizen alumni directly from our campus.</p>
-          </div>
-
-          <div className="hp-logos-grid">
-            {partners.map((partner, index) => (
-              <div 
-                key={index} 
-                className="hp-logo-card"
-                data-aos="fade-up"
-                data-aos-delay={(index % 4) * 50}
-              >
-                <img src={`https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://${partner.domain}&size=128`} alt={partner.name} className="hp-logo-img" />
-                <span className="hp-logo-text">{partner.name}</span>
+        
+        {/* STATS */}
+        <section className="hp-stats-section">
+          <div className="hp-container">
+            <div className="hp-stats-grid">
+              <div className="hp-stat-card" data-aos="fade-up">
+                <FaBuilding className="hp-s-icon" />
+                <h3>300+</h3>
+                <p>Corporate Partners</p>
               </div>
-            ))}
-          </div>
-
-          <div className="hp-benefits-section" data-aos="fade-up">
-            <div className="hp-benefits-content">
-              <h3>Looking to Hire Top Tech Talent?</h3>
-              <p>
-                Join our network of hiring partners and get priority access to pre-screened, highly skilled, and project-ready candidates. We do the heavy lifting of training and evaluation, so you can hire the exact skill sets you need.
-              </p>
-              <ul className="hp-features-list">
-                <li className="hp-feature-item">
-                  <FaCheckCircle className="hp-feature-icon" /> Zero Recruitment Cost
-                </li>
-                <li className="hp-feature-item">
-                  <FaCheckCircle className="hp-feature-icon" /> Pre-screened & Trained Candidates
-                </li>
-                <li className="hp-feature-item">
-                  <FaCheckCircle className="hp-feature-icon" /> Day-1 Productive Developers
-                </li>
-                <li className="hp-feature-item">
-                  <FaCheckCircle className="hp-feature-icon" /> Tailored Skill Matchmaking
-                </li>
-              </ul>
-            </div>
-            
-            <div className="hp-benefits-cta">
-              <h4>Become a Partner</h4>
-              <p>Leave your details and our corporate relations team will get in touch with you shortly.</p>
-              <Link to="/contact-us" className="hp-cta-btn">Connect With Us</Link>
+              <div className="hp-stat-card" data-aos="fade-up" data-aos-delay="100">
+                <FaUsers className="hp-s-icon" />
+                <h3>15k+</h3>
+                <p>Alumni Employed</p>
+              </div>
+              <div className="hp-stat-card" data-aos="fade-up" data-aos-delay="200">
+                <FaChartLine className="hp-s-icon" />
+                <h3>95%</h3>
+                <p>Placement Record</p>
+              </div>
             </div>
           </div>
+        </section>
 
-        </div>
+        {/* SIDE-BY-SIDE LOGOS SECTION */}
+        <section className="hp-logos-section">
+          <div className="hp-container hp-side-by-side">
+            <div className="hp-text-content" data-aos="fade-right">
+              <h2>Top Recruiters & Corporate Network</h2>
+              <p>Our students are successfully placed in the world's leading product and service-based companies.</p>
+              <div className="hp-content-box">
+                <h4>Dedicated Placement Drives</h4>
+                <p>We regularly host exclusive placement drives and pool campus interviews specifically for Codewizen alumni.</p>
+              </div>
+              <div className="hp-content-box">
+                <h4>Direct HR Referrals</h4>
+                <p>Our placement cell maintains strong relationships with over 300 HRs, giving you a direct entry path into top MNCs without the traditional queue.</p>
+              </div>
+              <button className="hp-btn-primary" onClick={() => window.location.href='/contact-us'}>Start Your Placement Journey</button>
+            </div>
+
+            <div className="hp-logos-side-grid" data-aos="fade-left">
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://amazon.com&size=128" alt="Amazon" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://tcs.com&size=128" alt="TCS" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://infosys.com&size=128" alt="Infosys" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://wipro.com&size=128" alt="Wipro" /></div>
+              
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://accenture.com&size=128" alt="Accenture" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://capgemini.com&size=128" alt="Capgemini" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://ibm.com&size=128" alt="IBM" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://cognizant.com&size=128" alt="Cognizant" /></div>
+              
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://techmahindra.com&size=128" alt="Tech Mahindra" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://deloitte.com&size=128" alt="Deloitte" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://oracle.com&size=128" alt="Oracle" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://microsoft.com&size=128" alt="Microsoft" /></div>
+              
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://cisco.com&size=128" alt="Cisco" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://intel.com&size=128" alt="Intel" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hp.com&size=128" alt="HP" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://sap.com&size=128" alt="SAP" /></div>
+              
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://salesforce.com&size=128" alt="Salesforce" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://adobe.com&size=128" alt="Adobe" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://vmware.com&size=128" alt="VMware" /></div>
+              <div className="hp-logo-box"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hcltech.com&size=128" alt="HCL" /></div>
+            </div>
+          </div>
+        </section>
+
+        {/* WHY HIRE FROM US */}
+        <section className="hp-why-section">
+          <div className="hp-container">
+            <div className="hp-why-grid">
+              <div className="hp-why-content" data-aos="fade-right">
+                <h2>Why Companies Hire From Codewizen?</h2>
+                <ul className="hp-why-list">
+                  <li><strong>Industry-Ready Skills:</strong> Our curriculum is designed by industry experts to match current market demands.</li>
+                  <li><strong>Hands-On Experience:</strong> Students build real-world capstone projects and participate in internships.</li>
+                  <li><strong>Rigorous Evaluation:</strong> Only candidates who pass our strict internal technical assessments are forwarded to HRs.</li>
+                  <li><strong>Soft Skills Trained:</strong> We emphasize communication, teamwork, and problem-solving alongside technical skills.</li>
+                </ul>
+              </div>
+              <div className="hp-why-image" data-aos="fade-left">
+                <img src="/images/office2.jpg" alt="Corporate Training" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <ReadyToStart />
+        
       </div>
     </>
   );

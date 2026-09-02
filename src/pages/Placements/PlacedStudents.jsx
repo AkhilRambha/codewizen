@@ -1,90 +1,44 @@
 import React from 'react';
 import PageHero from '../../components/common/PageHero/PageHero';
-import { FaGraduationCap } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import ReadyToStart from '../../components/sections/ReadyToStart/ReadyToStart';
+import Testimonials from '../../components/sections/Testimonials/Testimonials';
+import { FaGraduationCap, FaMapMarkerAlt, FaMoneyBillWave } from 'react-icons/fa';
 import './PlacedStudents.css';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 const PlacedStudents = () => {
-  const students = [
+  const [students] = useLocalStorage('codewizen_placements', [
     {
       id: 1,
-      name: "Rahul Sharma",
-      role: "Software Development Engineer",
-      company: "AMAZON",
-      package: "18 LPA",
+      name: "Rahul Verma",
       course: "Java Full Stack Development",
-      image: "/images/rahul.jpg"
+      company: "TCS",
+      ctc: "8 LPA",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
     },
     {
       id: 2,
-      name: "Priya Patel",
-      role: "Data Analyst",
-      company: "DELOITTE",
-      package: "8.5 LPA",
-      course: "Data Analytics & Power BI",
-      image: "/images/priya.png"
+      name: "Sneha Reddy",
+      course: "Data Science & AI",
+      company: "Deloitte",
+      ctc: "12 LPA",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
     },
     {
       id: 3,
-      name: "Amit Kumar",
-      role: "Backend Developer",
-      company: "TCS",
-      package: "7 LPA",
-      course: "Python Full Stack Development",
-      image: "/images/amit.png"
-    },
-    {
-      id: 4,
-      name: "Neha Singh",
-      role: "QA Automation Engineer",
-      company: "ACCENTURE",
-      package: "9 LPA",
-      course: "Software Testing",
-      image: "/images/sneha.png"
-    },
-    {
-      id: 5,
-      name: "Vikram Reddy",
-      role: "Machine Learning Engineer",
-      company: "COGNIZANT",
-      package: "12 LPA",
-      course: "Data Science & ML",
-      image: "/images/vikram.png"
-    },
-    {
-      id: 6,
-      name: "Anjali Gupta",
-      role: "Frontend Developer",
-      company: "WIPRO",
-      package: "6.5 LPA",
-      course: "React JS Frontend",
-      image: "/images/anjali.png"
-    },
-    {
-      id: 7,
-      name: "Rohan Desai",
-      role: "Full Stack Engineer",
-      company: "CAPGEMINI",
-      package: "10 LPA",
-      course: "Java Full Stack Development",
-      image: "/images/rahul.jpg"
-    },
-    {
-      id: 8,
-      name: "Sneha Rao",
-      role: "AI Engineer",
-      company: "IBM",
-      package: "15 LPA",
-      course: "Generative AI",
-      image: "/images/sneha.png"
+      name: "Karthik Kumar",
+      course: "Python Full Stack",
+      company: "Infosys",
+      ctc: "7.5 LPA",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
     }
-  ];
+  ]);
 
   return (
     <>
       <PageHero 
-        title="Our Achievers" 
-        description="Meet our proud alumni who have successfully transitioned into top IT companies globally."
+        title="Wall of Fame: Our Achievers" 
+        description="We measure our success by the success of our students. Explore the profiles of our recent alumni who have transitioned into top IT companies globally."
         breadcrumbs={[
           { label: "Placements", link: "/placement-assistance" },
           { label: "Placed Students" }
@@ -92,57 +46,90 @@ const PlacedStudents = () => {
       />
       
       <div className="ps-page-wrapper">
-        <div className="ps-container">
-          
-          <div className="ps-header" data-aos="fade-up">
-            <h2>Success Stories</h2>
-            <p>We measure our success by the success of our students. Explore the profiles of our latest batch of placed candidates.</p>
-          </div>
-
-          <div className="ps-grid">
-            {students.map((student, index) => (
-              <div 
-                key={student.id} 
-                className="ps-card" 
-                data-aos="fade-up" 
-                data-aos-delay={(index % 4) * 100}
-              >
-                <div className="ps-avatar">
-                  <img src={student.image} alt={student.name} loading="lazy" />
-                </div>
-                
-                <div className="ps-content">
-                  <div className="ps-name">{student.name}</div>
-                  <div className="ps-role">{student.role}</div>
-                  
-                  <div className="ps-tags">
-                    <div className="ps-company">{student.company}</div>
-                    <div className="ps-package">{student.package}</div>
-                  </div>
-                  
-                  <div className="ps-course">
-                    <FaGraduationCap /> {student.course}
-                  </div>
-                </div>
+        
+        {/* STATS HIGHLIGHT */}
+        <section className="ps-highlight-section">
+          <div className="ps-highlight-container" data-aos="fade-up">
+            <div className="ps-h-box">
+              <h3>2026 Batch Highlight</h3>
+              <p>Our recent batch achieved a record-breaking placement season with multiple students securing double-digit LPA packages across Product and Service-based MNCs.</p>
+            </div>
+            <div className="ps-h-stats">
+              <div className="ps-h-stat">
+                <h4>24 LPA</h4>
+                <span>Highest Package</span>
               </div>
-            ))}
-          </div>
-
-          {/* ── CTA SECTION ── */}
-          <div className="ps-cta-section" data-aos="fade-up">
-            <div className="ps-cta-container">
-              <h2>Ready to Launch Your Career?</h2>
-              <p>
-                Don't wait. Join thousands of successful alumni who started their journey with Codewizen. Get access to premium training, real-time projects, and 100% placement support.
-              </p>
-              <div className="ps-cta-btns">
-                <Link to="/contact-us" className="ps-btn-primary">Enroll Now</Link>
-                <Link to="/contact-us" className="ps-btn-outline">Talk to an Expert</Link>
+              <div className="ps-h-stat">
+                <h4>6.5 LPA</h4>
+                <span>Average Package</span>
               </div>
             </div>
           </div>
+        </section>
 
+        {/* WALL OF FAME GRID */}
+        <section className="ps-grid-section">
+          <div className="ps-container">
+            <div className="ps-section-header" data-aos="fade-up">
+              <h2>Recent Placements</h2>
+              <p>Meet the brilliant minds who transformed their careers with Codewizen.</p>
+            </div>
+
+            <div className="ps-grid">
+              {students.map((student, index) => (
+                <div 
+                  key={student.id} 
+                  className="ps-card" 
+                  data-aos="fade-up" 
+                  data-aos-delay={(index % 4) * 100}
+                >
+                  <div className="ps-avatar-container">
+                    <div className="ps-avatar">
+                      <img 
+                        src={student.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(student.name)}&background=random`} 
+                        alt={student.name} 
+                        loading="lazy" 
+                      />
+                    </div>
+                    <div className="ps-company-badge">{student.company}</div>
+                  </div>
+                  
+                  <div className="ps-content">
+                    <h3 className="ps-name">{student.name}</h3>
+                    <p className="ps-role">{student.company} Placement</p>
+                    
+                    <div className="ps-details-list">
+                      <div className="ps-detail-item">
+                        <FaMoneyBillWave className="ps-d-icon orange" />
+                        <span>{student.ctc}</span>
+                      </div>
+                      <div className="ps-detail-item">
+                        <FaMapMarkerAlt className="ps-d-icon blue" />
+                        <span>India</span>
+                      </div>
+                    </div>
+                    
+                    <div className="ps-course">
+                      <FaGraduationCap /> {student.course}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ALUMNI SPEAKS */}
+        <div style={{ padding: '60px 0', backgroundColor: '#f8fafc' }}>
+          <div className="ps-section-header" style={{ marginBottom: '20px' }}>
+            <h2>Alumni Speaks</h2>
+          </div>
+          <Testimonials />
         </div>
+
+        {/* CTA */}
+        <ReadyToStart />
+        
       </div>
     </>
   );

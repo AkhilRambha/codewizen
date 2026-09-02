@@ -1,185 +1,182 @@
 /* ================================================
-   PLACEMENT ASSISTANCE PAGE
+   PLACEMENT ASSISTANCE
 ================================================ */
 
 .pa-page-wrapper {
-  background-color: #f8fafc;
-  min-height: 100vh;
-  padding: 80px 20px 100px;
+  background-color: #ffffff;
 }
 
 .pa-container {
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* ── STATS SECTION ── */
+.pa-stats-section {
+  background-color: #112255;
+  padding: 60px 0;
+  margin-top: -30px;
+  position: relative;
+  z-index: 2;
+}
+
+.pa-stats-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .pa-stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: -120px;
-  position: relative;
-  z-index: 10;
-  margin-bottom: 80px;
+  gap: 30px;
+  text-align: center;
 }
 
 .pa-stat-card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 30px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  border-bottom: 4px solid #e87500;
-  transition: transform 0.3s;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px 20px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .pa-stat-card:hover {
   transform: translateY(-5px);
+  border-color: #ea580c;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .pa-stat-num {
-  font-size: 42px;
+  font-size: 48px;
   font-weight: 800;
-  color: #112255;
-  margin-bottom: 8px;
+  color: #ea580c;
+  margin-bottom: 10px;
 }
 
 .pa-stat-text {
   font-size: 16px;
-  color: #475569;
-  font-weight: 600;
+  font-weight: 500;
+  color: #f8fafc;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* ── PROCESS SECTION ── */
+/* ── SECTION HEADER ── */
 .pa-section-header {
   text-align: center;
-  margin-bottom: 60px;
+  max-width: 800px;
+  margin: 0 auto 50px;
 }
 
 .pa-section-header h2 {
   font-size: 36px;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 16px;
+  font-weight: 800;
+  color: #112255;
+  margin-bottom: 15px;
 }
 
 .pa-section-header p {
   font-size: 18px;
   color: #64748b;
-  max-width: 700px;
-  margin: 0 auto;
+  line-height: 1.6;
 }
 
-.pa-process-grid {
+/* ── JOURNEY GRID ── */
+.pa-journey-section {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.pa-journey-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  margin-bottom: 80px;
 }
 
-.pa-process-card {
-  background: #ffffff;
+.pa-journey-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
   padding: 40px 30px;
-  border-radius: 20px;
   text-align: center;
+  transition: all 0.3s ease;
   position: relative;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-  border: 1px solid rgba(0,0,0,0.05);
+  overflow: hidden;
 }
 
-.pa-step-num {
+.pa-journey-card::before {
+  content: '';
   position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 50px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
   background: #112255;
-  color: #ffffff;
-  border-radius: 50%;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+.pa-journey-card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+  transform: translateY(-5px);
+}
+
+.pa-journey-card:hover::before {
+  transform: scaleX(1);
+}
+
+.pa-j-icon {
+  width: 80px;
+  height: 80px;
+  background: #fff7ed;
+  color: #ea580c;
+  font-size: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  font-weight: 800;
-  border: 4px solid #f8fafc;
+  border-radius: 50%;
+  margin: 0 auto 25px;
+  box-shadow: 0 10px 20px rgba(234, 88, 12, 0.1);
 }
 
-.pa-process-card h3 {
+.pa-journey-card h3 {
   font-size: 22px;
   font-weight: 700;
-  color: #0f172a;
-  margin-top: 20px;
-  margin-bottom: 12px;
+  color: #112255;
+  margin-bottom: 15px;
 }
 
-.pa-process-card p {
+.pa-journey-card p {
   font-size: 15px;
   color: #475569;
   line-height: 1.6;
 }
 
-/* ── PARTNERS SECTION ── */
-.pa-partners-section {
-  background: #ffffff;
-  border-radius: 24px;
-  padding: 60px 40px;
-  text-align: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-}
-
-.pa-partners-section h3 {
-  font-size: 28px;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 40px;
-}
-
-.pa-logos-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.pa-logo-box {
-  width: 160px;
-  height: 80px;
-  background: #f1f5f9;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: #64748b;
-  font-size: 18px;
-  letter-spacing: 1px;
-}
-
-.pa-logo-img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-
 /* ── RESPONSIVE ── */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .pa-stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .pa-process-grid {
+  
+  .pa-journey-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .pa-stats-grid {
     grid-template-columns: 1fr;
-    margin-top: -60px;
   }
-  .pa-process-grid {
+  
+  .pa-journey-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+  }
+
+  .pa-stats-section {
+    padding: 40px 0;
+    margin-top: 0;
   }
 }
