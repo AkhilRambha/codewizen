@@ -12,8 +12,8 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
 import { motion } from "framer-motion";
+import useFirebaseData from '../../../hooks/useFirebaseData';
 
 
 const quickLinks = [
@@ -23,6 +23,7 @@ const quickLinks = [
   { name: "Upcoming Batches", path: "/upcoming-batches" },
   { name: "Placements", path: "/placement-assistance" },
   { name: "Registration", path: "/course-registration" },
+  { name: "Workshops", path: "/workshop/spring-security" },
   { name: "Contact Us", path: "/contact-us" },
 ];
 
@@ -38,6 +39,13 @@ const popularCourses = [
 
 
 function Footer() {
+  const [contactInfo] = useFirebaseData('codewizen_contact_info', {
+    email: 'info@codewizen.com',
+    phone: '+91 7993819211',
+    whatsapp: '+91 7993819211',
+    address: '123 Tech Park, Madhapur, Hyderabad - 500081'
+  });
+
   return (
     <>
       {/* =========================================
@@ -261,7 +269,7 @@ function Footer() {
                 <FaPhoneAlt />
 
                 <span>
-                  +91 7993819211
+                  {contactInfo.phone}
                 </span>
 
               </div>
@@ -272,7 +280,7 @@ function Footer() {
                 <FaEnvelope />
 
                 <span>
-                  info@codewizen.com
+                  {contactInfo.email}
                 </span>
 
               </div>
@@ -283,13 +291,7 @@ function Footer() {
                 <FaMapMarkerAlt />
 
                 <span>
-                  3rd floor, Besides JC Brothers,
-                  <br />
-                  beside KPHB metro station,
-                  <br />
-                  Kukatpally Housing Board Colony,
-                  <br />
-                  Bhagya Nagar Colony, Hyderabad
+                  {contactInfo.address}
                 </span>
 
               </div>
@@ -361,8 +363,7 @@ function Footer() {
 
         </div>
         <a
-
-          href="https://wa.me/918464025086"
+          href={`https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}`}
           target="_blank" rel="noopener noreferrer"
           className="whatsapp-float"
           aria-label="Chat with us on WhatsApp">

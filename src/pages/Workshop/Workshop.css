@@ -1,0 +1,729 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+.ws-container {
+  font-family: 'Inter', sans-serif;
+  background-color: #0c1220; /* Very dark blue matching screenshots */
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding-bottom: 80px; /* Space for sticky bar */
+}
+
+/* Base button styles */
+.ws-btn-primary {
+  background: rgba(255,255,255,0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 16px 32px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+.ws-btn-primary:hover {
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 30px rgba(255,255,255,0.2);
+}
+
+.ws-btn-red {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+  transition: transform 0.2s;
+}
+.ws-btn-red:hover {
+  transform: translateY(-2px);
+  background: #ef4444;
+}
+
+.ws-btn-outline {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.ws-btn-outline-large {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 16px 40px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+
+/* 1. Hero Section */
+.ws-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 10%;
+  gap: 40px;
+}
+.ws-hero-content {
+  flex: 1;
+  max-width: 600px;
+}
+.ws-seo-title {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  margin-bottom: 16px;
+}
+.ws-main-title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+.ws-highlight {
+  color: #ef4444; /* Red color for "(Hands on Learning)" */
+}
+.ws-desc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin-bottom: 40px;
+}
+.ws-hero-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.ws-hero-image {
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* 2. Schedule Section */
+.ws-schedule-section {
+  padding: 40px 10%;
+  text-align: center;
+  background: linear-gradient(180deg, #0c1220 0%, #111827 100%);
+}
+.ws-section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 40px;
+}
+.ws-schedule-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.ws-schedule-box {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 20px 40px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 200px;
+}
+.ws-schedule-box span {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 1px;
+}
+.ws-schedule-box strong {
+  font-size: 1.2rem;
+  color: white;
+}
+
+/* 3. Certificate Section */
+.ws-certificate-section {
+  padding: 40px 10%;
+}
+.ws-cert-inner {
+  background: #113636; /* Dark greenish teal matching screenshot */
+  border-radius: 24px;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.ws-cert-content {
+  flex: 1;
+  z-index: 2;
+}
+.ws-cert-pre {
+  color: #34d399;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+.ws-cert-content h2 {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 32px;
+}
+.ws-cert-content ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 32px;
+}
+.ws-cert-content li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+  color: #d1fae5;
+}
+.ws-check-green {
+  color: #10b981;
+  margin-top: 4px;
+}
+.ws-cert-image {
+  flex: 1;
+  z-index: 2;
+}
+.ws-cert-image img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 4px solid #fbbf24; /* Golden border */
+}
+
+/* 4. Learning Flow */
+.ws-learning-flow {
+  padding: 80px 10%;
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  background: #0f172a;
+}
+.ws-flow-left {
+  flex: 1;
+}
+.ws-flow-left h2 {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 16px;
+}
+.ws-flow-desc {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+.ws-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  border-left: 1px solid rgba(255,255,255,0.1);
+  padding-left: 30px;
+  position: relative;
+}
+.ws-timeline-item {
+  position: relative;
+}
+.ws-timeline-icon {
+  position: absolute;
+  left: -48px;
+  top: 0;
+  background: #0f172a;
+  color: #38bdf8;
+  font-size: 1.5rem;
+  padding: 4px;
+}
+.ws-timeline-content h3 {
+  color: white;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+.ws-timeline-content p {
+  color: #cbd5e1;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.ws-learn-more {
+  color: #38bdf8;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.ws-flow-right {
+  flex: 0.8;
+}
+.ws-get-card {
+  background: #f8fafc;
+  border-radius: 24px;
+  padding: 40px;
+  color: #0f172a;
+  box-shadow: 0 0 40px rgba(56, 189, 248, 0.2);
+  border: 2px solid rgba(56, 189, 248, 0.5);
+  text-align: center;
+}
+.ws-get-logo {
+  max-width: 80%;
+  margin-bottom: 24px;
+}
+.ws-get-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+}
+.ws-get-card ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin-bottom: 32px;
+}
+.ws-get-card li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #334155;
+}
+
+/* 5. Who This Is For */
+.ws-who-section {
+  padding: 80px 10%;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  background: linear-gradient(135deg, #0c1220 0%, #1e293b 100%);
+}
+.ws-who-content {
+  flex: 1;
+}
+.ws-who-content h2 {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 16px;
+}
+.ws-who-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ws-who-item {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 16px 24px;
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 1.1rem;
+}
+.ws-who-image {
+  flex: 1;
+}
+.ws-who-image img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* 6. Why Attend */
+.ws-why-section {
+  padding: 80px 10%;
+  background: #0f172a;
+}
+.ws-why-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 60px;
+}
+.ws-why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+.ws-why-card {
+  background: #1e293b;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.ws-why-icon {
+  font-size: 2rem;
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+.ws-why-card h3 {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+.ws-why-card p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* 7. Sticky Bottom Bar */
+.ws-sticky-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #0f172a;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 16px 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  z-index: 100;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+}
+.ws-countdown {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.ws-ending-text {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+.ws-timer {
+  display: flex;
+  gap: 8px;
+}
+.ws-time-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+  padding: 4px 8px;
+  min-width: 40px;
+}
+.ws-time-num {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+}
+.ws-time-lbl {
+  font-size: 0.6rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+.ws-btn-sticky {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+}
+
+/* Modal */
+.ws-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+.ws-modal {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+}
+.ws-modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: none; border: none;
+  font-size: 1.5rem; color: #64748b; cursor: pointer;
+}
+.ws-form-group {
+  margin-bottom: 16px;
+}
+.ws-form-group label {
+  display: block; margin-bottom: 8px;
+  color: #334155; font-weight: 600; font-size: 0.9rem;
+}
+.ws-form-group input {
+  width: 100%; padding: 12px;
+  border: 1px solid #cbd5e1; border-radius: 6px;
+}
+
+/* 8. Learner Feedback Section (Reviews) */
+.ws-feedback-section {
+  padding: 80px 10%;
+  background: #000000;
+}
+.ws-feedback-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 40px;
+}
+.ws-feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.ws-review-card {
+  background: #0f172a;
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.3s ease;
+}
+.ws-review-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
+}
+.ws-review-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ws-review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ef4444;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.ws-review-meta h4 {
+  color: white;
+  font-size: 1.1rem;
+  margin: 0;
+}
+.ws-review-platform {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+.ws-review-text {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-style: italic;
+  flex: 1;
+}
+.ws-review-rating {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+/* Animations and Hover Effects */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ws-hero-content {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.ws-hero-image-container {
+  background: #1e293b;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+  max-width: 450px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  animation: fadeInUp 1s ease forwards;
+  display: flex;
+  flex-direction: column;
+}
+.ws-hero-image {
+  width: 100%;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.ws-hero-host-info {
+  padding: 24px;
+  text-align: center;
+}
+.ws-hero-host-info p {
+  color: #94a3b8;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+.ws-hero-host-info strong {
+  color: white;
+  font-size: 1.1rem;
+}
+.ws-host-desc {
+  font-size: 0.85rem !important;
+  line-height: 1.5;
+  margin-bottom: 24px !important;
+}
+
+/* Hover effects for animated feel */
+.ws-schedule-box {
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.ws-schedule-box:hover {
+  transform: translateY(-5px);
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.ws-timeline-item {
+  transition: transform 0.3s ease;
+}
+.ws-timeline-item:hover {
+  transform: translateX(10px);
+}
+
+.ws-why-card {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.ws-why-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+/* 9. Limited Spots Section */
+.ws-limited-spots {
+  padding: 80px 10%;
+  background: #0f172a;
+  display: flex;
+  justify-content: center;
+}
+.ws-limited-inner {
+  background: #0f3030; /* Greenish background matching screenshot */
+  padding: 60px;
+  border-radius: 24px;
+  text-align: center;
+  width: 100%;
+  max-width: 1000px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+.ws-limited-inner h2 {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 30px;
+}
+.ws-limited-countdown {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.ws-hidden-btn {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.ws-limited-desc {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+.ws-limited-desc strong {
+  color: white;
+}
+
+/* 10. FAQ Section */
+.ws-faq-section {
+  padding: 80px 10%;
+  background: #0c1220;
+}
+.ws-faq-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 40px;
+}
+.ws-faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ws-faq-item {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+.ws-faq-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+.ws-faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.ws-faq-question h3 {
+  font-size: 1.1rem;
+  color: white;
+  font-weight: 600;
+  margin: 0;
+}
+.ws-faq-icon {
+  font-size: 1.5rem;
+  color: #38bdf8;
+  font-weight: bold;
+}
+.ws-faq-answer {
+  padding: 0 20px 20px 20px;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+@keyframes blinkPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+  50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+.ws-btn-blink {
+  animation: blinkPulse 1.5s infinite;
+}
+
+@media (max-width: 1024px) {
+  .ws-hero { flex-direction: column; text-align: center; }
+  .ws-cert-inner { flex-direction: column; text-align: center; }
+  .ws-learning-flow { flex-direction: column; }
+  .ws-timeline { border-left: none; padding-left: 0; }
+  .ws-timeline-icon { position: static; display: inline-block; margin-bottom: 8px; }
+  .ws-who-section { flex-direction: column-reverse; }
+  .ws-sticky-bar { flex-direction: column; gap: 16px; padding: 16px; }
+  .ws-limited-countdown { flex-direction: column; gap: 20px; }
+}

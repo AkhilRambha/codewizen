@@ -4,10 +4,10 @@ import ReadyToStart from '../../components/sections/ReadyToStart/ReadyToStart';
 import Testimonials from '../../components/sections/Testimonials/Testimonials';
 import { FaGraduationCap, FaMapMarkerAlt, FaMoneyBillWave } from 'react-icons/fa';
 import './PlacedStudents.css';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useFirebaseData from '../../hooks/useFirebaseData';
 
 const PlacedStudents = () => {
-  const [students] = useLocalStorage('codewizen_placements', [
+  const [students] = useFirebaseData('codewizen_placements', [
     {
       id: 1,
       name: "Rahul Verma",

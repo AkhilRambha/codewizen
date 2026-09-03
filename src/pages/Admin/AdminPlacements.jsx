@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useFirebaseData from '../../hooks/useFirebaseData';
+import { downloadCSV } from '../../utils/exportCsv';
+import { FaTrash, FaCheck, FaTimes, FaPlus, FaUpload, FaDownload } from 'react-icons/fa';
 import './Admin.css';
 
 const AdminPlacements = () => {
-  const [placements, setPlacements] = useLocalStorage('codewizen_placements', [
+  const [placements, setPlacements] = useFirebaseData('codewizen_placements', [
     {
       id: 1,
       name: "Rahul Verma",
@@ -34,6 +36,10 @@ const AdminPlacements = () => {
   const [formData, setFormData] = useState({ name: '', course: '', company: '', ctc: '', image: '' });
   const [editingId, setEditingId] = useState(null);
 
+  const handleExport = () => {
+    downloadCSV(placements, `codewizen_placements_${new Date().toISOString().split('T')[0]}.csv`);
+  };
+
   const openModal = (placement = null) => {
     if (placement) {
       setFormData(placement);
@@ -63,9 +69,20 @@ const AdminPlacements = () => {
 
   return (
     <div className="admin-page">
-      <div className="admin-page-header">
-        <h2>Placements & Hiring Partners</h2>
-        <button className="admin-btn-primary" onClick={() => openModal()}>+ Add New Placement</button>
+      <div className="admin-page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h2>Alumni & Placements</h2>
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <button 
+            onClick={handleExport} 
+            className="admin-btn active" 
+            style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+          >
+            <FaDownload /> Export CSV
+          </button>
+          <button className="admin-btn-primary" onClick={() => openModal()}>
+            <FaPlus /> Add New Alumni
+          </button>
+        </div>
       </div>
 
       <div className="admin-table-container">
@@ -117,7 +134,16 @@ const AdminPlacements = () => {
                 </div>
                 <div>
                   <label>Course Taken</label>
-                  <input required type="text" value={formData.course} onChange={e => setFormData({...formData, course: e.target.value})} />
+                  <select required value={formData.course} onChange={e => setFormData({...formData, course: e.target.value})} style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }}>
+                    <option value="" disabled>Select a course...</option>
+                    {(() => {
+                      const savedCourses = JSON.parse(window.localStorage.getItem('codewizen_courses')) || [];
+                      return savedCourses.map(c => (
+                        <option key={c.id} value={c.name}>{c.name}</option>
+                      ));
+                    })()}
+                    <option value="Custom Course">Custom Course (Other)</option>
+                  </select>
                 </div>
               </div>
               
@@ -132,8 +158,16 @@ const AdminPlacements = () => {
                 </div>
               </div>
 
-              <label>Student Photo URL</label>
-              <input required type="text" placeholder="https://..." value={formData.image} onChange={e => setFormData({...formData, image: e.target.value})} />
+              <label>Student Photo</label>
+              <input type="file" accept="image/*" onChange={(e) => {
+                const file = e.target.files[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onloadend = () => setFormData({ ...formData, image: reader.result });
+                  reader.readAsDataURL(file);
+                }
+              }} />
+              {formData.image && formData.image.startsWith('data:image') && <p style={{ fontSize: '12px', color: '#16a34a' }}>✓ Photo uploaded</p>}
               
               <div className="admin-modal-actions">
                 <button type="button" className="admin-btn-secondary" onClick={() => setIsModalOpen(false)}>Cancel</button>

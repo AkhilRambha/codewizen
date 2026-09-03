@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaBars, FaTimes } from "react-icons/fa";
+import useFirebaseData from '../../../hooks/useFirebaseData';
 import "./Navbar.css";
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  
+  const [contactInfo] = useFirebaseData('codewizen_contact_info', {
+    email: 'info@codewizen.com',
+    phone: '+91 7993819211',
+    whatsapp: '+91 7993819211',
+    address: '123 Tech Park, Madhapur, Hyderabad - 500081'
+  });
 
   const closeMenu = () => {
     setIsMobileMenuOpen(false);
@@ -24,8 +32,8 @@ function Navbar() {
       <div className="top-bar">
         <div className="top-bar-container">
           <div className="tb-contact">
-            <a href="tel:+917993819211"><FaPhoneAlt /> +91 7993819211</a>
-            <a href="mailto:info@codewizen.com"><FaEnvelope /> info@codewizen.com</a>
+            <a href={`tel:${contactInfo.phone.replace(/[^0-9+]/g, '')}`}><FaPhoneAlt /> {contactInfo.phone}</a>
+            <a href={`mailto:${contactInfo.email}`}><FaEnvelope /> {contactInfo.email}</a>
           </div>
           <div className="tb-socials">
             <a href="/" aria-label="Facebook"><FaFacebookF /></a>
@@ -87,6 +95,10 @@ function Navbar() {
 
             <Link to="/prices" className="nav-link" onClick={closeMenu}>
               Prices
+            </Link>
+
+            <Link to="/offers" className="nav-link" onClick={closeMenu} style={{ color: '#ea580c', fontWeight: 'bold' }}>
+              Offers & Bundles
             </Link>
 
             <div className="nav-dropdown">

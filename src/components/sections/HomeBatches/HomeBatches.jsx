@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useLocalStorage from '../../../hooks/useLocalStorage';
+import useFirebaseData from '../../../hooks/useFirebaseData';
 import { FaCalendarAlt, FaRegClock, FaHourglassHalf } from 'react-icons/fa';
 import './HomeBatches.css';
 
 const HomeBatches = () => {
-  const [batches] = useLocalStorage('codewizen_batches', []);
+  const [batches] = useFirebaseData('codewizen_batches', []);
 
   // Show only up to 4 upcoming batches on home page
   const displayBatches = batches.filter(b => b.status === 'Upcoming').slice(0, 4);

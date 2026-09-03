@@ -1,9 +1,9 @@
 import React from "react";
 import "./Testimonials.css";
-import useLocalStorage from "../../../hooks/useLocalStorage";
+import useFirebaseData from '../../../hooks/useFirebaseData';
 
 function Testimonials() {
-  const [reviews] = useLocalStorage('codewizen_reviews', [
+  const [reviews] = useFirebaseData('codewizen_reviews', [
     { id: 1, name: "Arjun Reddy", course: "Java Full Stack", text: "The training here is exceptional.", rating: 5, image: "/images/rahul.jpg" },
     { id: 2, name: "Sneha Patil", course: "Data Science", text: "Got placed in a top MNC thanks to Codewizen.", rating: 5, image: "/images/sneha.png" }
   ]);

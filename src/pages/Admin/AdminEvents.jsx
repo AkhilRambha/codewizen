@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useFirebaseData from '../../hooks/useFirebaseData';
 import './Admin.css';
 
 const AdminEvents = () => {
-  const [eventData, setEventData] = useLocalStorage('codewizen_latest_event', {
+  const [eventData, setEventData] = useFirebaseData('codewizen_latest_event', {
     isActive: false,
     title: 'Upcoming Mega Bootcamp!',
     description: 'Join our exclusive 2-day live coding bootcamp and master MERN Stack from scratch.',

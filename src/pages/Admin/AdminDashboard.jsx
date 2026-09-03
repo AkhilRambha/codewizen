@@ -1,11 +1,11 @@
 import React from 'react';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useFirebaseData from '../../hooks/useFirebaseData';
 import './Admin.css';
 
 const AdminDashboard = () => {
-  const [leads] = useLocalStorage('codewizen_leads', []);
-  const [courses] = useLocalStorage('codewizen_courses', []);
-  const [reviews] = useLocalStorage('codewizen_reviews', []);
+  const [leads] = useFirebaseData('codewizen_leads', []);
+  const [courses] = useFirebaseData('codewizen_courses', []);
+  const [reviews] = useFirebaseData('codewizen_reviews', []);
 
   return (
     <div className="admin-page">
@@ -13,17 +13,17 @@ const AdminDashboard = () => {
       <div className="admin-stats-grid">
         <div className="admin-stat-card">
           <h3>Total Leads</h3>
-          <div className="stat-value">{leads.length}</div>
+          <div className="stat-value">{(leads || []).length}</div>
           <p className="stat-desc">Live from website chatbots</p>
         </div>
         <div className="admin-stat-card">
           <h3>Active Courses</h3>
-          <div className="stat-value">{courses.length > 0 ? courses.length : 3}</div>
+          <div className="stat-value">{(courses || []).length > 0 ? courses.length : 3}</div>
           <p className="stat-desc">Displayed on Trending Courses</p>
         </div>
         <div className="admin-stat-card">
           <h3>Student Reviews</h3>
-          <div className="stat-value">{reviews.length > 0 ? reviews.length : 2}</div>
+          <div className="stat-value">{(reviews || []).length > 0 ? reviews.length : 2}</div>
           <p className="stat-desc">Visible on Testimonials</p>
         </div>
       </div>

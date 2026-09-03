@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useFirebaseData from '../../hooks/useFirebaseData';
 import './Admin.css';
 
 const AdminReviews = () => {
-  const [reviews, setReviews] = useLocalStorage('codewizen_reviews', [
+  const [reviews, setReviews] = useFirebaseData('codewizen_reviews', [
     { id: 1, name: "Arjun Reddy", course: "Java Full Stack", text: "The training here is exceptional.", rating: 5 },
     { id: 2, name: "Sneha Patil", course: "Data Science", text: "Got placed in a top MNC thanks to Codewizen.", rating: 5 }
   ]);
   
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({ name: '', course: '', text: '', rating: 5 });
+  const [formData, setFormData] = useState({ name: '', course: '', text: '', rating: 5, avatar: '' });
   const [editingId, setEditingId] = useState(null);
 
   const openModal = (review = null) => {
@@ -17,10 +17,25 @@ const AdminReviews = () => {
       setFormData(review);
       setEditingId(review.id);
     } else {
-      setFormData({ name: '', course: '', text: '', rating: 5 });
+      setFormData({ name: '', course: '', text: '', rating: 5, avatar: '' });
       setEditingId(null);
     }
     setIsModalOpen(true);
+  };
+
+  const handleExport = () => {
+    downloadCSV(reviews, `codewizen_reviews_${new Date().toISOString().split('T')[0]}.csv`);
+  };
+
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({ ...formData, avatar: reader.result });
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleSave = (e) => {
@@ -41,9 +56,20 @@ const AdminReviews = () => {
 
   return (
     <div className="admin-page">
-      <div className="admin-page-header">
+      <div className="admin-page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h2>Student Reviews</h2>
-        <button className="admin-btn-primary" onClick={() => openModal()}>+ Add New Review</button>
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <button 
+            onClick={handleExport} 
+            className="admin-btn active" 
+            style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+          >
+            <FaDownload /> Export CSV
+          </button>
+          <button className="admin-btn-primary" onClick={openModal}>
+            <FaPlus /> Add Fake Review
+          </button>
+        </div>
       </div>
       
       <div className="admin-table-container">
@@ -53,7 +79,7 @@ const AdminReviews = () => {
           <table className="admin-table">
             <thead>
               <tr>
-                <th>Student Name</th>
+                <th>Student</th>
                 <th>Course</th>
                 <th>Review Text</th>
                 <th>Rating</th>
@@ -63,7 +89,12 @@ const AdminReviews = () => {
             <tbody>
               {reviews.map(review => (
                 <tr key={review.id}>
-                  <td><strong>{review.name}</strong></td>
+                  <td>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      {review.avatar && <img src={review.avatar} alt="avatar" style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover' }} />}
+                      <strong>{review.name}</strong>
+                    </div>
+                  </td>
                   <td><span className="course-badge">{review.course}</span></td>
                   <td>{review.text.substring(0, 40)}...</td>
                   <td>{review.rating} ⭐</td>
@@ -83,11 +114,24 @@ const AdminReviews = () => {
           <div className="admin-modal">
             <h3>{editingId ? 'Edit Review' : 'Add New Review'}</h3>
             <form onSubmit={handleSave} className="admin-modal-form">
+              <label>Student Photo</label>
+              <input type="file" accept="image/*" onChange={handleFileUpload} />
+              {formData.avatar && <p style={{ fontSize: '12px', color: '#16a34a' }}>✓ Photo uploaded</p>}
+
               <label>Student Name</label>
               <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
               
               <label>Course Taken</label>
-              <input required type="text" value={formData.course} onChange={e => setFormData({...formData, course: e.target.value})} />
+              <select required value={formData.course} onChange={e => setFormData({...formData, course: e.target.value})}>
+                <option value="" disabled>Select a course...</option>
+                {(() => {
+                  const savedCourses = JSON.parse(window.localStorage.getItem('codewizen_courses')) || [];
+                  return savedCourses.map(c => (
+                    <option key={c.id} value={c.name}>{c.name}</option>
+                  ));
+                })()}
+                <option value="Custom Course">Custom Course (Other)</option>
+              </select>
               
               <label>Review Text</label>
               <textarea required rows="4" value={formData.text} onChange={e => setFormData({...formData, text: e.target.value})}></textarea>

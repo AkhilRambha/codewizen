@@ -1,10 +1,10 @@
 import React from 'react';
 import PageHero from '../../components/common/PageHero/PageHero';
 import { Link } from 'react-router-dom';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useFirebaseData from '../../hooks/useFirebaseData';
 
 const BatchSchedule = () => {
-  const [batches] = useLocalStorage('codewizen_batches', [
+  const [batches] = useFirebaseData('codewizen_batches', [
     { id: 1, course: "Java Full Stack", date: "Oct 10, 2026", time: "10:00 AM - 12:00 PM", status: "Upcoming" },
     { id: 2, course: "Data Science & ML", date: "Oct 15, 2026", time: "06:00 PM - 08:00 PM", status: "Upcoming" }
   ]);

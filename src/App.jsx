@@ -44,6 +44,10 @@ import SuccessStories from "./pages/SuccessStories/SuccessStories";
 
 import ContactUs from "./pages/Contact/ContactUs";
 import Prices from "./pages/Prices/Prices";
+import Offers from "./pages/Store/Offers";
+
+import Workshop from "./pages/Workshop/Workshop";
+import PaymentSuccess from "./pages/Workshop/PaymentSuccess";
 
 // Admin Pages
 import AdminDashboard from "./pages/Admin/AdminDashboard";
@@ -52,8 +56,11 @@ import AdminBatches from "./pages/Admin/AdminBatches";
 import AdminReviews from "./pages/Admin/AdminReviews";
 import AdminPlacements from "./pages/Admin/AdminPlacements";
 import AdminCourses from "./pages/Admin/AdminCourses";
+import AdminSettings from "./pages/Admin/AdminSettings";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminEvents from "./pages/Admin/AdminEvents";
+import AdminWorkshops from "./pages/Admin/AdminWorkshops";
+import AdminOffers from "./pages/Admin/AdminOffers";
 
 import "./styles/App.css";
 
@@ -86,6 +93,9 @@ function App() {
           <Route path="reviews" element={<AdminReviews />} />
           <Route path="placements" element={<AdminPlacements />} />
           <Route path="courses" element={<AdminCourses />} />
+          <Route path="settings" element={<AdminSettings />} />
+          <Route path="workshops" element={<AdminWorkshops />} />
+          <Route path="offers" element={<AdminOffers />} />
         </Route>
 
         {/* =========================================
@@ -130,7 +140,14 @@ function App() {
 
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/prices" element={<Prices />} />
+          <Route path="/offers" element={<Offers />} />
         </Route>
+
+        {/* =========================================
+            WORKSHOP ROUTES (No Navbar/Footer)
+        ========================================= */}
+        <Route path="/workshop/:workshopId" element={<Workshop />} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
       </Routes>
       
     </BrowserRouter>

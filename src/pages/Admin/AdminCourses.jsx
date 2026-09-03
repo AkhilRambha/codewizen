@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useFirebaseData from '../../hooks/useFirebaseData';
 import './Admin.css';
 
 const AdminCourses = () => {
-  const [courses, setCourses] = useLocalStorage('codewizen_courses', [
+  const [courses, setCourses] = useFirebaseData('codewizen_courses', [
     {
       id: 1,
       name: "Generative AI",
@@ -31,7 +31,7 @@ const AdminCourses = () => {
   ]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({ name: '', category: '', description: '', image: '', link: '' });
+  const [formData, setFormData] = useState({ name: '', category: '', description: '', image: '', link: '', curriculumPdf: '' });
   const [editingId, setEditingId] = useState(null);
 
   const openModal = (course = null) => {
@@ -39,7 +39,7 @@ const AdminCourses = () => {
       setFormData(course);
       setEditingId(course.id);
     } else {
-      setFormData({ name: '', category: '', description: '', image: '', link: '' });
+      setFormData({ name: '', category: '', description: '', image: '', link: '', curriculumPdf: '' });
       setEditingId(null);
     }
     setIsModalOpen(true);
@@ -122,10 +122,27 @@ const AdminCourses = () => {
               <label>Description</label>
               <textarea required rows="3" value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})}></textarea>
               
-              <label>Image URL</label>
+              <label>Course Image URL</label>
               <input required type="text" placeholder="https://..." value={formData.image} onChange={e => setFormData({...formData, image: e.target.value})} />
+
+              <label>Curriculum PDF (Upload)</label>
+              <input 
+                type="file" 
+                accept="application/pdf" 
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                      setFormData({ ...formData, curriculumPdf: reader.result });
+                    };
+                    reader.readAsDataURL(file);
+                  }
+                }} 
+              />
+              {formData.curriculumPdf && <small style={{ color: 'green', display: 'block', marginTop: '5px' }}>PDF attached successfully.</small>}
               
-              <label>Course Page Link</label>
+              <label style={{ marginTop: '15px' }}>Course Page Link</label>
               <select required value={formData.link} onChange={e => setFormData({...formData, link: e.target.value})}>
                 <option value="" disabled>Select a course path...</option>
                 <option value="/java-full-stack">/java-full-stack</option>
@@ -136,7 +153,7 @@ const AdminCourses = () => {
                 <option value="/courses">/courses (General Course Page)</option>
               </select>
               
-              <div className="admin-modal-actions">
+              <div className="admin-modal-actions" style={{ marginTop: '20px' }}>
                 <button type="button" className="admin-btn-secondary" onClick={() => setIsModalOpen(false)}>Cancel</button>
                 <button type="submit" className="admin-btn-primary">Save Course</button>
               </div>

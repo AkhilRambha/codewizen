@@ -1,11 +1,11 @@
 import React from 'react';
 import PageHero from '../../components/common/PageHero/PageHero';
 import { FaStar, FaQuoteLeft, FaGoogle, FaLinkedin } from 'react-icons/fa';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useFirebaseData from '../../hooks/useFirebaseData';
 import './Reviews.css';
 
 const Reviews = () => {
-  const [reviews] = useLocalStorage('codewizen_reviews', [
+  const [reviews] = useFirebaseData('codewizen_reviews', [
     {
       id: 1,
       name: "Siddharth Verma",

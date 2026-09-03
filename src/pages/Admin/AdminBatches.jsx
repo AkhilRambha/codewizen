@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useFirebaseData from '../../hooks/useFirebaseData';
+import { downloadCSV } from '../../utils/exportCsv';
+import { FaTrash, FaCheck, FaTimes, FaPlus, FaDownload } from 'react-icons/fa';
 import './Admin.css';
 
 const AdminBatches = () => {
-  const [batches, setBatches] = useLocalStorage('codewizen_batches', [
+  const [batches, setBatches] = useFirebaseData('codewizen_batches', [
     { id: 1, course: "Java Full Stack", date: "Oct 10, 2026", time: "10:00 AM - 12:00 PM", duration: "4 months", status: "Upcoming" },
     { id: 2, course: "Data Science & ML", date: "Oct 15, 2026", time: "06:00 PM - 08:00 PM", duration: "6 months", status: "Upcoming" }
   ]);
@@ -11,6 +13,11 @@ const AdminBatches = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ course: '', date: '', duration: '', status: 'Upcoming' });
   const [startTime, setStartTime] = useState('');
+  const [filter, setFilter] = useState('All');
+
+  const handleExport = () => {
+    downloadCSV(batches, `codewizen_batches_${new Date().toISOString().split('T')[0]}.csv`);
+  };
   const [endTime, setEndTime] = useState('');
   const [editingId, setEditingId] = useState(null);
 
@@ -101,9 +108,20 @@ const AdminBatches = () => {
 
   return (
     <div className="admin-page">
-      <div className="admin-page-header">
-        <h2>Upcoming Batches</h2>
-        <button className="admin-btn-primary" onClick={() => openModal()}>+ Add New Batch</button>
+      <div className="admin-page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h2>Manage Batches</h2>
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <button 
+            onClick={handleExport} 
+            className="admin-btn active" 
+            style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+          >
+            <FaDownload /> Export CSV
+          </button>
+          <button className="admin-btn-primary" onClick={() => openModal()}>
+            <FaPlus /> Add New Batch
+          </button>
+        </div>
       </div>
       
       <div className="admin-table-container">
@@ -154,12 +172,12 @@ const AdminBatches = () => {
               <label>Course Name</label>
               <select required value={formData.course} onChange={e => setFormData({...formData, course: e.target.value})}>
                 <option value="" disabled>Select a course...</option>
-                <option value="Java Full Stack">Java Full Stack</option>
-                <option value="Python Full Stack">Python Full Stack</option>
-                <option value="Data Science & ML">Data Science & ML</option>
-                <option value="Data Analytics">Data Analytics</option>
-                <option value="Generative AI">Generative AI</option>
-                <option value="Software Testing">Software Testing</option>
+                {(() => {
+                  const savedCourses = JSON.parse(window.localStorage.getItem('codewizen_courses')) || [];
+                  return savedCourses.map(c => (
+                    <option key={c.id} value={c.name}>{c.name}</option>
+                  ));
+                })()}
                 <option value="Custom Course">Custom Course (Other)</option>
               </select>
               

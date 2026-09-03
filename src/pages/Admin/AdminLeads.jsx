@@ -1,9 +1,16 @@
-import React from 'react';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import React, { useState } from 'react';
+import { FaTrash, FaCheck, FaTimes, FaPhone, FaEnvelope, FaDownload } from 'react-icons/fa';
+import useFirebaseData from '../../hooks/useFirebaseData';
+import { downloadCSV } from '../../utils/exportCsv';
 import './Admin.css';
 
 const AdminLeads = () => {
-  const [leads, setLeads] = useLocalStorage('codewizen_leads', []);
+  const [leads, setLeads] = useFirebaseData('codewizen_leads', []);
+  const [filter, setFilter] = useState('All');
+
+  const handleExport = () => {
+    downloadCSV(leads, `codewizen_leads_${new Date().toISOString().split('T')[0]}.csv`);
+  };
 
   const toggleStatus = (id) => {
     const updatedLeads = leads.map(lead => {
@@ -53,9 +60,19 @@ const AdminLeads = () => {
 
   return (
     <div className="admin-page">
-      <div className="admin-page-header">
+      <div className="admin-page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h2>Lead Management</h2>
-        <button className="admin-btn-primary" onClick={exportToCSV}>Export to CSV</button>
+        <button 
+          onClick={handleExport} 
+          className="admin-btn active" 
+          style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+        >
+          <FaDownload /> Export CSV
+        </button>
+      </div>
+
+      <div className="admin-filters">
+        <button className={`admin-btn ${filter === 'All' ? 'active' : 'outline'}`} onClick={() => setFilter('All')}>All Leads ({leads.length})</button>
       </div>
       
       <div className="admin-table-container">

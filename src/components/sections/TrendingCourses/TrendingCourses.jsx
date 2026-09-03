@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import "./TrendingCourses.css";
 import { Link } from "react-router-dom";
-import useLocalStorage from "../../../hooks/useLocalStorage";
+import useFirebaseData from '../../../hooks/useFirebaseData';
 
 function TrendingCourses() {
-  const [courses] = useLocalStorage('codewizen_courses', [
+  const [courses] = useFirebaseData('codewizen_courses', [
     {
       id: 1,
       name: "Generative AI",

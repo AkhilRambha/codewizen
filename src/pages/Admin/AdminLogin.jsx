@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUserShield, FaLock, FaUser } from 'react-icons/fa';
+import useFirebaseData from '../../hooks/useFirebaseData';
 import './Admin.css';
 
 const AdminLogin = () => {
+  const [adminPassword, , isReady] = useFirebaseData('codewizen_admin_password', 'admin@codewizen');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -11,7 +13,7 @@ const AdminLogin = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (username === 'admin' && password === 'admin@codewizen') {
+    if (username === 'admin' && password === adminPassword) {
       // Successful login
       navigate('/admin');
     } else {
@@ -55,8 +57,8 @@ const AdminLogin = () => {
             />
           </div>
 
-          <button type="submit" className="admin-login-btn">
-            Login to Dashboard
+          <button type="submit" className="admin-login-btn" disabled={!isReady}>
+            {!isReady ? 'Connecting to Database...' : 'Login to Dashboard'}
           </button>
         </form>
 

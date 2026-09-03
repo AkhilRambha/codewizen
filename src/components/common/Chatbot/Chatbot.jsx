@@ -1,18 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaTimes, FaComments, FaPaperPlane, FaRobot } from 'react-icons/fa';
-import useLocalStorage from '../../../hooks/useLocalStorage';
+import useFirebaseData from '../../../hooks/useFirebaseData';
 import './Chatbot.css';
 
-const coursesList = [
-  "Java Full Stack",
-  "Python Full Stack",
-  "Data Science & ML",
-  "Data Analytics",
-  "Software Testing",
-  "Generative AI"
-];
+// dynamic courses will be fetched inside the component
 
 const Chatbot = () => {
+  const [courses] = useFirebaseData('codewizen_courses', []);
+  const coursesList = courses.length > 0 ? courses.map(c => c.name) : ["Java Full Stack", "Python Full Stack"];
+
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState('name'); // 'name', 'course', 'phone', 'done'
   
@@ -27,7 +23,7 @@ const Chatbot = () => {
     phone: ''
   });
 
-  const [leads, setLeads] = useLocalStorage('codewizen_leads', []);
+  const [leads, setLeads] = useFirebaseData('codewizen_leads', []);
 
   const messagesEndRef = useRef(null);
 

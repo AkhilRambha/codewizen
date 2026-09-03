@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
-import { FaTachometerAlt, FaUsers, FaCalendarAlt, FaStar, FaBriefcase, FaBook, FaSignOutAlt, FaBell, FaBullhorn } from 'react-icons/fa';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import { FaTachometerAlt, FaUsers, FaCalendarAlt, FaStar, FaBriefcase, FaBook, FaSignOutAlt, FaBell, FaBullhorn, FaLock, FaTags } from 'react-icons/fa';
+import useFirebaseData from '../../hooks/useFirebaseData';
 import './AdminLayout.css';
 
 const AdminLayout = () => {
-  const [leads] = useLocalStorage('codewizen_leads', []);
+  const [leads] = useFirebaseData('codewizen_leads', []);
   const [toast, setToast] = useState(null);
   const [prevLeadsCount, setPrevLeadsCount] = useState(leads.length);
 
@@ -68,18 +68,33 @@ const AdminLayout = () => {
               </NavLink>
             </li>
             <li>
+              <NavLink to="/admin/workshops" className={({ isActive }) => isActive ? "admin-nav-link active" : "admin-nav-link"}>
+                <FaCalendarAlt /> Workshop Registrations
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/admin/reviews" className={({ isActive }) => isActive ? "admin-nav-link active" : "admin-nav-link"}>
                 <FaStar /> Student Reviews
               </NavLink>
             </li>
             <li>
+              <NavLink to="/admin/offers" className={({ isActive }) => isActive ? "admin-nav-link active" : "admin-nav-link"}>
+                <FaTags /> Store & Offers
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/admin/placements" className={({ isActive }) => isActive ? "admin-nav-link active" : "admin-nav-link"}>
-                <FaBriefcase /> Placement Stats
+                <FaBriefcase /> Alumni & Placements
               </NavLink>
             </li>
             <li>
               <NavLink to="/admin/courses" className={({ isActive }) => isActive ? "admin-nav-link active" : "admin-nav-link"}>
                 <FaBook /> Course Catalog
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/admin/settings" className={({ isActive }) => isActive ? "admin-nav-link active" : "admin-nav-link"}>
+                <FaLock /> Security Settings
               </NavLink>
             </li>
           </ul>

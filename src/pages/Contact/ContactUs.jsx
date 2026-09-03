@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import PageHero from '../../components/common/PageHero/PageHero';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaUser, FaChalkboardTeacher, FaPaperPlane } from 'react-icons/fa';
+import useFirebaseData from '../../hooks/useFirebaseData';
 import './ContactUs.css';
 
 const ContactUs = () => {
+  const [courses] = useFirebaseData('codewizen_courses', []);
+  const [contactInfo] = useFirebaseData('codewizen_contact_info', {
+    email: 'info@codewizen.com',
+    phone: '+91 7993819211',
+    whatsapp: '+91 7993819211',
+    address: '123 Tech Park, Madhapur, Hyderabad - 500081'
+  });
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -20,7 +29,7 @@ const ContactUs = () => {
 
   const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
-    const waNumber = "917993819211";
+    const waNumber = contactInfo.whatsapp.replace(/[^0-9]/g, '');
     
     const message = `Hello Codewizen, I have an enquiry:
 Name: ${formData.name}
@@ -54,21 +63,21 @@ Interested Course: ${formData.course}`;
                 <div className="cc-icon-wrapper"><FaPhoneAlt className="cc-icon" /></div>
                 <h3>Call Us</h3>
                 <p>Speak to our career counselors directly for instant guidance.</p>
-                <a href="tel:+917993819211" className="cc-link">+91 7993819211</a>
+                <a href={`tel:${contactInfo.phone.replace(/[^0-9+]/g, '')}`} className="cc-link">{contactInfo.phone}</a>
               </div>
 
               <div className="cc-card" data-aos="fade-up" data-aos-delay="100">
                 <div className="cc-icon-wrapper"><FaEnvelope className="cc-icon" /></div>
                 <h3>Email Us</h3>
                 <p>Send us your queries and we'll get back to you within 24 hours.</p>
-                <a href="mailto:info@codewizen.com" className="cc-link">info@codewizen.com</a>
+                <a href={`mailto:${contactInfo.email}`} className="cc-link">{contactInfo.email}</a>
               </div>
 
               <div className="cc-card" data-aos="fade-up" data-aos-delay="200">
                 <div className="cc-icon-wrapper"><FaMapMarkerAlt className="cc-icon" /></div>
                 <h3>Visit Us</h3>
                 <p>Drop by our institute for a face-to-face counseling session.</p>
-                <span className="cc-text">KPHB Colony, Hyderabad</span>
+                <span className="cc-text">{contactInfo.address}</span>
               </div>
 
             </div>
@@ -118,19 +127,21 @@ Interested Course: ${formData.course}`;
                       <div className="cf-field-icon"><FaChalkboardTeacher /></div>
                       <select name="mode" required value={formData.mode} onChange={handleChange}>
                         <option value="" disabled>Select Training Mode</option>
-                        <option value="Classroom Training">Classroom Training (Hyderabad)</option>
+                        <option value="Classroom Training">Classroom Training</option>
                         <option value="Online Training">Online Training (Live)</option>
                       </select>
                     </div>
                     <div className="cf-field">
                       <select name="course" required value={formData.course} onChange={handleChange} className="cf-select-no-icon">
                         <option value="" disabled>Select Course</option>
-                        <option value="Java Full Stack">Java Full Stack</option>
-                        <option value="Python Full Stack">Python Full Stack</option>
-                        <option value="Data Analytics">Data Analytics & Power BI</option>
-                        <option value="Software Testing">Software Testing</option>
-                        <option value="Data Science & ML">Data Science & ML</option>
-                        <option value="Generative AI">Generative AI</option>
+                        {courses.length > 0 ? courses.map(c => (
+                          <option key={c.id} value={c.name}>{c.name}</option>
+                        )) : (
+                          <>
+                            <option value="Java Full Stack">Java Full Stack</option>
+                            <option value="Python Full Stack">Python Full Stack</option>
+                          </>
+                        )}
                       </select>
                     </div>
                   </div>

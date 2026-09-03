@@ -1,9 +1,9 @@
 import React from "react";
 import "./Placements.css";
-import useLocalStorage from "../../../hooks/useLocalStorage";
+import useFirebaseData from '../../../hooks/useFirebaseData';
 
 function Placements() {
-  const [placements] = useLocalStorage('codewizen_placements', [
+  const [placements] = useFirebaseData('codewizen_placements', [
     {
       id: 1,
       name: "Rahul Verma",

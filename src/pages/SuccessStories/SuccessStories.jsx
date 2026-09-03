@@ -1,7 +1,7 @@
 import React from 'react';
 import PageHero from '../../components/common/PageHero/PageHero';
 import { FaGraduationCap, FaMapMarkerAlt, FaMoneyBillWave, FaStar, FaQuoteLeft, FaGoogle, FaLinkedin } from 'react-icons/fa';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useFirebaseData from '../../hooks/useFirebaseData';
 
 // Reusing existing styles for the components
 import '../Placements/PlacedStudents.css';
@@ -9,8 +9,8 @@ import '../Reviews/Reviews.css';
 
 const SuccessStories = () => {
   // Sync with Admin Panel
-  const [students] = useLocalStorage('codewizen_placements', []);
-  const [reviews] = useLocalStorage('codewizen_reviews', []);
+  const [students] = useFirebaseData('codewizen_placements', []);
+  const [reviews] = useFirebaseData('codewizen_reviews', []);
 
   return (
     <>
