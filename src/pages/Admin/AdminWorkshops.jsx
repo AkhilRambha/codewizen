@@ -9,8 +9,10 @@ import './Admin.css';
 const AdminWorkshops = () => {
   const [activeTab, setActiveTab] = useState('registrations'); // registrations, manage
   
-  const [registrations, setRegistrations, isReady] = useFirebaseData('codewizen_workshop_registrations', []);
-  const [workshops, setWorkshops, isWorkshopsReady] = useFirebaseData('codewizen_workshops_data', []);
+  const [registrationsData, setRegistrations, isReady] = useFirebaseData('codewizen_workshop_registrations', []);
+  const registrations = registrationsData || [];
+  const [workshopsData, setWorkshops, isWorkshopsReady] = useFirebaseData('codewizen_workshops_data', []);
+  const workshops = workshopsData || [];
 
   const [editingWorkshop, setEditingWorkshop] = useState(null);
   const [uploadingFiles, setUploadingFiles] = useState({});

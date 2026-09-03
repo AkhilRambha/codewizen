@@ -39,8 +39,10 @@ const defaultOffersData = [
 ];
 
 const AdminOffers = () => {
-  const [offers, setOffers] = useFirebaseData('codewizen_store_offers', defaultOffersData);
-  const [orders, setOrders] = useFirebaseData('codewizen_store_orders', []);
+  const [offersData, setOffers] = useFirebaseData('codewizen_store_offers', defaultOffersData);
+  const offers = offersData || defaultOffersData;
+  const [ordersData, setOrders] = useFirebaseData('codewizen_store_orders', []);
+  const orders = ordersData || [];
   
   const [activeTab, setActiveTab] = useState('manage'); // 'manage', 'orders'
   const [isModalOpen, setIsModalOpen] = useState(false);

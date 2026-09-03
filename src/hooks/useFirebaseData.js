@@ -33,9 +33,12 @@ function useFirebaseData(key, initialValue) {
           set(dataRef, JSON.stringify(initialValue)).catch(error => {
             console.error("Firebase write error (initialization):", error);
           });
+        } else {
+          // If empty array/object was provided and not initialized, ensure state matches initialValue
+          setDataState(initialValue);
         }
       } else {
-        setDataState(null);
+        setDataState(initialValue);
       }
       
       isInitialized.current = true;

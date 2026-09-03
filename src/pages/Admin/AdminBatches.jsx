@@ -5,10 +5,8 @@ import { FaTrash, FaCheck, FaTimes, FaPlus, FaDownload } from 'react-icons/fa';
 import './Admin.css';
 
 const AdminBatches = () => {
-  const [batches, setBatches] = useFirebaseData('codewizen_batches', [
-    { id: 1, course: "Java Full Stack", date: "Oct 10, 2026", time: "10:00 AM - 12:00 PM", duration: "4 months", status: "Upcoming" },
-    { id: 2, course: "Data Science & ML", date: "Oct 15, 2026", time: "06:00 PM - 08:00 PM", duration: "6 months", status: "Upcoming" }
-  ]);
+  const [batchesData, setBatches] = useFirebaseData('codewizen_batches', []);
+  const batches = batchesData || [];
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ course: '', date: '', duration: '', status: 'Upcoming' });

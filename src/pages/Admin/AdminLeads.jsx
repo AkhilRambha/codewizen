@@ -5,7 +5,8 @@ import { downloadCSV } from '../../utils/exportCsv';
 import './Admin.css';
 
 const AdminLeads = () => {
-  const [leads, setLeads] = useFirebaseData('codewizen_leads', []);
+  const [leadsData, setLeads] = useFirebaseData('codewizen_leads', []);
+  const leads = leadsData || [];
   const [filter, setFilter] = useState('All');
 
   const handleExport = () => {

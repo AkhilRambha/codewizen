@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import useFirebaseData from '../../hooks/useFirebaseData';
+import { downloadCSV } from '../../utils/exportCsv';
+import { FaDownload, FaPlus } from 'react-icons/fa';
 import './Admin.css';
 
 const AdminReviews = () => {
-  const [reviews, setReviews] = useFirebaseData('codewizen_reviews', [
+  const [reviewsData, setReviews] = useFirebaseData('codewizen_reviews', [
     { id: 1, name: "Arjun Reddy", course: "Java Full Stack", text: "The training here is exceptional.", rating: 5 },
     { id: 2, name: "Sneha Patil", course: "Data Science", text: "Got placed in a top MNC thanks to Codewizen.", rating: 5 }
   ]);
+  const reviews = reviewsData || [];
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', course: '', text: '', rating: 5, avatar: '' });

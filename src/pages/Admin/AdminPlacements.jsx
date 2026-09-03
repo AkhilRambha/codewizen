@@ -5,7 +5,7 @@ import { FaTrash, FaCheck, FaTimes, FaPlus, FaUpload, FaDownload } from 'react-i
 import './Admin.css';
 
 const AdminPlacements = () => {
-  const [placements, setPlacements] = useFirebaseData('codewizen_placements', [
+  const [placementsData, setPlacements] = useFirebaseData('codewizen_placements', [
     {
       id: 1,
       name: "Rahul Verma",
@@ -31,6 +31,7 @@ const AdminPlacements = () => {
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
     }
   ]);
+  const placements = placementsData || [];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', course: '', company: '', ctc: '', image: '' });
