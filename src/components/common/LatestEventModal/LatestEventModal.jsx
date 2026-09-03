@@ -1,28 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
+import useFirebaseData from '../../../hooks/useFirebaseData';
 
 const LatestEventModal = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [eventData, setEventData] = useState(null);
+  const [hasDismissed, setHasDismissed] = useState(false);
+  const [eventData] = useFirebaseData('codewizen_latest_event', null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Read from localStorage to see if there is an active event
-    const storedEvent = localStorage.getItem('codewizen_latest_event');
-    if (storedEvent) {
-      try {
-        const parsed = JSON.parse(storedEvent);
-        if (parsed.isActive) {
-          setEventData(parsed);
-          // Always show on full page reload/refresh if it's active
-          setIsVisible(true);
-        }
-      } catch (err) {
-        console.error("Failed to parse event data");
-      }
+    // Only show if we have data, it's marked active in Firebase, and user hasn't dismissed it this session
+    if (eventData && eventData.isActive && !hasDismissed) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
     }
-  }, []);
+  }, [eventData, hasDismissed]);
 
   if (!isVisible || !eventData) return null;
 
@@ -52,7 +46,10 @@ const LatestEventModal = () => {
         }}
       >
         <button 
-          onClick={() => setIsVisible(false)}
+          onClick={() => {
+            setIsVisible(false);
+            setHasDismissed(true);
+          }}
           style={{
             position: 'absolute',
             top: '15px',
@@ -106,6 +103,7 @@ const LatestEventModal = () => {
           <button 
             onClick={() => {
               setIsVisible(false);
+              setHasDismissed(true);
               if (eventData.link.startsWith('http://') || eventData.link.startsWith('https://')) {
                 window.open(eventData.link, '_blank');
               } else {
