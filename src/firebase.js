@@ -6,14 +6,14 @@ import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyCN7pStHDH2c7SDb5UAb0jQ4jt_-yhxdNQ",
+  authDomain: "codewizen-1ea82.firebaseapp.com",
+  databaseURL: "https://codewizen-1ea82-default-rtdb.firebaseio.com",
+  projectId: "codewizen-1ea82",
+  storageBucket: "codewizen-1ea82.firebasestorage.app",
+  messagingSenderId: "13460088896",
+  appId: "1:13460088896:web:39532314add4c0ff0ed7a5",
+  measurementId: "G-NYWVH0XDKB"
 };
 
 // Initialize Firebase
