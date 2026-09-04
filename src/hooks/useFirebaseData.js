@@ -30,7 +30,8 @@ function useFirebaseData(key, initialValue) {
         if (initialValue && typeof initialValue === 'object' && !Array.isArray(initialValue) && Object.keys(initialValue).length === 0) isEmpty = true;
 
         if (!isEmpty) {
-          set(dataRef, JSON.stringify(initialValue)).catch(error => {
+          const safeInitValue = JSON.parse(JSON.stringify(initialValue));
+          set(dataRef, safeInitValue).catch(error => {
             console.error("Firebase write error (initialization):", error);
           });
         } else {
@@ -61,7 +62,9 @@ function useFirebaseData(key, initialValue) {
     setDataState(valueToStore);
 
     const dataRef = ref(database, key);
-    set(dataRef, JSON.stringify(valueToStore)).catch(error => {
+    // Deep strip undefined values but keep as a native object for Firebase tree structure
+    const safeValue = JSON.parse(JSON.stringify(valueToStore));
+    set(dataRef, safeValue).catch(error => {
       console.error(`Firebase write error for key "${key}":`, error);
     });
   };

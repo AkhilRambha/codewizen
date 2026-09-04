@@ -3,15 +3,31 @@ import { useNavigate } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 import useFirebaseData from '../../../hooks/useFirebaseData';
 
+const getCachedEvent = () => {
+  try {
+    const cached = localStorage.getItem('codewizen_event_cache');
+    return cached ? JSON.parse(cached) : null;
+  } catch(e) {
+    return null;
+  }
+};
+
 const LatestEventModal = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hasDismissed, setHasDismissed] = useState(false);
-  const [eventData] = useFirebaseData('codewizen_latest_event', null);
+  const [eventData] = useFirebaseData('codewizen_latest_event', getCachedEvent());
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (eventData) {
+      localStorage.setItem('codewizen_event_cache', JSON.stringify(eventData));
+    }
+  }, [eventData]);
+
+  useEffect(() => {
     // Only show if we have data, it's marked active in Firebase, and user hasn't dismissed it this session
-    if (eventData && eventData.isActive && !hasDismissed) {
+    const isActive = eventData && (eventData.isActive === true || eventData.isActive === 'true');
+    if (isActive && !hasDismissed) {
       setIsVisible(true);
     } else {
       setIsVisible(false);

@@ -1,25 +1,81 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useFirebaseData from '../../hooks/useFirebaseData';
 import { FaCheckCircle, FaShoppingCart } from 'react-icons/fa';
 import { QRCodeSVG } from 'qrcode.react';
 import './Offers.css';
 
 const Offers = () => {
-  const [offers, , isReady] = useFirebaseData('codewizen_store_offers', []);
-  const [orders, setOrders] = useFirebaseData('codewizen_store_orders', []);
+  const [offersData, , isReady] = useFirebaseData('codewizen_store_offers', []);
+  const offers = Array.isArray(offersData) ? offersData : (offersData ? Object.values(offersData) : []);
+
+  const [ordersData, setOrders] = useFirebaseData('codewizen_store_orders', []);
+  const orders = Array.isArray(ordersData) ? ordersData : (ordersData ? Object.values(ordersData) : []);
+  
   const [contactInfo] = useFirebaseData('codewizen_contact_info', {});
   
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [paymentStep, setPaymentStep] = useState(false);
+  const [verifyingPayment, setVerifyingPayment] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
+  const [currentOrderId, setCurrentOrderId] = useState(null);
+
+  // Track unlocked courses in localStorage (offerId -> orderId)
+  const getUnlockedCourses = () => {
+    try { 
+      const data = JSON.parse(localStorage.getItem('codewizen_unlocked_courses')); 
+      if (Array.isArray(data)) return {};
+      return data || {};
+    } catch { return {}; }
+  };
+  const [unlockedCourses, setUnlockedCourses] = useState(getUnlockedCourses());
+
+  // Track pending courses in localStorage (offerId -> orderId)
+  const getPendingCourses = () => {
+    try { return JSON.parse(localStorage.getItem('codewizen_pending_courses')) || {}; }
+    catch { return {}; }
+  };
+  const [pendingCourses, setPendingCourses] = useState(getPendingCourses());
+
+  const setPendingCourse = (offerId, orderId) => {
+    const updated = { ...pendingCourses, [offerId]: orderId };
+    setPendingCourses(updated);
+    localStorage.setItem('codewizen_pending_courses', JSON.stringify(updated));
+  };
+
+  const clearPendingCourse = (offerId) => {
+    const updated = { ...pendingCourses };
+    delete updated[offerId];
+    setPendingCourses(updated);
+    localStorage.setItem('codewizen_pending_courses', JSON.stringify(updated));
+  };
+
+  const unlockCourse = (offerId, orderId) => {
+    const updated = { ...unlockedCourses, [offerId]: orderId };
+    setUnlockedCourses(updated);
+    localStorage.setItem('codewizen_unlocked_courses', JSON.stringify(updated));
+  };
 
   // Only show active offers
   const activeOffers = offers.filter(o => o.active);
 
   const handleBuyClick = (offer) => {
+    // If it's already pending, restore the waiting modal
+    const pendingOrderId = pendingCourses[offer.id];
+    if (pendingOrderId && orders.some(o => o && o.id === pendingOrderId && o.status === 'Pending Payment')) {
+      setSelectedOffer(offer);
+      setCurrentOrderId(pendingOrderId);
+      setPaymentStep(true);
+      return;
+    }
+
+    // Otherwise, start fresh checkout
     setSelectedOffer(offer);
     setPaymentStep(false);
+    setPaymentSuccess(false);
+    setVerifyingPayment(false);
     setFormData({ name: '', email: '', phone: '' });
+    setCurrentOrderId(null);
   };
 
   const handleRegister = (e) => {
@@ -30,14 +86,37 @@ const Offers = () => {
       ...formData,
       id: Date.now(),
       offerId: selectedOffer.id,
+      offerTitle: selectedOffer.title,
       amount: selectedOffer.discountPrice,
       status: 'Pending Payment',
       date: new Date().toISOString()
     };
     
     setOrders([...orders, newOrder]);
+    setCurrentOrderId(newOrder.id);
+    setPendingCourse(selectedOffer.id, newOrder.id);
     setPaymentStep(true);
   };
+
+  // Real-time listener: Watch if the admin marks this specific order as "Paid" in the database
+  useEffect(() => {
+    if (paymentStep && currentOrderId) {
+      const currentOrder = orders.find(o => o && o.id === currentOrderId);
+      if (currentOrder && currentOrder.status === 'Paid') {
+        // The admin marked it as paid!
+        unlockCourse(selectedOffer.id, currentOrder.id);
+        clearPendingCourse(selectedOffer.id);
+        setPaymentStep(false);
+        setPaymentSuccess(true);
+        
+        setTimeout(() => {
+          setSelectedOffer(null);
+          setPaymentSuccess(false);
+          setCurrentOrderId(null);
+        }, 3000);
+      }
+    }
+  }, [orders, paymentStep, currentOrderId, selectedOffer]);
 
   const calculateDiscount = (original, discount) => {
     return Math.round(((original - discount) / original) * 100);
@@ -63,10 +142,17 @@ const Offers = () => {
             <p style={{ color: '#64748b' }}>Please check back later for exciting new bundles!</p>
           </div>
         ) : (
-          activeOffers.map((offer, i) => (
-            <div className="offer-card" key={offer.id} data-aos="fade-up" data-aos-delay={i * 100}>
+          activeOffers.map((offer, i) => {
+            // Verify if the local unlock has a valid Paid order in the database
+            const orderId = unlockedCourses[offer.id];
+            const isUnlocked = orderId && orders.some(o => o && o.id === orderId && o.status === 'Paid');
+            const pendingOrderId = pendingCourses[offer.id];
+
+            return (
+            <div className={`offer-card ${isUnlocked ? 'unlocked' : ''}`} key={offer.id} data-aos="fade-up" data-aos-delay={i * 100}>
               <div className="offer-image-wrapper">
-                <div className="offer-badge">SAVE {calculateDiscount(offer.originalPrice, offer.discountPrice)}%</div>
+                {!isUnlocked && <div className="offer-badge">SAVE {calculateDiscount(offer.originalPrice, offer.discountPrice)}%</div>}
+                {isUnlocked && <div className="offer-badge" style={{background: '#10b981'}}>UNLOCKED</div>}
                 <img src={offer.imageUrl || 'https://via.placeholder.com/500x300'} alt={offer.title} />
               </div>
               <div className="offer-content">
@@ -75,21 +161,35 @@ const Offers = () => {
                 
                 <ul className="offer-features">
                   {offer.features && offer.features.map((feat, idx) => (
-                    <li key={idx}><FaCheckCircle /> {feat}</li>
+                    <li key={idx}><FaCheckCircle color={isUnlocked ? '#10b981' : '#e11d48'} /> {feat}</li>
                   ))}
                 </ul>
 
-                <div className="offer-pricing">
-                  <span className="o-discount-price">₹{offer.discountPrice.toLocaleString('en-IN')}</span>
-                  <span className="o-original-price">₹{offer.originalPrice.toLocaleString('en-IN')}</span>
-                </div>
-
-                <button className="offer-btn" onClick={() => handleBuyClick(offer)}>
-                  <FaShoppingCart /> Buy Now
-                </button>
+                {!isUnlocked ? (
+                  <>
+                    <div className="offer-pricing">
+                      <span className="o-discount-price">₹{offer.discountPrice.toLocaleString('en-IN')}</span>
+                      <span className="o-original-price">₹{offer.originalPrice.toLocaleString('en-IN')}</span>
+                    </div>
+                    
+                    {pendingOrderId && orders.some(o => o && o.id === pendingOrderId && o.status === 'Pending Payment') ? (
+                      <button className="offer-btn" style={{background: '#f59e0b'}} onClick={() => handleBuyClick(offer)}>
+                        Pending Approval...
+                      </button>
+                    ) : (
+                      <button className="offer-btn" onClick={() => handleBuyClick(offer)}>
+                        <FaShoppingCart /> Buy Now
+                      </button>
+                    )}
+                  </>
+                ) : (
+                  <button className="offer-btn" style={{background: '#10b981', marginTop: 'auto'}} onClick={() => alert("Accessing course dashboard...")}>
+                    <FaCheckCircle /> Access Course
+                  </button>
+                )}
               </div>
             </div>
-          ))
+          )})
         )}
       </section>
 
@@ -143,6 +243,13 @@ const Offers = () => {
                   </button>
                 </form>
               </>
+            ) : paymentSuccess ? (
+              <div style={{ textAlign: 'center', padding: '40px 20px' }}>
+                <FaCheckCircle style={{ fontSize: '64px', color: '#10b981', marginBottom: '20px' }} />
+                <h2 style={{ color: '#0f172a', marginBottom: '10px' }}>Payment Successful!</h2>
+                <p style={{ color: '#64748b', marginBottom: '20px' }}>Your bundle has been unlocked successfully.</p>
+                <p style={{ fontSize: '0.9rem', color: '#94a3b8' }}>Redirecting you to the course dashboard...</p>
+              </div>
             ) : (
               <div style={{ textAlign: 'center', padding: '20px 0' }}>
                 <h2 style={{ color: '#0f172a', marginBottom: '10px' }}>Complete Your Payment</h2>
@@ -165,8 +272,16 @@ const Offers = () => {
                 >
                   Open PhonePe / UPI App
                 </a>
-                
-                <p style={{ fontSize: '0.8rem', color: '#94a3b8' }}>After payment, you will receive a confirmation message shortly.</p>
+
+                <div style={{ padding: '15px', background: '#fffbeb', border: '1px solid #fcd34d', borderRadius: '8px', marginTop: '20px' }}>
+                  <p style={{ fontSize: '0.9rem', color: '#b45309', margin: 0, fontWeight: 'bold' }}>
+                    <span className="spinner" style={{ display: 'inline-block', marginRight: '8px', animation: 'spin 2s linear infinite' }}>⏳</span>
+                    Waiting for payment confirmation...
+                  </p>
+                  <p style={{ fontSize: '0.8rem', color: '#d97706', margin: '5px 0 0 0' }}>
+                    Please do not close this window. Your course will unlock automatically once payment is received.
+                  </p>
+                </div>
               </div>
             )}
           </div>

@@ -3,6 +3,7 @@ import useFirebaseData from '../../hooks/useFirebaseData';
 import { downloadCSV } from '../../utils/exportCsv';
 import { FaPlus, FaTrash, FaEdit, FaImage, FaTag, FaDownload } from 'react-icons/fa';
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+import emailjs from '@emailjs/browser';
 import './Admin.css';
 
 const defaultOffersData = [
@@ -40,9 +41,10 @@ const defaultOffersData = [
 
 const AdminOffers = () => {
   const [offersData, setOffers] = useFirebaseData('codewizen_store_offers', defaultOffersData);
-  const offers = offersData || defaultOffersData;
+  const offers = Array.isArray(offersData) ? offersData : (offersData ? Object.values(offersData) : defaultOffersData);
+  
   const [ordersData, setOrders] = useFirebaseData('codewizen_store_orders', []);
-  const orders = ordersData || [];
+  const orders = Array.isArray(ordersData) ? ordersData : (ordersData ? Object.values(ordersData) : []);
   
   const [activeTab, setActiveTab] = useState('manage'); // 'manage', 'orders'
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -73,11 +75,31 @@ const AdminOffers = () => {
 
     setIsUploading(true);
     try {
-      const storage = getStorage();
-      const fileRef = storageRef(storage, `offer-images/${Date.now()}_${file.name}`);
-      await uploadBytes(fileRef, file);
-      const url = await getDownloadURL(fileRef);
-      setEditingOffer({ ...editingOffer, imageUrl: url });
+      const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+      const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+      
+      if (!cloudName || !uploadPreset || cloudName === 'your_cloud_name') {
+        alert("Please set up Cloudinary in your .env file first!");
+        setIsUploading(false);
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', uploadPreset);
+
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+        method: 'POST',
+        body: formData
+      });
+      
+      const data = await response.json();
+      
+      if (data.secure_url) {
+        setEditingOffer({ ...editingOffer, imageUrl: data.secure_url });
+      } else {
+        throw new Error(data.error?.message || "Upload failed");
+      }
     } catch (error) {
       console.error("Error uploading image:", error);
       alert("Failed to upload image. Please try again.");
@@ -94,7 +116,7 @@ const AdminOffers = () => {
       features: editingOffer.features.filter(f => f.trim() !== "")
     };
 
-    const existingIndex = offers.findIndex(o => o.id === cleanOffer.id);
+    const existingIndex = offers.findIndex(o => o && o.id === cleanOffer.id);
     if (existingIndex >= 0) {
       const updated = [...offers];
       updated[existingIndex] = cleanOffer;
@@ -109,17 +131,59 @@ const AdminOffers = () => {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this offer?")) {
-      setOffers(offers.filter(o => o.id !== id));
+      setOffers(offers.filter(o => o && o.id !== id));
     }
   };
 
   const toggleActive = (id) => {
-    setOffers(offers.map(o => o.id === id ? { ...o, active: !o.active } : o));
+    setOffers(offers.map(o => (o && o.id === id) ? { ...o, active: !o.active } : o));
   };
 
-  const markOrderPaid = (id) => {
-    if (window.confirm("Mark this order as Paid?")) {
-      setOrders(orders.map(o => o.id === id ? { ...o, status: 'Paid' } : o));
+  const markOrderPaid = async (id) => {
+    if (window.confirm("Mark this order as Paid and send confirmation email?")) {
+      const order = orders.find(o => o && o.id === id);
+      setOrders(orders.map(o => (o && o.id === id) ? { ...o, status: 'Paid' } : o));
+
+      if (order && order.email) {
+        const offer = offers.find(o => o && o.id === order.offerId);
+        try {
+          const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+          const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_BUNDLE;
+          const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+          
+          if (serviceId && serviceId !== 'your_service_id') {
+            await emailjs.send(
+              serviceId,
+              templateId,
+              {
+                student_name: order.name,
+                student_email: order.email,
+                course_name: offer?.title || 'Course Bundle',
+                amount_paid: `₹${order.amount}`,
+                access_link: window.location.origin + '/offers'
+              },
+              publicKey
+            );
+            console.log("Email sent successfully to", order.email);
+          } else {
+            console.log("EmailJS not configured. Marking paid without sending email.");
+          }
+
+          // Open WhatsApp with a pre-filled message
+          if (order.phone) {
+            const waMessage = `Hi ${order.name},\n\nThank you for your purchase! We have successfully received your payment of ₹${order.amount}.\n\nYour bundle: *${offer?.title || 'Course Bundle'}* has been unlocked.\n\nYou can access your course here: ${window.location.origin}/offers\n\nHappy Learning,\nThe Codewizen Team`;
+            // Remove any non-numeric characters from the phone number (except +)
+            const cleanPhone = order.phone.replace(/[^\d+]/g, '');
+            // If it doesn't start with country code, assume India (+91)
+            const formattedPhone = cleanPhone.startsWith('+') ? cleanPhone : (cleanPhone.length === 10 ? `+91${cleanPhone}` : cleanPhone);
+            const waUrl = `https://wa.me/${formattedPhone.replace('+', '')}?text=${encodeURIComponent(waMessage)}`;
+            window.open(waUrl, '_blank');
+          }
+        } catch (error) {
+          console.error("Failed to send email:", error);
+          alert("Order marked paid, but failed to send email. Check EmailJS configuration.");
+        }
+      }
     }
   };
 
@@ -162,10 +226,10 @@ const AdminOffers = () => {
                 </tr>
               </thead>
               <tbody>
-                {offers.length === 0 ? (
+                {offers.filter(Boolean).length === 0 ? (
                   <tr><td colSpan="5" style={{ textAlign: 'center' }}>No offers found. Create one above.</td></tr>
                 ) : (
-                  offers.map(offer => (
+                  offers.filter(Boolean).map(offer => (
                     <tr key={offer.id}>
                       <td>
                         <img src={offer.imageUrl || 'https://via.placeholder.com/100x60'} alt={offer.title} style={{ width: '80px', height: '50px', objectFit: 'cover', borderRadius: '4px' }} />
@@ -231,15 +295,15 @@ const AdminOffers = () => {
               </tr>
             </thead>
             <tbody>
-              {orders.length === 0 ? (
+              {orders.filter(Boolean).length === 0 ? (
                 <tr><td colSpan="7" style={{ textAlign: 'center' }}>No orders yet.</td></tr>
               ) : (
-                [...orders].reverse().map(order => (
+                [...orders].filter(Boolean).reverse().map(order => (
                   <tr key={order.id}>
                     <td>{new Date(order.date).toLocaleDateString()}</td>
                     <td><strong>{order.name}</strong></td>
                     <td>{order.email}<br/>{order.phone}</td>
-                    <td>{offers.find(o => o.id === order.offerId)?.title || 'Unknown Offer'}</td>
+                    <td>{offers.find(o => o && o.id === order.offerId)?.title || 'Unknown Offer'}</td>
                     <td style={{ fontWeight: 'bold', color: '#112255' }}>₹{order.amount}</td>
                     <td>
                       <span className={`status-badge ${order.status === 'Paid' ? 'contacted' : 'new'}`}>

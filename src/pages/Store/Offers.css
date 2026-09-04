@@ -88,6 +88,16 @@
   border-color: #ffedd5;
 }
 
+.offer-card.unlocked {
+  border-color: #10b981;
+  box-shadow: 0 20px 40px rgba(16, 185, 129, 0.1);
+}
+
+.offer-card.unlocked:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px rgba(16, 185, 129, 0.2);
+}
+
 .offer-image-wrapper {
   position: relative;
   height: 200px;
