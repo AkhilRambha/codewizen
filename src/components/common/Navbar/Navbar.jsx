@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaBars, FaTimes, FaUserCircle } from "react-icons/fa";
 import useFirebaseData from '../../../hooks/useFirebaseData';
 import { auth } from '../../../firebase';
@@ -9,6 +9,7 @@ function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     return auth.onAuthStateChanged(user => setCurrentUser(user));
@@ -63,16 +64,16 @@ function Navbar() {
 
           {/* Navigation Links */}
           <div className={`nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-            <Link to="/" className="nav-link" onClick={closeMenu}>
+            <NavLink to="/" end className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeMenu}>
               Home
-            </Link>
+            </NavLink>
 
             {currentUser ? (
               // LOGGED IN NAVBAR (Student App Feel)
               <>
-                <Link to="/profile" className="nav-link" onClick={closeMenu} style={{ color: '#10b981', fontWeight: 'bold' }}>
+                <NavLink to="/profile" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeMenu}>
                   My Learning
-                </Link>
+                </NavLink>
 
                 <div className="nav-dropdown">
                   <span className="nav-link" style={{ cursor: 'pointer' }} onClick={(e) => toggleDropdown(e, 'courses')}>
@@ -91,9 +92,9 @@ function Navbar() {
                   </div>
                 </div>
 
-                <Link to="/offers" className="nav-link" onClick={closeMenu} style={{ color: '#ea580c', fontWeight: 'bold' }}>
+                <NavLink to="/offers" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeMenu}>
                   Offers & Bundles
-                </Link>
+                </NavLink>
 
                 <div className="nav-dropdown">
                   <Link to="/placement-assistance" className="nav-link" onClick={closeMenu}>
@@ -110,9 +111,9 @@ function Navbar() {
                   </div>
                 </div>
 
-                <Link to="/contact-us" className="nav-link" onClick={closeMenu}>
+                <NavLink to="/contact-us" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeMenu}>
                   Student Support
-                </Link>
+                </NavLink>
 
                 <Link to="/profile" className="nav-auth-btn profile-btn" onClick={closeMenu}>
                   <FaUserCircle size={18} style={{marginRight: '8px'}} />
@@ -154,13 +155,13 @@ function Navbar() {
                   </div>
                 </div>
 
-                <Link to="/prices" className="nav-link" onClick={closeMenu}>
+                <NavLink to="/prices" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeMenu}>
                   Prices
-                </Link>
+                </NavLink>
 
-                <Link to="/offers" className="nav-link" onClick={closeMenu} style={{ color: '#ea580c', fontWeight: 'bold' }}>
+                <NavLink to="/offers" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeMenu}>
                   Offers & Bundles
-                </Link>
+                </NavLink>
 
                 <div className="nav-dropdown">
                   <Link to="/placement-assistance" className="nav-link" onClick={closeMenu}>
@@ -177,13 +178,13 @@ function Navbar() {
                   </div>
                 </div>
 
-                <Link to="/success-stories" className="nav-link" onClick={closeMenu}>
+                <NavLink to="/success-stories" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeMenu}>
                   Success Stories
-                </Link>
+                </NavLink>
 
-                <Link to="/contact-us" className="nav-link" onClick={closeMenu}>
+                <NavLink to="/contact-us" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeMenu}>
                   Contact Us
-                </Link>
+                </NavLink>
 
                 <Link to="/auth" className="nav-auth-btn login-btn" onClick={closeMenu}>
                   Login

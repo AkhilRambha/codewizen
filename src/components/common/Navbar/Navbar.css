@@ -134,9 +134,14 @@
   gap: 6px;
 }
 
-.nav-link:hover,
+.nav-link:hover {
+  color: #ea580c;
+}
+
 .nav-link.active {
   color: #ea580c;
+  font-weight: 600;
+  border-bottom: 2px solid #ea580c;
 }
 
 .dropdown-chevron {
