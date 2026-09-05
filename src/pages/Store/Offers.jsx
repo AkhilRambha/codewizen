@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { auth } from '../../firebase';
 import useFirebaseData from '../../hooks/useFirebaseData';
 import { FaCheckCircle, FaShoppingCart } from 'react-icons/fa';
 import { QRCodeSVG } from 'qrcode.react';
 import './Offers.css';
 
 const Offers = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [currentUser, setCurrentUser] = useState(null);
+  useEffect(() => {
+    return auth.onAuthStateChanged(user => setCurrentUser(user));
+  }, []);
+
   const [offersData, , isReady] = useFirebaseData('codewizen_store_offers', []);
   const offers = Array.isArray(offersData) ? offersData : (offersData ? Object.values(offersData) : []);
 
@@ -19,16 +29,6 @@ const Offers = () => {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
   const [currentOrderId, setCurrentOrderId] = useState(null);
-
-  // Track unlocked courses in localStorage (offerId -> orderId)
-  const getUnlockedCourses = () => {
-    try { 
-      const data = JSON.parse(localStorage.getItem('codewizen_unlocked_courses')); 
-      if (Array.isArray(data)) return {};
-      return data || {};
-    } catch { return {}; }
-  };
-  const [unlockedCourses, setUnlockedCourses] = useState(getUnlockedCourses());
 
   // Track pending courses in localStorage (offerId -> orderId)
   const getPendingCourses = () => {
@@ -50,16 +50,15 @@ const Offers = () => {
     localStorage.setItem('codewizen_pending_courses', JSON.stringify(updated));
   };
 
-  const unlockCourse = (offerId, orderId) => {
-    const updated = { ...unlockedCourses, [offerId]: orderId };
-    setUnlockedCourses(updated);
-    localStorage.setItem('codewizen_unlocked_courses', JSON.stringify(updated));
-  };
-
   // Only show active offers
   const activeOffers = offers.filter(o => o.active);
 
   const handleBuyClick = (offer) => {
+    if (!currentUser) {
+      navigate('/auth', { state: { from: location } });
+      return;
+    }
+
     // If it's already pending, restore the waiting modal
     const pendingOrderId = pendingCourses[offer.id];
     if (pendingOrderId && orders.some(o => o && o.id === pendingOrderId && o.status === 'Pending Payment')) {
@@ -74,7 +73,7 @@ const Offers = () => {
     setPaymentStep(false);
     setPaymentSuccess(false);
     setVerifyingPayment(false);
-    setFormData({ name: '', email: '', phone: '' });
+    setFormData({ name: currentUser.displayName || '', email: currentUser.email || '', phone: '' });
     setCurrentOrderId(null);
   };
 
@@ -85,6 +84,7 @@ const Offers = () => {
     const newOrder = {
       ...formData,
       id: Date.now(),
+      uid: currentUser.uid,
       offerId: selectedOffer.id,
       offerTitle: selectedOffer.title,
       amount: selectedOffer.discountPrice,
@@ -104,8 +104,7 @@ const Offers = () => {
       const currentOrder = orders.find(o => o && o.id === currentOrderId);
       if (currentOrder && currentOrder.status === 'Paid') {
         // The admin marked it as paid!
-        unlockCourse(selectedOffer.id, currentOrder.id);
-        clearPendingCourse(selectedOffer.id);
+        clearPendingCourse(selectedOffer?.id);
         setPaymentStep(false);
         setPaymentSuccess(true);
         
@@ -143,9 +142,8 @@ const Offers = () => {
           </div>
         ) : (
           activeOffers.map((offer, i) => {
-            // Verify if the local unlock has a valid Paid order in the database
-            const orderId = unlockedCourses[offer.id];
-            const isUnlocked = orderId && orders.some(o => o && o.id === orderId && o.status === 'Paid');
+            // Verify if the logged in user has a valid Paid order in the database for this offer
+            const isUnlocked = currentUser && orders.some(o => o && o.offerId === offer.id && o.uid === currentUser.uid && o.status === 'Paid');
             const pendingOrderId = pendingCourses[offer.id];
 
             return (
@@ -183,8 +181,8 @@ const Offers = () => {
                     )}
                   </>
                 ) : (
-                  <button className="offer-btn" style={{background: '#10b981', marginTop: 'auto'}} onClick={() => alert("Accessing course dashboard...")}>
-                    <FaCheckCircle /> Access Course
+                  <button className="offer-btn" style={{background: '#10b981'}} onClick={() => window.location.href = `/dashboard/${offer.id}`}>
+                    Go to Dashboard
                   </button>
                 )}
               </div>

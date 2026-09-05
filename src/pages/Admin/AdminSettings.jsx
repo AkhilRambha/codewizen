@@ -12,6 +12,7 @@ const EMAILJS_PUBLIC_KEY = 'JKItTqpdsWz7qIWWx';
 
 const AdminSettings = () => {
   const [adminPassword, setAdminPassword] = useFirebaseData('codewizen_admin_password', 'admin@codewizen');
+  const [adminEmail, setAdminEmail] = useFirebaseData('codewizen_admin_email', 'codewizen@gmail.com');
   const [contactInfo, setContactInfo] = useFirebaseData('codewizen_contact_info', {
     email: 'info@codewizen.com',
     phone: '+91 7993819211',
@@ -20,9 +21,10 @@ const AdminSettings = () => {
     upiId: 'yourname@upi'
   });
 
-  // Password State
+  // Security State
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [newAdminEmail, setNewAdminEmail] = useState('');
 
   // Contact State
   const [draftContact, setDraftContact] = useState(contactInfo);
@@ -53,20 +55,26 @@ const AdminSettings = () => {
     }
 
     try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_OTP || EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || EMAILJS_PUBLIC_KEY;
+
       await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
+        serviceId,
+        templateId,
         {
-          to_email: contactInfo.email,
+          to_email: adminEmail, // Now uses the dynamic admin email
+          to_name: 'Admin',
           otp: otpCode,
+          subject: 'Your Codewizen Admin Verification Code',
           message: `Your Codewizen Admin OTP code is ${otpCode}. Do not share this with anyone.`
         },
-        EMAILJS_PUBLIC_KEY
+        publicKey
       );
 
       setIsSending(false);
       setOtpStep(true);
-      setMessage({ text: `An OTP has been sent securely to ${contactInfo.email}.`, type: 'success' });
+      setMessage({ text: `An OTP has been sent securely to ${adminEmail}.`, type: 'success' });
     } catch (error) {
       console.error("EmailJS Error:", error);
       setIsSending(false);
@@ -76,11 +84,15 @@ const AdminSettings = () => {
 
   const initiatePasswordChange = (e) => {
     e.preventDefault();
-    if (newPassword !== confirmPassword) {
+    if (!newPassword && !newAdminEmail) {
+      setMessage({ text: 'Please enter a new password or a new secure email.', type: 'error' });
+      return;
+    }
+    if (newPassword && newPassword !== confirmPassword) {
       setMessage({ text: 'Passwords do not match!', type: 'error' });
       return;
     }
-    if (newPassword.length < 6) {
+    if (newPassword && newPassword.length < 6) {
       setMessage({ text: 'Password must be at least 6 characters long.', type: 'error' });
       return;
     }
@@ -103,10 +115,12 @@ const AdminSettings = () => {
     e.preventDefault();
     if (enteredOtp === generatedOtp) {
       if (pendingAction === 'password') {
-        setAdminPassword(newPassword);
-        setMessage({ text: 'Password changed successfully!', type: 'success' });
+        if (newPassword) setAdminPassword(newPassword);
+        if (newAdminEmail) setAdminEmail(newAdminEmail);
+        setMessage({ text: 'Security settings updated successfully!', type: 'success' });
         setNewPassword('');
         setConfirmPassword('');
+        setNewAdminEmail('');
       } else if (pendingAction === 'contact') {
         setContactInfo(draftContact);
         setMessage({ text: 'Contact details updated successfully!', type: 'success' });
@@ -163,26 +177,34 @@ const AdminSettings = () => {
           </form>
         </div>
 
-        {/* PASSWORD SETTINGS FORM */}
+        {/* SECURITY SETTINGS FORM */}
         <div className="admin-table-container" style={{ padding: '30px' }}>
           <div style={{ marginBottom: '20px', borderBottom: '1px solid #e2e8f0', paddingBottom: '15px' }}>
-            <h3><FaLock style={{ color: '#ea580c', marginRight: '10px' }} /> Change Password</h3>
+            <h3><FaLock style={{ color: '#ea580c', marginRight: '10px' }} /> Security Settings</h3>
             <p style={{ color: '#64748b', fontSize: '14px', marginTop: '5px' }}>
-              Securely update your admin panel login password.
+              Securely update your admin panel login password and the secure email address where OTPs are sent. (Leave blank to keep unchanged)
             </p>
           </div>
 
           <form onSubmit={initiatePasswordChange} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
             <div>
+              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', color: '#112255' }}>Current Secure Email</label>
+              <input type="text" disabled value={adminEmail} style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', borderRadius: '8px', backgroundColor: '#f1f5f9' }} />
+            </div>
+            <div>
+              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', color: '#112255' }}>New Secure Email</label>
+              <input type="email" value={newAdminEmail} onChange={(e) => setNewAdminEmail(e.target.value)} style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', borderRadius: '8px' }} />
+            </div>
+            <div>
               <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', color: '#112255' }}>New Password</label>
-              <input type="password" required value={newPassword} onChange={(e) => setNewPassword(e.target.value)} style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', borderRadius: '8px' }} />
+              <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', borderRadius: '8px' }} />
             </div>
             <div>
               <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', color: '#112255' }}>Confirm New Password</label>
-              <input type="password" required value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', borderRadius: '8px' }} />
+              <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', borderRadius: '8px' }} />
             </div>
             <button type="submit" className="admin-btn-primary" style={{ marginTop: '10px', padding: '12px' }} disabled={isSending}>
-              {isSending && pendingAction === 'password' ? 'Sending OTP...' : 'Change Password (Requires OTP)'}
+              {isSending && pendingAction === 'password' ? 'Sending OTP...' : 'Save Security Settings (Requires OTP)'}
             </button>
           </form>
         </div>

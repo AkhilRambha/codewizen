@@ -6,6 +6,7 @@ import "aos/dist/aos.css";
 // Layouts
 import PublicLayout from "./components/layout/PublicLayout";
 import AdminLayout from "./components/layout/AdminLayout";
+import StudentLayout from "./components/layout/StudentLayout";
 import ScrollToTop from "./components/common/ScrollToTop/ScrollToTop";
 
 // Public Pages
@@ -45,6 +46,9 @@ import SuccessStories from "./pages/SuccessStories/SuccessStories";
 import ContactUs from "./pages/Contact/ContactUs";
 import Prices from "./pages/Prices/Prices";
 import Offers from "./pages/Store/Offers";
+import BundleDashboard from "./pages/Dashboard/BundleDashboard";
+import StudentAuth from "./pages/Auth/StudentAuth";
+import StudentProfile from "./pages/Student/StudentProfile";
 
 import Workshop from "./pages/Workshop/Workshop";
 import PaymentSuccess from "./pages/Workshop/PaymentSuccess";
@@ -141,6 +145,15 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/prices" element={<Prices />} />
           <Route path="/offers" element={<Offers />} />
+          <Route path="/auth" element={<StudentAuth />} />
+        </Route>
+
+        {/* =========================================
+            STUDENT APP ROUTES (Dedicated LMS Layout)
+        ========================================= */}
+        <Route element={<StudentLayout />}>
+          <Route path="/dashboard/:bundleId" element={<BundleDashboard />} />
+          <Route path="/profile" element={<StudentProfile />} />
         </Route>
 
         {/* =========================================

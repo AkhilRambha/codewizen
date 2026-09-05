@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import useFirebaseData from '../../hooks/useFirebaseData';
 import { downloadCSV } from '../../utils/exportCsv';
 import { FaUserGraduate, FaMoneyCheckAlt, FaCheckCircle, FaClock, FaWhatsapp, FaSave, FaPlus, FaTrash, FaUpload, FaDownload } from 'react-icons/fa';
-import { storage } from '../../firebase';
-import { ref, uploadBytes, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import './Admin.css';
 
 const AdminWorkshops = () => {
   const [activeTab, setActiveTab] = useState('registrations'); // registrations, manage
   
   const [registrationsData, setRegistrations, isReady] = useFirebaseData('codewizen_workshop_registrations', []);
-  const registrations = registrationsData || [];
+  const registrations = Array.isArray(registrationsData) ? registrationsData : (registrationsData ? Object.values(registrationsData) : []);
   const [workshopsData, setWorkshops, isWorkshopsReady] = useFirebaseData('codewizen_workshops_data', []);
-  const workshops = workshopsData || [];
+  const workshops = Array.isArray(workshopsData) ? workshopsData : (workshopsData ? Object.values(workshopsData) : []);
 
   const [editingWorkshop, setEditingWorkshop] = useState(null);
   const [uploadingFiles, setUploadingFiles] = useState({});

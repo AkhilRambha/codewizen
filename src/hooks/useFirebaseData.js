@@ -19,11 +19,23 @@ function useFirebaseData(key, initialValue) {
       const val = snapshot.val();
       
       if (val !== null) {
+        let finalVal = val;
         try {
-          setDataState(typeof val === 'string' ? JSON.parse(val) : val);
-        } catch (e) {
-          setDataState(val);
+          if (typeof val === 'string') finalVal = JSON.parse(val);
+        } catch (e) {}
+
+        if (Array.isArray(initialValue)) {
+          // If we expect an array, ensure it is a clean array without nulls (sparse arrays)
+          if (Array.isArray(finalVal)) {
+            finalVal = finalVal.filter(Boolean);
+          } else if (typeof finalVal === 'object' && finalVal !== null) {
+            // Firebase might return an object with integer keys if array elements were deleted
+            finalVal = Object.values(finalVal).filter(Boolean);
+          } else {
+            finalVal = []; // Fallback if data is corrupted
+          }
         }
+        setDataState(finalVal);
       } else if (!isInitialized.current) {
         let isEmpty = false;
         if (Array.isArray(initialValue) && initialValue.length === 0) isEmpty = true;

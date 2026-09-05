@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useFirebaseData from '../../hooks/useFirebaseData';
-import { FaCheckCircle, FaUserPlus, FaCalendarAlt, FaClock, FaDesktop, FaMoneyBillAlt } from 'react-icons/fa';
+import { FaCheckCircle, FaUserPlus, FaCalendarAlt, FaDesktop } from 'react-icons/fa';
 import { QRCodeSVG } from 'qrcode.react';
 import './Workshop.css';
 
@@ -84,23 +84,22 @@ const defaultWorkshopData = {
 
 const Workshop = () => {
   const { workshopId } = useParams();
-  const navigate = useNavigate();
-  const [workshops, setWorkshops, isReady] = useFirebaseData('codewizen_workshops_data', [defaultWorkshopData]);
-  const [registrations, setRegistrations] = useFirebaseData('codewizen_workshop_registrations', []);
+  const [registrationsData] = useFirebaseData('codewizen_workshop_registrations', []);
+  const registrations = Array.isArray(registrationsData) ? registrationsData : (registrationsData ? Object.values(registrationsData) : []);
+  const [workshopsData, , isReady] = useFirebaseData('codewizen_workshops_data', [defaultWorkshopData]);
+  const workshops = Array.isArray(workshopsData) ? workshopsData : (workshopsData ? Object.values(workshopsData) : []);
   const [contactInfo] = useFirebaseData('codewizen_contact_info', {});
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [paymentStep, setPaymentStep] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
   const [openFaq, setOpenFaq] = useState(null);
+  const foundWorkshop = workshops.find(w => w && w.id === workshopId) || workshops.find(Boolean) || defaultWorkshopData;
+  const currentWorkshop = foundWorkshop ? { ...defaultWorkshopData, ...foundWorkshop } : null;
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
   };
-
-  // Find the current workshop data and merge with defaults so new sections (FAQs, feedback) always show
-  const foundWorkshop = workshops.find(w => w.id === workshopId) || workshops[0];
-  const currentWorkshop = foundWorkshop ? { ...defaultWorkshopData, ...foundWorkshop } : null;
 
   // Countdown timer logic
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });

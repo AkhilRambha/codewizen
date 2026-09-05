@@ -1,0 +1,241 @@
+.student-layout-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+.student-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.2rem;
+  color: #64748b;
+  background-color: #f8fafc;
+}
+
+/* ── SIDEBAR ── */
+.student-sidebar {
+  width: 260px;
+  background-color: #112255;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.student-sidebar-header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.student-sidebar-header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  color: white;
+}
+
+.mobile-close-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.student-nav {
+  flex: 1;
+  padding: 20px 0;
+  overflow-y: auto;
+}
+
+.student-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.student-nav li {
+  margin-bottom: 5px;
+}
+
+.student-nav-link {
+  display: flex;
+  align-items: center;
+  padding: 15px 25px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  gap: 15px;
+  border-left: 4px solid transparent;
+}
+
+.student-nav-link svg {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.student-nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.student-nav-link.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-left-color: #ea580c;
+}
+
+.student-nav-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.student-nav-link.disabled:hover {
+  background-color: transparent;
+  color: #cbd5e1;
+}
+
+.student-sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.student-logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: transparent;
+  color: #fca5a5;
+  border: 1px solid rgba(252, 165, 165, 0.3);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.student-logout-btn:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+/* ── MAIN CONTENT ── */
+.student-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.student-topbar {
+  height: 70px;
+  background-color: white;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  flex-shrink: 0;
+}
+
+.student-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #334155;
+  cursor: pointer;
+}
+
+.back-to-site-link {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.back-to-site-link:hover {
+  color: #ea580c;
+}
+
+.student-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.student-name {
+  color: #334155;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.student-page-container {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+/* ── RESPONSIVE ── */
+.student-sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+@media (max-width: 1024px) {
+  .student-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+  }
+  
+  .student-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+  
+  .mobile-close-btn,
+  .mobile-menu-toggle,
+  .student-sidebar-overlay {
+    display: block;
+  }
+  
+  .student-topbar {
+    padding: 0 20px;
+  }
+  
+  .student-page-container {
+    padding: 20px;
+  }
+}

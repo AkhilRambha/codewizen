@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import useFirebaseData from '../../hooks/useFirebaseData';
 import { downloadCSV } from '../../utils/exportCsv';
 import { FaPlus, FaTrash, FaEdit, FaImage, FaTag, FaDownload } from 'react-icons/fa';
-import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
 import emailjs from '@emailjs/browser';
 import './Admin.css';
 
@@ -160,7 +159,7 @@ const AdminOffers = () => {
                 student_email: order.email,
                 course_name: offer?.title || 'Course Bundle',
                 amount_paid: `₹${order.amount}`,
-                access_link: window.location.origin + '/offers'
+                access_link: `${window.location.origin}/dashboard/${offer?.id}`
               },
               publicKey
             );
@@ -171,7 +170,7 @@ const AdminOffers = () => {
 
           // Open WhatsApp with a pre-filled message
           if (order.phone) {
-            const waMessage = `Hi ${order.name},\n\nThank you for your purchase! We have successfully received your payment of ₹${order.amount}.\n\nYour bundle: *${offer?.title || 'Course Bundle'}* has been unlocked.\n\nYou can access your course here: ${window.location.origin}/offers\n\nHappy Learning,\nThe Codewizen Team`;
+            const waMessage = `Hi ${order.name},\n\nThank you for your purchase! We have successfully received your payment of ₹${order.amount}.\n\nYour bundle: *${offer?.title || 'Course Bundle'}* has been unlocked.\n\nYou can access your personal dashboard here: ${window.location.origin}/dashboard/${offer?.id}\n\nHappy Learning,\nThe Codewizen Team`;
             // Remove any non-numeric characters from the phone number (except +)
             const cleanPhone = order.phone.replace(/[^\d+]/g, '');
             // If it doesn't start with country code, assume India (+91)
