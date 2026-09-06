@@ -36,6 +36,46 @@ const AdminPlacements = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', course: '', company: '', ctc: '', image: '' });
   const [editingId, setEditingId] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    try {
+      const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+      const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+      
+      if (!cloudName || !uploadPreset || cloudName === 'your_cloud_name') {
+        alert("Please set up Cloudinary in your .env file first!");
+        setIsUploading(false);
+        return;
+      }
+
+      const uploadData = new FormData();
+      uploadData.append('file', file);
+      uploadData.append('upload_preset', uploadPreset);
+
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+        method: 'POST',
+        body: uploadData
+      });
+      
+      const data = await response.json();
+      
+      if (data.secure_url) {
+        setFormData({ ...formData, image: data.secure_url });
+      } else {
+        throw new Error(data.error?.message || "Upload failed");
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      alert("Failed to upload image. Please try again.");
+    } finally {
+      setIsUploading(false);
+    }
+  };
 
   const handleExport = () => {
     downloadCSV(placements, `codewizen_placements_${new Date().toISOString().split('T')[0]}.csv`);
@@ -162,15 +202,9 @@ const AdminPlacements = () => {
               </div>
 
               <label>Student Photo</label>
-              <input type="file" accept="image/*" onChange={(e) => {
-                const file = e.target.files[0];
-                if (file) {
-                  const reader = new FileReader();
-                  reader.onloadend = () => setFormData({ ...formData, image: reader.result });
-                  reader.readAsDataURL(file);
-                }
-              }} />
-              {formData.image && formData.image.startsWith('data:image') && <p style={{ fontSize: '12px', color: '#16a34a' }}>✓ Photo uploaded</p>}
+              <input type="file" accept="image/*" onChange={handleFileUpload} disabled={isUploading} />
+              {isUploading && <span style={{ fontSize: '12px', color: '#ea580c' }}>Uploading photo...</span>}
+              {!isUploading && formData.image && <p style={{ fontSize: '12px', color: '#16a34a' }}>✓ Photo uploaded successfully</p>}
               
               <div className="admin-modal-actions">
                 <button type="button" className="admin-btn-secondary" onClick={() => setIsModalOpen(false)}>Cancel</button>

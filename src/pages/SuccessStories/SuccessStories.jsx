@@ -88,7 +88,7 @@ const SuccessStories = () => {
           <section className="reviews-grid-section" style={{ paddingTop: '60px' }}>
             <div className="section-header center-header" data-aos="fade-up" style={{ marginBottom: '50px', textAlign: 'center' }}>
               <span className="section-eyebrow" style={{ display: 'inline-block', padding: '5px 15px', background: 'rgba(56, 189, 248, 0.1)', color: '#0284c7', borderRadius: '20px', fontSize: '13px', fontWeight: 'bold', marginBottom: '15px' }}>STUDENT VOICES</span>
-              <h2 style={{ fontSize: '36px', color: '#112255', marginBottom: '15px' }}>What Our Students Say</h2>
+              <h2 className="success-stories-h2" style={{ fontSize: '36px', color: '#112255', marginBottom: '15px' }}>What Our Students Say</h2>
               <p style={{ color: '#64748b', fontSize: '18px', maxWidth: '600px', margin: '0 auto' }}>Don't just take our word for it. Read verified reviews from our student community.</p>
             </div>
 

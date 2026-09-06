@@ -14,6 +14,7 @@ const AdminReviews = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', course: '', text: '', rating: 5, avatar: '' });
   const [editingId, setEditingId] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
 
   const openModal = (review = null) => {
     if (review) {
@@ -30,14 +31,42 @@ const AdminReviews = () => {
     downloadCSV(reviews, `codewizen_reviews_${new Date().toISOString().split('T')[0]}.csv`);
   };
 
-  const handleFileUpload = (e) => {
+  const handleFileUpload = async (e) => {
     const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFormData({ ...formData, avatar: reader.result });
-      };
-      reader.readAsDataURL(file);
+    if (!file) return;
+
+    setIsUploading(true);
+    try {
+      const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+      const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+      
+      if (!cloudName || !uploadPreset || cloudName === 'your_cloud_name') {
+        alert("Please set up Cloudinary in your .env file first!");
+        setIsUploading(false);
+        return;
+      }
+
+      const uploadData = new FormData();
+      uploadData.append('file', file);
+      uploadData.append('upload_preset', uploadPreset);
+
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+        method: 'POST',
+        body: uploadData
+      });
+      
+      const data = await response.json();
+      
+      if (data.secure_url) {
+        setFormData({ ...formData, avatar: data.secure_url });
+      } else {
+        throw new Error(data.error?.message || "Upload failed");
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      alert("Failed to upload image. Please try again.");
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -118,8 +147,9 @@ const AdminReviews = () => {
             <h3>{editingId ? 'Edit Review' : 'Add New Review'}</h3>
             <form onSubmit={handleSave} className="admin-modal-form">
               <label>Student Photo</label>
-              <input type="file" accept="image/*" onChange={handleFileUpload} />
-              {formData.avatar && <p style={{ fontSize: '12px', color: '#16a34a' }}>✓ Photo uploaded</p>}
+              <input type="file" accept="image/*" onChange={handleFileUpload} disabled={isUploading} />
+              {isUploading && <span style={{ fontSize: '12px', color: '#ea580c' }}>Uploading photo...</span>}
+              {!isUploading && formData.avatar && <p style={{ fontSize: '12px', color: '#16a34a' }}>✓ Photo uploaded successfully</p>}
 
               <label>Student Name</label>
               <input required type="text" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />

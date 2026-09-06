@@ -207,6 +207,10 @@
   transform: translateY(-2px);
 }
 
+.success-stories-h2 {
+  color: #112255 !important;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .reviews-grid {

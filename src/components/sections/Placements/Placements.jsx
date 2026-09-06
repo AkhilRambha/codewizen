@@ -4,63 +4,58 @@ import useFirebaseData from '../../../hooks/useFirebaseData';
 
 function Placements() {
   const [placements] = useFirebaseData('codewizen_placements', [
-    {
-      id: 1,
-      name: "Rahul Verma",
-      course: "Java Full Stack Development",
-      company: "TCS",
-      ctc: "8 LPA",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
-    },
-    {
-      id: 2,
-      name: "Sneha Reddy",
-      course: "Data Science & AI",
-      company: "Deloitte",
-      ctc: "12 LPA",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
-    },
-    {
-      id: 3,
-      name: "Karthik Kumar",
-      course: "Python Full Stack",
-      company: "Infosys",
-      ctc: "7.5 LPA",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
-    }
+    { id: 1, name: "Mahesh Babu", course: "Java Full Stack Development", company: "TCS", ctc: "8 LPA", image: "https://ui-avatars.com/api/?name=Mahesh+Babu&background=random" },
+    { id: 2, name: "Samantha Ruth", course: "Data Science & ML", company: "Deloitte", ctc: "12 LPA", image: "https://ui-avatars.com/api/?name=Samantha+Ruth&background=random" },
+    { id: 3, name: "Ram Charan", course: "Python Full Stack", company: "Infosys", ctc: "7.5 LPA", image: "https://ui-avatars.com/api/?name=Ram+Charan&background=random" },
+    { id: 4, name: "Sai Pallavi", course: "React JS & Frontend", company: "Accenture", ctc: "9 LPA", image: "https://ui-avatars.com/api/?name=Sai+Pallavi&background=random" },
+    { id: 5, name: "Naveen Polishetty", course: "Generative AI", company: "Amazon", ctc: "18 LPA", image: "https://ui-avatars.com/api/?name=Naveen+Polishetty&background=random" },
+    { id: 6, name: "Anushka Shetty", course: "DevOps & Cloud", company: "Wipro", ctc: "10 LPA", image: "https://ui-avatars.com/api/?name=Anushka+Shetty&background=random" }
   ]);
+
   return (
     <section className="placements-section" id="placements">
       <div className="placements-container">
-        <div className="section-header" data-aos="fade-up">
+        <div className="section-header center-header" data-aos="fade-up">
           <span className="section-eyebrow">SUCCESS STORIES</span>
-          <h2>Recent Placements</h2>
-          <p className="section-subtitle" style={{ textAlign: "center", color: "#475569", marginTop: "10px" }}>
-            See where our alumni are working and growing their careers.
+          <h2>Where Our Alumni Are Working</h2>
+          <p className="section-subtitle">
+            Join hundreds of successful graduates placed in top global tech companies.
           </p>
         </div>
 
-        <div className="placements-grid">
-          {placements.map((student, index) => (
-            <div
-              className="placement-card"
-              key={student.id}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-            >
-              <div className="placement-header">
-                <img src={student.image} alt={student.name} className="placement-avatar" />
-                <div className="placement-info">
-                  <h3>{student.name}</h3>
-                  <span className="placement-course">{student.course}</span>
+        <div className="placements-marquee-container">
+          <div className="placements-marquee">
+            {/* Double the list to create a seamless infinite loop */}
+            {[...placements, ...placements].map((student, index) => (
+              <div
+                className="premium-placement-card"
+                key={index}
+              >
+                <div className="premium-card-bg"></div>
+                <div className="premium-card-content">
+                  <div className="premium-header">
+                    <div className="avatar-ring">
+                      <img src={student.image} alt={student.name} className="premium-avatar" />
+                    </div>
+                    <div className="premium-info">
+                      <h3>{student.name}</h3>
+                      <span className="premium-course">{student.course}</span>
+                    </div>
+                  </div>
+                  <div className="premium-footer">
+                    <div className="company-badge">
+                      <span className="badge-icon">🏢</span>
+                      <span className="badge-text">{student.company}</span>
+                    </div>
+                    <div className="ctc-badge">
+                      <span className="badge-icon">💰</span>
+                      <span className="badge-text">{student.ctc}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="placement-details">
-                <p>Placed at <strong>{student.company}</strong></p>
-                <p className="placement-role">{student.ctc}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
