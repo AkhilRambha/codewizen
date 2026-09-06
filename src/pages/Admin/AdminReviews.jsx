@@ -10,7 +10,7 @@ const AdminReviews = () => {
     { id: 2, name: "Sneha Patil", course: "Data Science", text: "Got placed in a top MNC thanks to Codewizen.", rating: 5 }
   ]);
   const reviews = reviewsData || [];
-  
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', course: '', text: '', rating: 5, avatar: '' });
   const [editingId, setEditingId] = useState(null);
@@ -62,19 +62,19 @@ const AdminReviews = () => {
       <div className="admin-page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h2>Student Reviews</h2>
         <div style={{ display: 'flex', gap: '10px' }}>
-          <button 
-            onClick={handleExport} 
-            className="admin-btn active" 
+          <button
+            onClick={handleExport}
+            className="admin-btn active"
             style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
           >
             <FaDownload /> Export CSV
           </button>
-          <button className="admin-btn-primary" onClick={openModal}>
-            <FaPlus /> Add Fake Review
+          <button className="admin-btn-primary" onClick={() => openModal()}>
+            <FaPlus /> Add  Review
           </button>
         </div>
       </div>
-      
+
       <div className="admin-table-container">
         {reviews.length === 0 ? (
           <div className="admin-notice">No reviews added yet.</div>
@@ -103,7 +103,7 @@ const AdminReviews = () => {
                   <td>{review.rating} ⭐</td>
                   <td style={{ display: 'flex', gap: '10px' }}>
                     <button className="action-link" onClick={() => openModal(review)}>Edit</button>
-                    <button className="action-link" style={{color: '#dc2626'}} onClick={() => deleteReview(review.id)}>Delete</button>
+                    <button className="action-link" style={{ color: '#dc2626' }} onClick={() => deleteReview(review.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -122,10 +122,10 @@ const AdminReviews = () => {
               {formData.avatar && <p style={{ fontSize: '12px', color: '#16a34a' }}>✓ Photo uploaded</p>}
 
               <label>Student Name</label>
-              <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
-              
+              <input required type="text" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
+
               <label>Course Taken</label>
-              <select required value={formData.course} onChange={e => setFormData({...formData, course: e.target.value})}>
+              <select required value={formData.course} onChange={e => setFormData({ ...formData, course: e.target.value })}>
                 <option value="" disabled>Select a course...</option>
                 <option value="Java Full Stack">Java Full Stack</option>
                 <option value="Python Full Stack">Python Full Stack</option>
@@ -137,13 +137,13 @@ const AdminReviews = () => {
                 <option value="DevOps & Cloud">DevOps & Cloud</option>
                 <option value="Custom Course">Custom Course (Other)</option>
               </select>
-              
+
               <label>Review Text</label>
-              <textarea required rows="4" value={formData.text} onChange={e => setFormData({...formData, text: e.target.value})}></textarea>
-              
+              <textarea required rows="4" value={formData.text} onChange={e => setFormData({ ...formData, text: e.target.value })}></textarea>
+
               <label>Rating (1-5)</label>
-              <input required type="number" min="1" max="5" value={formData.rating} onChange={e => setFormData({...formData, rating: Number(e.target.value)})} />
-              
+              <input required type="number" min="1" max="5" value={formData.rating} onChange={e => setFormData({ ...formData, rating: Number(e.target.value) })} />
+
               <div className="admin-modal-actions">
                 <button type="button" className="admin-btn-secondary" onClick={() => setIsModalOpen(false)}>Cancel</button>
                 <button type="submit" className="admin-btn-primary">Save Review</button>
