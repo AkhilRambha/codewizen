@@ -134,14 +134,14 @@ Interested Course: ${formData.course}`;
                     <div className="cf-field">
                       <select name="course" required value={formData.course} onChange={handleChange} className="cf-select-no-icon">
                         <option value="" disabled>Select Course</option>
-                        {courses.length > 0 ? courses.map(c => (
-                          <option key={c.id} value={c.name}>{c.name}</option>
-                        )) : (
-                          <>
-                            <option value="Java Full Stack">Java Full Stack</option>
-                            <option value="Python Full Stack">Python Full Stack</option>
-                          </>
-                        )}
+                        <option value="Java Full Stack">Java Full Stack</option>
+                        <option value="Python Full Stack">Python Full Stack</option>
+                        <option value="Data Analytics">Data Analytics</option>
+                        <option value="Software Testing">Software Testing</option>
+                        <option value="Data Science & ML">Data Science & ML</option>
+                        <option value="Generative AI">Generative AI</option>
+                        <option value="React JS & Frontend">React JS & Frontend</option>
+                        <option value="DevOps & Cloud">DevOps & Cloud</option>
                       </select>
                     </div>
                   </div>

@@ -6,8 +6,7 @@ import './Chatbot.css';
 // dynamic courses will be fetched inside the component
 
 const Chatbot = () => {
-  const [courses] = useFirebaseData('codewizen_courses', []);
-  const coursesList = courses.length > 0 ? courses.map(c => c.name) : ["Java Full Stack", "Python Full Stack"];
+  const coursesList = ["Java Full Stack", "Python Full Stack", "Data Analytics", "Software Testing", "Data Science & ML", "Generative AI", "React JS & Frontend", "DevOps & Cloud"];
 
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState('name'); // 'name', 'course', 'phone', 'done'

@@ -89,6 +89,8 @@ function Navbar() {
                     <Link to="/software-testing" onClick={closeMenu}>Software Testing</Link>
                     <Link to="/data-science" onClick={closeMenu}>Data Science & ML</Link>
                     <Link to="/generative-ai" onClick={closeMenu}>Generative AI</Link>
+                    <Link to="/course-enquiry?course=React JS" onClick={closeMenu}>React JS & Frontend</Link>
+                    <Link to="/course-enquiry?course=DevOps" onClick={closeMenu}>DevOps & Cloud</Link>
                   </div>
                 </div>
 
@@ -152,6 +154,8 @@ function Navbar() {
                     <Link to="/software-testing" onClick={closeMenu}>Software Testing</Link>
                     <Link to="/data-science" onClick={closeMenu}>Data Science & ML</Link>
                     <Link to="/generative-ai" onClick={closeMenu}>Generative AI</Link>
+                    <Link to="/course-enquiry?course=React JS" onClick={closeMenu}>React JS & Frontend</Link>
+                    <Link to="/course-enquiry?course=DevOps" onClick={closeMenu}>DevOps & Cloud</Link>
                   </div>
                 </div>
 

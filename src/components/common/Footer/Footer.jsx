@@ -33,8 +33,10 @@ const popularCourses = [
   { name: "Python Full Stack", path: "/python-full-stack" },
   { name: "Data Analytics", path: "/data-analytics" },
   { name: "Software Testing", path: "/software-testing" },
-  { name: "Data Science", path: "/data-science" },
+  { name: "Data Science & ML", path: "/data-science" },
   { name: "Generative AI", path: "/generative-ai" },
+  { name: "React JS & Frontend", path: "/course-enquiry?course=React JS" },
+  { name: "DevOps & Cloud", path: "/course-enquiry?course=DevOps" },
 ];
 
 

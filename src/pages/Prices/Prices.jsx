@@ -68,12 +68,34 @@ const Prices = () => {
     },
     "gen-ai": {
       name: "Generative AI",
-      basePrice: 24999,
+      basePrice: 34999,
       link: "/generative-ai",
       features: [
-        "Advanced Prompt Engineering",
-        "LangChain & LlamaIndex",
-        "RAG Architecture",
+        "LLMs & ChatGPT APIs",
+        "Prompt Engineering",
+        "LangChain & Vector DBs",
+        "100% Placement Support"
+      ]
+    },
+    "react-js": {
+      name: "React JS & Frontend",
+      basePrice: 15999,
+      link: "/course-enquiry?course=React JS",
+      features: [
+        "HTML, CSS, JavaScript",
+        "React JS & Redux",
+        "Tailwind CSS",
+        "100% Placement Support"
+      ]
+    },
+    "devops": {
+      name: "DevOps & Cloud",
+      basePrice: 24999,
+      link: "/course-enquiry?course=DevOps",
+      features: [
+        "AWS Cloud Practitioner",
+        "Docker & Kubernetes",
+        "CI/CD with Jenkins",
         "100% Placement Support"
       ]
     }
@@ -124,12 +146,14 @@ const Prices = () => {
                   value={course} 
                   onChange={(e) => setCourse(e.target.value)}
                 >
-                  <option value="java">Java Full Stack Development</option>
-                  <option value="python">Python Full Stack Development</option>
-                  <option value="data-science">Data Science & Machine Learning</option>
-                  <option value="data-analytics">Data Analytics & Power BI</option>
-                  <option value="testing">Software Testing (QA Automation)</option>
-                  <option value="gen-ai">Generative AI & Prompt Engineering</option>
+                  <option value="java">Java Full Stack</option>
+                  <option value="python">Python Full Stack</option>
+                  <option value="data-analytics">Data Analytics</option>
+                  <option value="testing">Software Testing</option>
+                  <option value="data-science">Data Science & ML</option>
+                  <option value="gen-ai">Generative AI</option>
+                  <option value="react-js">React JS & Frontend</option>
+                  <option value="devops">DevOps & Cloud</option>
                 </select>
                 <FaChevronDown className="select-icon" />
               </div>
