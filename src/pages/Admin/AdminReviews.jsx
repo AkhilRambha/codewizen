@@ -4,11 +4,10 @@ import { downloadCSV } from '../../utils/exportCsv';
 import { FaDownload, FaPlus } from 'react-icons/fa';
 import './Admin.css';
 
+import { defaultReviews } from '../../data/defaultData';
+
 const AdminReviews = () => {
-  const [reviewsData, setReviews] = useFirebaseData('codewizen_reviews', [
-    { id: 1, name: "Arjun Reddy", course: "Java Full Stack", text: "The training here is exceptional.", rating: 5 },
-    { id: 2, name: "Sneha Patil", course: "Data Science", text: "Got placed in a top MNC thanks to Codewizen.", rating: 5 }
-  ]);
+  const [reviewsData, setReviews] = useFirebaseData('codewizen_reviews', defaultReviews);
   const reviews = reviewsData || [];
 
   const [isModalOpen, setIsModalOpen] = useState(false);

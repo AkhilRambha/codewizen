@@ -4,49 +4,10 @@ import { FaStar, FaQuoteLeft, FaGoogle, FaLinkedin } from 'react-icons/fa';
 import useFirebaseData from '../../hooks/useFirebaseData';
 import './Reviews.css';
 
+import { defaultReviews } from '../../data/defaultData';
+
 const Reviews = () => {
-  const [reviews] = useFirebaseData('codewizen_reviews', [
-    {
-      id: 1,
-      name: "Siddharth Verma",
-      course: "Java Full Stack Development",
-      rating: 5,
-      platform: "Google",
-      text: "The training at Codewizen completely transformed my career. The instructors are incredibly knowledgeable and the real-time project experience helped me crack my interview at a top MNC.",
-      date: "August 2026",
-      avatar: "/images/rahul.jpg"
-    },
-    {
-      id: 2,
-      name: "Pooja Reddy",
-      course: "Data Science & ML",
-      rating: 5,
-      platform: "LinkedIn",
-      text: "I joined with zero coding knowledge, but the structured curriculum and the mock interviews gave me the confidence to secure a Data Analyst role. Highly recommend their placement support!",
-      date: "July 2026",
-      avatar: "/images/priya.png"
-    },
-    {
-      id: 3,
-      name: "Karthik Nair",
-      course: "Python Full Stack",
-      rating: 5,
-      platform: "Google",
-      text: "Codewizen is the best institute for Python. The daily assignments and doubt clearing sessions are excellent. I am now working as a Backend Developer thanks to their referrals.",
-      date: "July 2026",
-      avatar: "/images/amit.png"
-    },
-    {
-      id: 4,
-      name: "Meera Krishnan",
-      course: "Software Testing",
-      rating: 5,
-      platform: "Google",
-      text: "Excellent training for Selenium Automation. The trainers explain everything with real-world scenarios. The placement team helped me get 3 offer letters!",
-      date: "June 2026",
-      avatar: "/images/sneha.png"
-    }
-  ]);
+  const [reviews] = useFirebaseData('codewizen_reviews', defaultReviews);
 
   return (
     <>

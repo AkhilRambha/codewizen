@@ -3,34 +3,10 @@ import useFirebaseData from '../../hooks/useFirebaseData';
 import { downloadCSV } from '../../utils/exportCsv';
 import { FaTrash, FaCheck, FaTimes, FaPlus, FaUpload, FaDownload } from 'react-icons/fa';
 import './Admin.css';
+import { defaultPlacements } from '../../data/defaultData';
 
 const AdminPlacements = () => {
-  const [placementsData, setPlacements] = useFirebaseData('codewizen_placements', [
-    {
-      id: 1,
-      name: "Rahul Verma",
-      course: "Java Full Stack Development",
-      company: "TCS",
-      ctc: "8 LPA",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
-    },
-    {
-      id: 2,
-      name: "Sneha Reddy",
-      course: "Data Science & AI",
-      company: "Deloitte",
-      ctc: "12 LPA",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
-    },
-    {
-      id: 3,
-      name: "Karthik Kumar",
-      course: "Python Full Stack",
-      company: "Infosys",
-      ctc: "7.5 LPA",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
-    }
-  ]);
+  const [placementsData, setPlacements] = useFirebaseData('codewizen_placements', defaultPlacements);
   const placements = placementsData || [];
 
   const [isModalOpen, setIsModalOpen] = useState(false);

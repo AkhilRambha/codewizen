@@ -7,10 +7,12 @@ import useFirebaseData from '../../hooks/useFirebaseData';
 import '../Placements/PlacedStudents.css';
 import '../Reviews/Reviews.css';
 
+import { defaultReviews, defaultPlacements } from '../../data/defaultData';
+
 const SuccessStories = () => {
   // Sync with Admin Panel
-  const [students] = useFirebaseData('codewizen_placements', []);
-  const [reviews] = useFirebaseData('codewizen_reviews', []);
+  const [students] = useFirebaseData('codewizen_placements', defaultPlacements);
+  const [reviews] = useFirebaseData('codewizen_reviews', defaultReviews);
 
   return (
     <>
@@ -29,7 +31,7 @@ const SuccessStories = () => {
           <div className="ps-container">
             <div className="section-header center-header" data-aos="fade-up" style={{ marginBottom: '50px', textAlign: 'center' }}>
               <span className="section-eyebrow" style={{ display: 'inline-block', padding: '5px 15px', background: 'rgba(234, 88, 12, 0.1)', color: '#ea580c', borderRadius: '20px', fontSize: '13px', fontWeight: 'bold', marginBottom: '15px' }}>ALUMNI</span>
-              <h2 style={{ fontSize: '36px', color: '#112255', marginBottom: '15px' }}>Our Recent Achievers</h2>
+              <h2 className="success-stories-alumni-h2" style={{ fontSize: '36px', color: '#112255', marginBottom: '15px' }}>Our Recent Achievers</h2>
               <p style={{ color: '#64748b', fontSize: '18px', maxWidth: '600px', margin: '0 auto' }}>Meet the brilliant minds who transitioned into top IT companies globally with Codewizen.</p>
             </div>
 

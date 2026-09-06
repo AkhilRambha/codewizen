@@ -3,15 +3,10 @@ import "./Testimonials.css";
 import useFirebaseData from '../../../hooks/useFirebaseData';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
+import { defaultReviews } from '../../../data/defaultData';
+
 function Testimonials() {
-  const [reviews] = useFirebaseData('codewizen_reviews', [
-    { id: 1, name: "Karthik Reddy", course: "Java Full Stack", text: "The training here is exceptional. The practical approach helped me crack my interviews easily.", rating: 5, avatar: "https://ui-avatars.com/api/?name=Karthik+Reddy&background=random" },
-    { id: 2, name: "Sneha Goud", course: "Data Science & ML", text: "Got placed in a top MNC thanks to the intense curriculum and great mentors at Codewizen.", rating: 5, avatar: "https://ui-avatars.com/api/?name=Sneha+Goud&background=random" },
-    { id: 3, name: "Praveen Kumar", course: "React JS & Frontend", text: "Best place to learn React. The real-world projects we built were exactly what recruiters look for.", rating: 5, avatar: "https://ui-avatars.com/api/?name=Praveen+Kumar&background=random" },
-    { id: 4, name: "Anjali Rao", course: "Python Full Stack", text: "From zero coding knowledge to a full stack developer. The support team is simply amazing.", rating: 4, avatar: "https://ui-avatars.com/api/?name=Anjali+Rao&background=random" },
-    { id: 5, name: "Sai Teja", course: "DevOps & Cloud", text: "The AWS deployment sessions were incredibly detailed. I cleared my AWS certification in the first attempt.", rating: 5, avatar: "https://ui-avatars.com/api/?name=Sai+Teja&background=random" },
-    { id: 6, name: "Divya Naidu", course: "Data Analytics", text: "Highly recommend their Data Analytics course. The SQL and Tableau modules are industry standard.", rating: 5, avatar: "https://ui-avatars.com/api/?name=Divya+Naidu&background=random" }
-  ]);
+  const [reviews] = useFirebaseData('codewizen_reviews', defaultReviews);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(3);
@@ -76,7 +71,7 @@ function Testimonials() {
         
         <div className="section-header center-header" data-aos="fade-up">
           <span className="section-eyebrow">STUDENT REVIEWS</span>
-          <h2>Don't just take our word for it</h2>
+          <h2 style={{ color: '#112255' }}>Don't just take our word for it</h2>
           <p className="section-subtitle">Hear what our successful alumni have to say about their journey.</p>
         </div>
 

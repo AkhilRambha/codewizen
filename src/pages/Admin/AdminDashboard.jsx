@@ -2,10 +2,12 @@ import React from 'react';
 import useFirebaseData from '../../hooks/useFirebaseData';
 import './Admin.css';
 
+import { defaultReviews } from '../../data/defaultData';
+
 const AdminDashboard = () => {
   const [leads] = useFirebaseData('codewizen_leads', []);
   const [courses] = useFirebaseData('codewizen_courses', []);
-  const [reviews] = useFirebaseData('codewizen_reviews', []);
+  const [reviews] = useFirebaseData('codewizen_reviews', defaultReviews);
 
   return (
     <div className="admin-page">
