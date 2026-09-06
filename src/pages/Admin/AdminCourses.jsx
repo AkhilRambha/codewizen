@@ -148,8 +148,11 @@ const AdminCourses = () => {
                 <option value="/java-full-stack">/java-full-stack</option>
                 <option value="/python-full-stack">/python-full-stack</option>
                 <option value="/data-analytics">/data-analytics</option>
-                <option value="/generative-ai">/generative-ai</option>
                 <option value="/software-testing">/software-testing</option>
+                <option value="/data-science">/data-science</option>
+                <option value="/generative-ai">/generative-ai</option>
+                <option value="/course-enquiry?course=React JS">/course-enquiry?course=React JS</option>
+                <option value="/course-enquiry?course=DevOps">/course-enquiry?course=DevOps</option>
                 <option value="/courses">/courses (General Course Page)</option>
               </select>
               
