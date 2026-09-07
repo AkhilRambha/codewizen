@@ -5,7 +5,6 @@ import useFirebaseData from '../../hooks/useFirebaseData';
 import './ContactUs.css';
 
 const ContactUs = () => {
-  const [courses] = useFirebaseData('codewizen_courses', []);
   const [contactInfo] = useFirebaseData('codewizen_contact_info', {
     email: 'info@codewizen.com',
     phone: '+91 7993819211',

@@ -23,6 +23,11 @@ import DataAnalytics from "./pages/Courses/DataAnalytics";
 import SoftwareTesting from "./pages/Courses/SoftwareTesting";
 import DataScience from "./pages/Courses/DataScience";
 import GenerativeAI from "./pages/Courses/GenerativeAI";
+import ReactJS from "./pages/Courses/ReactJS";
+import CloudComputing from "./pages/Courses/CloudComputing";
+import DevOpsAutomation from "./pages/Courses/DevOpsAutomation";
+import CyberSecurity from "./pages/Courses/CyberSecurity";
+import UIUXDesign from "./pages/Courses/UIUXDesign";
 
 import TrainingOverview from "./pages/Training/TrainingOverview";
 import ClassroomTraining from "./pages/Training/ClassroomTraining";
@@ -38,7 +43,6 @@ import CourseRegistration from "./pages/Enrollment/CourseRegistration";
 import CourseEnquiry from "./pages/Enrollment/CourseEnquiry";
 
 import PlacementAssistance from "./pages/Placements/PlacementAssistance";
-import PlacedStudents from "./pages/Placements/PlacedStudents";
 import HiringPartners from "./pages/Placements/HiringPartners";
 import CareerSupport from "./pages/Placements/CareerSupport";
 import SuccessStories from "./pages/SuccessStories/SuccessStories";
@@ -120,6 +124,11 @@ function App() {
           <Route path="/software-testing" element={<SoftwareTesting />} />
           <Route path="/data-science" element={<DataScience />} />
           <Route path="/generative-ai" element={<GenerativeAI />} />
+          <Route path="/react-js" element={<ReactJS />} />
+          <Route path="/cloud-computing" element={<CloudComputing />} />
+          <Route path="/devops-automation" element={<DevOpsAutomation />} />
+          <Route path="/cyber-security" element={<CyberSecurity />} />
+          <Route path="/ui-ux-design" element={<UIUXDesign />} />
 
           <Route path="/training" element={<TrainingOverview />} />
           <Route path="/classroom-training" element={<ClassroomTraining />} />

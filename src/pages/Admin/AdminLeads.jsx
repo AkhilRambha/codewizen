@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaTrash, FaCheck, FaTimes, FaPhone, FaEnvelope, FaDownload } from 'react-icons/fa';
+import { FaTrash, FaCheck, FaTimes, FaPhone, FaDownload } from 'react-icons/fa';
 import useFirebaseData from '../../hooks/useFirebaseData';
 import { downloadCSV } from '../../utils/exportCsv';
 import './Admin.css';
@@ -27,36 +27,6 @@ const AdminLeads = () => {
     if (window.confirm("Are you sure you want to delete this lead?")) {
       setLeads(leads.filter(lead => lead.id !== id));
     }
-  };
-
-  const exportToCSV = () => {
-    if (leads.length === 0) {
-      alert("No leads to export!");
-      return;
-    }
-    
-    // Create CSV header
-    const headers = ["ID,Name,Phone,Interested Course,Date,Status\n"];
-    
-    // Create CSV rows
-    const rows = leads.map(lead => {
-      // Escape commas in fields just in case
-      const name = `"${lead.name || ''}"`;
-      const course = `"${lead.course || ''}"`;
-      return `${lead.id},${name},${lead.phone},${course},${lead.date},${lead.status}`;
-    });
-    
-    const csvContent = headers.concat(rows).join("\n");
-    
-    // Create a Blob and trigger download
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.setAttribute("href", url);
-    link.setAttribute("download", `codewizen_leads_${new Date().toISOString().split('T')[0]}.csv`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
 
   return (

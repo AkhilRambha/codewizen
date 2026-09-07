@@ -1,5 +1,4 @@
 import React from 'react';
-import PageHero from '../../components/common/PageHero/PageHero';
 import { Link } from 'react-router-dom';
 import useFirebaseData from '../../hooks/useFirebaseData';
 import { FaCalendarAlt, FaRegClock, FaHourglassHalf } from 'react-icons/fa';

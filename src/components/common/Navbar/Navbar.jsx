@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaBars, FaTimes, FaUserCircle } from "react-icons/fa";
 import useFirebaseData from '../../../hooks/useFirebaseData';
 import { auth } from '../../../firebase';
@@ -9,7 +9,6 @@ function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
-  const location = useLocation();
 
   useEffect(() => {
     return auth.onAuthStateChanged(user => setCurrentUser(user));
@@ -83,14 +82,17 @@ function Navbar() {
                     </span>
                   </span>
                   <div className={`dropdown-menu ${activeDropdown === 'courses' ? 'mobile-open' : ''}`}>
+                    <Link to="/react-js" onClick={closeMenu}>Full-Stack (React/MERN)</Link>
                     <Link to="/java-full-stack" onClick={closeMenu}>Java Full Stack</Link>
                     <Link to="/python-full-stack" onClick={closeMenu}>Python Full Stack</Link>
-                    <Link to="/data-analytics" onClick={closeMenu}>Data Analytics</Link>
-                    <Link to="/software-testing" onClick={closeMenu}>Software Testing</Link>
-                    <Link to="/data-science" onClick={closeMenu}>Data Science & ML</Link>
                     <Link to="/generative-ai" onClick={closeMenu}>Generative AI</Link>
-                    <Link to="/course-enquiry?course=React JS" onClick={closeMenu}>React JS & Frontend</Link>
-                    <Link to="/course-enquiry?course=DevOps" onClick={closeMenu}>DevOps & Cloud</Link>
+                    <Link to="/data-science" onClick={closeMenu}>Data Science & ML</Link>
+                    <Link to="/data-analytics" onClick={closeMenu}>Data Analytics</Link>
+                    <Link to="/cloud-computing" onClick={closeMenu}>Cloud Computing</Link>
+                    <Link to="/devops-automation" onClick={closeMenu}>DevOps & Automation</Link>
+                    <Link to="/cyber-security" onClick={closeMenu}>Cybersecurity & Hacking</Link>
+                    <Link to="/software-testing" onClick={closeMenu}>Software Testing</Link>
+                    <Link to="/ui-ux-design" onClick={closeMenu}>UI/UX Design</Link>
                   </div>
                 </div>
 
@@ -148,14 +150,17 @@ function Navbar() {
                     </span>
                   </span>
                   <div className={`dropdown-menu ${activeDropdown === 'courses' ? 'mobile-open' : ''}`}>
+                    <Link to="/react-js" onClick={closeMenu}>Full-Stack (React/MERN)</Link>
                     <Link to="/java-full-stack" onClick={closeMenu}>Java Full Stack</Link>
                     <Link to="/python-full-stack" onClick={closeMenu}>Python Full Stack</Link>
-                    <Link to="/data-analytics" onClick={closeMenu}>Data Analytics</Link>
-                    <Link to="/software-testing" onClick={closeMenu}>Software Testing</Link>
-                    <Link to="/data-science" onClick={closeMenu}>Data Science & ML</Link>
                     <Link to="/generative-ai" onClick={closeMenu}>Generative AI</Link>
-                    <Link to="/course-enquiry?course=React JS" onClick={closeMenu}>React JS & Frontend</Link>
-                    <Link to="/course-enquiry?course=DevOps" onClick={closeMenu}>DevOps & Cloud</Link>
+                    <Link to="/data-science" onClick={closeMenu}>Data Science & ML</Link>
+                    <Link to="/data-analytics" onClick={closeMenu}>Data Analytics</Link>
+                    <Link to="/cloud-computing" onClick={closeMenu}>Cloud Computing</Link>
+                    <Link to="/devops-automation" onClick={closeMenu}>DevOps & Automation</Link>
+                    <Link to="/cyber-security" onClick={closeMenu}>Cybersecurity & Hacking</Link>
+                    <Link to="/software-testing" onClick={closeMenu}>Software Testing</Link>
+                    <Link to="/ui-ux-design" onClick={closeMenu}>UI/UX Design</Link>
                   </div>
                 </div>
 

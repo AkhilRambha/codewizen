@@ -21,27 +21,9 @@ const StudentAuth = () => {
   const [error, setError] = useState('');
   
   const navigate = useNavigate();
-  const location = useLocation();
   const from = '/profile'; // Always go to learning page after login
 
-  // Check if already authenticated and verified on this device
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
-      if (user) {
-        const isDeviceVerified = localStorage.getItem(`codewizen_device_verified_${user.email}`);
-        if (isDeviceVerified === 'true') {
-          navigate(from, { replace: true });
-        } else {
-          // Logged in via Firebase but not verified via OTP on this device
-          setAuthStep('otp');
-          if (!generatedOtp) {
-            sendOtp(user.email, user.displayName || 'Student');
-          }
-        }
-      }
-    });
-    return unsubscribe;
-  }, [navigate, from, generatedOtp]);
+
 
   const sendOtp = async (userEmail, userName) => {
     setLoading(true);
@@ -79,6 +61,25 @@ const StudentAuth = () => {
       setLoading(false);
     }
   };
+
+  // Check if already authenticated and verified on this device
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        const isDeviceVerified = localStorage.getItem(`codewizen_device_verified_${user.email}`);
+        if (isDeviceVerified === 'true') {
+          navigate(from, { replace: true });
+        } else {
+          // Logged in via Firebase but not verified via OTP on this device
+          setAuthStep('otp');
+          if (!generatedOtp) {
+            sendOtp(user.email, user.displayName || 'Student');
+          }
+        }
+      }
+    });
+    return unsubscribe;
+  }, [navigate, from, generatedOtp]);
 
   const handleCredentialsSubmit = async (e) => {
     e.preventDefault();

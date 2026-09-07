@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useFirebaseData from '../../hooks/useFirebaseData';
 import { downloadCSV } from '../../utils/exportCsv';
-import { FaTrash, FaCheck, FaTimes, FaPlus, FaUpload, FaDownload } from 'react-icons/fa';
+import { FaPlus, FaDownload } from 'react-icons/fa';
 import './Admin.css';
 import { defaultPlacements } from '../../data/defaultData';
 

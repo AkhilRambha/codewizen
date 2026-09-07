@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useFirebaseData from '../../hooks/useFirebaseData';
-import { FaLock, FaKey, FaEnvelope, FaPhone, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaLock, FaEnvelope, FaPhone } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import './Admin.css';
 
@@ -11,7 +11,6 @@ const EMAILJS_TEMPLATE_ID = 'template_k7654a4';
 const EMAILJS_PUBLIC_KEY = 'JKItTqpdsWz7qIWWx';
 
 const AdminSettings = () => {
-  const [adminPassword, setAdminPassword] = useFirebaseData('codewizen_admin_password', 'admin@codewizen');
   const [adminEmail, setAdminEmail] = useFirebaseData('codewizen_admin_email', 'codewizen@gmail.com');
   const [contactInfo, setContactInfo] = useFirebaseData('codewizen_contact_info', {
     email: 'info@codewizen.com',

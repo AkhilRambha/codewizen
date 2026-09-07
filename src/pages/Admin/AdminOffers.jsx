@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useFirebaseData from '../../hooks/useFirebaseData';
 import { downloadCSV } from '../../utils/exportCsv';
-import { FaPlus, FaTrash, FaEdit, FaImage, FaTag, FaDownload } from 'react-icons/fa';
+import { FaPlus, FaTrash, FaEdit, FaDownload } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import './Admin.css';
 

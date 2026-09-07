@@ -1,56 +1,67 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Courses.css";
 
 const courseCategories = [
   {
     name: "Full-Stack Web Development (React/MERN)",
     description: "React JS, Node.js, Express, MongoDB, and Angular.",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+    link: "/react-js"
   },
   {
     name: "Java Programming & Full Stack",
     description: "Core Java, Spring Boot, Hibernate, Microservices, and Web Dev.",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+    link: "/java-full-stack"
   },
   {
     name: "Python Programming & AI",
     description: "Core Python, Django, Flask, Automation, and Machine Learning.",
-    image: "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=800&q=80",
+    link: "/python-full-stack"
   },
   {
     name: "Artificial Intelligence & Machine Learning",
     description: "Deep Learning, NLP, and Computer Vision.",
-    image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=800&q=80",
+    link: "/generative-ai"
   },
   {
     name: "Data Science & Big Data Analytics",
     description: "Python, R, Hadoop, Spark, and Tableau.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    link: "/data-science"
   },
   {
     name: "Cloud Computing (AWS / Azure)",
     description: "Cloud architecture, deployment, and security.",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+    link: "/cloud-computing"
   },
   {
     name: "DevOps & Automation",
     description: "Docker, Kubernetes, Jenkins, and CI/CD pipelines.",
-    image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=800&q=80",
+    link: "/devops-automation"
   },
   {
     name: "Cybersecurity & Ethical Hacking",
     description: "Network security, penetration testing, and cryptography.",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80",
+    link: "/cyber-security"
   },
   {
     name: "Software Testing & Automation",
     description: "Selenium, Appium, JUnit, and TestNG.",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+    link: "/software-testing"
   },
   {
     name: "UI/UX Design",
     description: "Figma, Adobe XD, user research, and wireframing.",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80",
+    link: "/ui-ux-design"
   }
 ];
 
@@ -78,7 +89,7 @@ function Courses() {
               <div className="course-content">
                 <h3>{course.name}</h3>
                 <p>{course.description}</p>
-                <a href={`#course-${index}`} className="course-btn">Explore Course</a>
+                <Link to={course.link} className="course-btn">Explore Course</Link>
               </div>
             </div>
           ))}

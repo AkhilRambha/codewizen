@@ -16,16 +16,15 @@ const Offers = () => {
   }, []);
 
   const [offersData, , isReady] = useFirebaseData('codewizen_store_offers', []);
-  const offers = Array.isArray(offersData) ? offersData : (offersData ? Object.values(offersData) : []);
+  const offers = React.useMemo(() => Array.isArray(offersData) ? offersData : (offersData ? Object.values(offersData) : []), [offersData]);
 
   const [ordersData, setOrders] = useFirebaseData('codewizen_store_orders', []);
-  const orders = Array.isArray(ordersData) ? ordersData : (ordersData ? Object.values(ordersData) : []);
+  const orders = React.useMemo(() => Array.isArray(ordersData) ? ordersData : (ordersData ? Object.values(ordersData) : []), [ordersData]);
 
   const [contactInfo] = useFirebaseData('codewizen_contact_info', {});
 
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [paymentStep, setPaymentStep] = useState(false);
-  const [verifyingPayment, setVerifyingPayment] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
   const [currentOrderId, setCurrentOrderId] = useState(null);
@@ -43,12 +42,14 @@ const Offers = () => {
     localStorage.setItem('codewizen_pending_courses', JSON.stringify(updated));
   };
 
-  const clearPendingCourse = (offerId) => {
-    const updated = { ...pendingCourses };
-    delete updated[offerId];
-    setPendingCourses(updated);
-    localStorage.setItem('codewizen_pending_courses', JSON.stringify(updated));
-  };
+  const clearPendingCourse = React.useCallback((offerId) => {
+    setPendingCourses(prev => {
+      const updated = { ...prev };
+      delete updated[offerId];
+      localStorage.setItem('codewizen_pending_courses', JSON.stringify(updated));
+      return updated;
+    });
+  }, []);
 
   // Only show active offers
   const activeOffers = offers.filter(o => o.active);
@@ -115,7 +116,7 @@ const Offers = () => {
         }, 3000);
       }
     }
-  }, [orders, paymentStep, currentOrderId, selectedOffer]);
+  }, [orders, paymentStep, currentOrderId, selectedOffer, clearPendingCourse]);
 
   const calculateDiscount = (original, discount) => {
     return Math.round(((original - discount) / original) * 100);

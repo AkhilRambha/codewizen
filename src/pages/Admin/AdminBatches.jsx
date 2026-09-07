@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useFirebaseData from '../../hooks/useFirebaseData';
 import { downloadCSV } from '../../utils/exportCsv';
-import { FaTrash, FaCheck, FaTimes, FaPlus, FaDownload } from 'react-icons/fa';
+import { FaPlus, FaDownload } from 'react-icons/fa';
 import './Admin.css';
 
 const AdminBatches = () => {
@@ -11,7 +11,6 @@ const AdminBatches = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ course: '', date: '', duration: '', status: 'Upcoming' });
   const [startTime, setStartTime] = useState('');
-  const [filter, setFilter] = useState('All');
 
   const handleExport = () => {
     downloadCSV(batches, `codewizen_batches_${new Date().toISOString().split('T')[0]}.csv`);

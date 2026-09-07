@@ -10,10 +10,10 @@ const BundleDashboard = () => {
   const navigate = useNavigate();
 
   const [offersData, , isOffersReady] = useFirebaseData('codewizen_store_offers', []);
-  const offers = Array.isArray(offersData) ? offersData : (offersData ? Object.values(offersData) : []);
+  const offers = React.useMemo(() => Array.isArray(offersData) ? offersData : (offersData ? Object.values(offersData) : []), [offersData]);
 
   const [ordersData, , isOrdersReady] = useFirebaseData('codewizen_store_orders', []);
-  const orders = Array.isArray(ordersData) ? ordersData : (ordersData ? Object.values(ordersData) : []);
+  const orders = React.useMemo(() => Array.isArray(ordersData) ? ordersData : (ordersData ? Object.values(ordersData) : []), [ordersData]);
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [activeVideo, setActiveVideo] = useState(1);
