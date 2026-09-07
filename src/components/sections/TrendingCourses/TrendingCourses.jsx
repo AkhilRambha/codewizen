@@ -48,13 +48,13 @@ function TrendingCourses() {
   return (
     <section className="trending-slider-section" id="trending">
       <div className="trending-slider-container">
-        
+
         <div className="slider-header-wrapper" data-aos="fade-up">
           <div className="section-header">
             <span className="section-eyebrow">TRENDING COURSES</span>
             <h2>Learn the skills that matter</h2>
           </div>
-          
+
           <div className="slider-controls">
             <button className="slider-arrow" onClick={slideLeft} aria-label="Previous Course">←</button>
             <button className="slider-arrow" onClick={slideRight} aria-label="Next Course">→</button>
@@ -77,9 +77,9 @@ function TrendingCourses() {
           ))}
         </div>
 
-        <div className="trending-cta" data-aos="fade-up">
+        {/* <div className="trending-cta" data-aos="fade-up">
           <Link to="/courses" className="btn-outline">View All Courses</Link>
-        </div>
+        </div> */}
 
       </div>
     </section>

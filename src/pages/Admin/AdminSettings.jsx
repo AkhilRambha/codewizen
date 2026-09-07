@@ -14,8 +14,8 @@ const AdminSettings = () => {
   const [adminEmail, setAdminEmail] = useFirebaseData('codewizen_admin_email', 'codewizen@gmail.com');
   const [contactInfo, setContactInfo] = useFirebaseData('codewizen_contact_info', {
     email: 'info@codewizen.com',
-    phone: '+91 7993819211',
-    whatsapp: '+91 7993819211',
+    phone: '+91 9676400893',
+    whatsapp: '+91 9676400893',
     address: '3rd floor, Besides JC Brothers, beside KPHB metro station, Kukatpally Housing Board Colony, Bhagya Nagar Colony, Hyderabad',
     upiId: 'yourname@upi'
   });

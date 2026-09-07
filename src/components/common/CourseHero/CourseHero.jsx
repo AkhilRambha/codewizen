@@ -12,7 +12,7 @@ const CourseHero = ({ title, subtitleList, description, breadcrumbs }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const waNumber = "917993819211";
+    const waNumber = "919676400893";
     const text = `Hello Codewizen!\nI want to start my journey.\n\n*Course:* ${title}\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone}\n*Message:* ${formData.message}`;
     const uri = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
     window.open(uri, '_blank');
@@ -57,7 +57,7 @@ const CourseHero = ({ title, subtitleList, description, breadcrumbs }) => {
 
           <p className="course-hero-desc">{description}</p>
           
-          <button className="course-hero-expert-btn" onClick={() => window.location.href='tel:+917993819211'}>
+          <button className="course-hero-expert-btn" onClick={() => window.location.href='tel:+919676400893'}>
             Talk To Expert <FaArrowRight />
           </button>
         </div>

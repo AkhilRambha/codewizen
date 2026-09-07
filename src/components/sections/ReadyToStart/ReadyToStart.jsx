@@ -13,7 +13,7 @@ const ReadyToStart = () => {
             <button className="ready-btn-primary" onClick={() => window.location.href='/contact-us'}>
               Enroll Now <FaArrowRight />
             </button>
-            <button className="ready-btn-secondary" onClick={() => window.location.href='tel:+917993819211'}>
+            <button className="ready-btn-secondary" onClick={() => window.location.href='tel:+919676400893'}>
               Talk To Expert
             </button>
           </div>

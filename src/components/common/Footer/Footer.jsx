@@ -43,8 +43,8 @@ const popularCourses = [
 function Footer() {
   const [contactInfo] = useFirebaseData('codewizen_contact_info', {
     email: 'info@codewizen.com',
-    phone: '+91 7993819211',
-    whatsapp: '+91 7993819211',
+    phone: '+91 9676400893',
+    whatsapp: '+91 9676400893',
     address: '123 Tech Park, Madhapur, Hyderabad - 500081'
   });
 
