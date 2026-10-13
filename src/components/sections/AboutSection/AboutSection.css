@@ -45,12 +45,12 @@
   z-index: 2;
 }
 
-.center-header {
+.about-section .center-header {
   text-align: center;
   margin-bottom: 60px;
 }
 
-.center-header .section-eyebrow {
+.about-section .center-header .section-eyebrow {
   display: inline-block;
   font-size: 13px;
   font-weight: 700;
@@ -64,9 +64,9 @@
   border: 1px solid rgba(232, 117, 0, 0.2);
 }
 
-.center-header h2 {
+.about-section .center-header h2 {
   font-size: clamp(32px, 4vw, 46px);
-  color: #ffffff !important; /* Requested by user, using !important to override leaks from other components */
+  color: #ffffff !important;
   font-weight: 800;
   margin-bottom: 16px;
   line-height: 1.2;

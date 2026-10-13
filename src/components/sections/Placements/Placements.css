@@ -12,6 +12,37 @@
   z-index: 2;
 }
 
+.placements-section .section-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.placements-section .section-header .section-eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ea580c;
+  margin-bottom: 12px;
+}
+
+.placements-section .section-header h2 {
+  font-size: clamp(30px, 3.8vw, 42px);
+  color: #112255 !important;
+  font-weight: 800;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.placements-section .section-subtitle {
+  font-size: 16px;
+  color: #64748b;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
 /* MARQUEE SETUP */
 .placements-marquee-container {
   margin-top: 50px;

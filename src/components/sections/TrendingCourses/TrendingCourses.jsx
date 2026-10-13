@@ -7,27 +7,43 @@ function TrendingCourses() {
   const [courses] = useFirebaseData('codewizen_courses', [
     {
       id: 1,
-      name: "Generative AI",
-      category: "Artificial Intelligence",
-      description: "Master LLMs, prompt engineering, and building AI applications with modern frameworks.",
-      image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=800&q=80",
-      link: "/courses"
+      name: "Java Full Stack Development",
+      category: "Enterprise Web",
+      description: "Build scalable microservices and web applications with Java, Spring Boot, React, and AWS Cloud.",
+      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+      link: "/java-full-stack"
     },
     {
       id: 2,
-      name: "Data Science",
-      category: "Data & Analytics",
-      description: "Learn Python, statistics, and machine learning to become a professional Data Scientist.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-      link: "/data-analytics"
+      name: "Python Full Stack Development",
+      category: "Full Stack & Cloud",
+      description: "Master Python, Django, FastAPI, React JS, PostgreSQL, and scalable Docker deployments.",
+      image: "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=800&q=80",
+      link: "/python-full-stack"
     },
     {
       id: 3,
-      name: "Java Full Stack",
-      category: "Web Development",
-      description: "Build scalable enterprise web applications using core Java, Spring Boot, and React.",
-      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
-      link: "/java-full-stack"
+      name: "Generative AI & LLMs",
+      category: "Artificial Intelligence",
+      description: "Master LLMs, LangChain, vector databases (Pinecone), RAG systems, and AI agent frameworks.",
+      image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=800&q=80",
+      link: "/generative-ai"
+    },
+    {
+      id: 4,
+      name: "Data Science & Machine Learning",
+      category: "Data & ML",
+      description: "Learn Python, statistical modeling, machine learning, Pandas, and production model deployment.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+      link: "/data-science"
+    },
+    {
+      id: 5,
+      name: "Custom Course (Tailored Track)",
+      category: "Personalized Roadmap",
+      description: "Design your custom tech stack and project architecture with 1-on-1 expert mentor guidance.",
+      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
+      link: "/contact-us"
     }
   ]);
 
@@ -51,8 +67,8 @@ function TrendingCourses() {
 
         <div className="slider-header-wrapper" data-aos="fade-up">
           <div className="section-header">
-            <span className="section-eyebrow">TRENDING COURSES</span>
-            <h2>Learn the skills that matter</h2>
+            <span className="section-eyebrow">PROJECT-DRIVEN COURSES</span>
+            <h2>Master Technologies with Real-Time Projects</h2>
           </div>
 
           <div className="slider-controls">

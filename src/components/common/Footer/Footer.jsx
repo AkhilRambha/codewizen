@@ -19,9 +19,9 @@ import useFirebaseData from '../../../hooks/useFirebaseData';
 const quickLinks = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/about-us" },
-  { name: "All Courses", path: "/courses" },
+  { name: "All Courses", path: "/#courses" },
   { name: "Upcoming Batches", path: "/upcoming-batches" },
-  { name: "Placements", path: "/placement-assistance" },
+  { name: "Real-Time Projects", path: "/project-training" },
   { name: "Registration", path: "/course-registration" },
   { name: "Workshops", path: "/workshop/spring-security" },
   { name: "Contact Us", path: "/contact-us" },
@@ -31,12 +31,9 @@ const quickLinks = [
 const popularCourses = [
   { name: "Java Full Stack", path: "/java-full-stack" },
   { name: "Python Full Stack", path: "/python-full-stack" },
-  { name: "Data Analytics", path: "/data-analytics" },
-  { name: "Software Testing", path: "/software-testing" },
+  { name: "Generative AI & LLMs", path: "/generative-ai" },
   { name: "Data Science & ML", path: "/data-science" },
-  { name: "Generative AI", path: "/generative-ai" },
-  { name: "React JS & Frontend", path: "/course-enquiry?course=React JS" },
-  { name: "DevOps & Cloud", path: "/course-enquiry?course=DevOps" },
+  { name: "Custom Course (Tailored Track)", path: "/contact-us" },
 ];
 
 
@@ -65,9 +62,6 @@ function Footer() {
 
         <div className="footer-bg footer-bg-three"></div>
 
-        {/* Huge Stamp Watermark */}
-        <div className="footer-stamp">CODEWIZEN</div>
-
         <div className="footer-container">
 
 
@@ -78,7 +72,7 @@ function Footer() {
           <div className="footer-top">
 
 
-            {/* ABOUT */}
+            {/* ABOUT / BRAND */}
 
             <motion.div
               className="footer-column footer-about"
@@ -101,34 +95,45 @@ function Footer() {
                 once: true,
               }}
             >
-              {/* Fixed Circular Stamp Replacing Logo */}
-              <div className="footer-circular-stamp">
-                <svg viewBox="0 0 100 100" width="100%" height="100%">
-                  <defs>
-                    <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
-                  </defs>
-                  <text>
-                    <textPath href="#circlePath" startOffset="0%">
-                      ★ CODEWIZEN ★ ISO CERTIFIED
-                    </textPath>
-                  </text>
-                </svg>
-                <div className="stamp-center-icon">100%</div>
-              </div>
+              {/* Brand Logo */}
+              <Link to="/" className="footer-brand" style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', marginBottom: '18px', textDecoration: 'none' }}>
+                <img 
+                  src="/images/logo.png" 
+                  alt="Codewizen Logo" 
+                  style={{ maxHeight: '42px', width: 'auto', filter: 'brightness(1.1) drop-shadow(0 4px 12px rgba(234, 88, 12, 0.3))' }} 
+                />
+                <div style={{ fontSize: '24px', fontWeight: '800', color: '#ffffff', letterSpacing: '0.5px' }}>
+                  CODE<span style={{ color: '#ea580c' }}>WIZEN</span>
+                </div>
+              </Link>
 
 
-              <p>
-                Helping students become software professionals
-                through industry-oriented training, live projects
-                and placement assistance.
+              <p style={{ fontSize: '14px', lineHeight: '1.7', color: '#cbd5e1', marginBottom: '18px' }}>
+                Stop memorizing syntax — start engineering real systems. We bridge the gap between textbook coding and production environments through 100% interactive live training and real-time enterprise stacks.
               </p>
 
+              {/* Inspiring Badge */}
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '10px',
+                padding: '10px 14px',
+                background: 'linear-gradient(135deg, rgba(234, 88, 12, 0.15) 0%, rgba(30, 58, 138, 0.25) 100%)',
+                border: '1px solid rgba(234, 88, 12, 0.35)',
+                borderRadius: '10px',
+                marginBottom: '20px'
+              }}>
+                <span style={{ fontSize: '16px' }}>🚀</span>
+                <span style={{ fontSize: '12.5px', fontWeight: '600', color: '#fed7aa', letterSpacing: '0.3px', lineHeight: '1.4' }}>
+                  "Your code is your resume. Build things that make an impact."
+                </span>
+              </div>
 
               <ul className="footer-highlights">
-                <span>✓ 300+ Hiring Companies</span>
-                <span>✓ 18K+ Students Trained</span>
-                <span>✓ 92% Placement Assistance</span>
-                <span>✓ 10+ Years Experience</span>
+                <span>⚡ 100% Real-Time Projects & Architectures</span>
+                <span>⚡ 100% Real-Time Industry Exposure</span>
+                <span>⚡ Live Interactive Mentor Sprints</span>
+                <span>⚡ Production Cloud Lab Deployments</span>
               </ul>
 
             </motion.div>

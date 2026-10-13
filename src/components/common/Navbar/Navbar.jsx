@@ -82,17 +82,11 @@ function Navbar() {
                     </span>
                   </span>
                   <div className={`dropdown-menu ${activeDropdown === 'courses' ? 'mobile-open' : ''}`}>
-                    <Link to="/react-js" onClick={closeMenu}>Full-Stack (React/MERN)</Link>
                     <Link to="/java-full-stack" onClick={closeMenu}>Java Full Stack</Link>
                     <Link to="/python-full-stack" onClick={closeMenu}>Python Full Stack</Link>
-                    <Link to="/generative-ai" onClick={closeMenu}>Generative AI</Link>
+                    <Link to="/generative-ai" onClick={closeMenu}>Generative AI & LLMs</Link>
                     <Link to="/data-science" onClick={closeMenu}>Data Science & ML</Link>
-                    <Link to="/data-analytics" onClick={closeMenu}>Data Analytics</Link>
-                    <Link to="/cloud-computing" onClick={closeMenu}>Cloud Computing</Link>
-                    <Link to="/devops-automation" onClick={closeMenu}>DevOps & Automation</Link>
-                    <Link to="/cyber-security" onClick={closeMenu}>Cybersecurity & Hacking</Link>
-                    <Link to="/software-testing" onClick={closeMenu}>Software Testing</Link>
-                    <Link to="/ui-ux-design" onClick={closeMenu}>UI/UX Design</Link>
+                    <Link to="/contact-us" onClick={closeMenu}>Custom Course (Tailored)</Link>
                   </div>
                 </div>
 
@@ -101,17 +95,17 @@ function Navbar() {
                 </NavLink>
 
                 <div className="nav-dropdown">
-                  <Link to="/placement-assistance" className="nav-link" onClick={closeMenu}>
-                    Placements
-                    <span className="dropdown-toggle" onClick={(e) => toggleDropdown(e, 'placements')}>
-                      <svg className={`dropdown-chevron ${activeDropdown === 'placements' ? 'rotate' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  <Link to="/project-training" className="nav-link" onClick={closeMenu}>
+                    Real-Time Projects
+                    <span className="dropdown-toggle" onClick={(e) => toggleDropdown(e, 'projects')}>
+                      <svg className={`dropdown-chevron ${activeDropdown === 'projects' ? 'rotate' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </span>
                   </Link>
-                  <div className={`dropdown-menu ${activeDropdown === 'placements' ? 'mobile-open' : ''}`}>
-                    <Link to="/placement-assistance" onClick={closeMenu}>Placement Assistance</Link>
-                    <Link to="/placed-students" onClick={closeMenu}>Placed Students</Link>
-                    <Link to="/hiring-partners" onClick={closeMenu}>Hiring Partners</Link>
-                    <Link to="/contact-us" onClick={closeMenu}>Career Support</Link>
+                  <div className={`dropdown-menu ${activeDropdown === 'projects' ? 'mobile-open' : ''}`}>
+                    <Link to="/project-training" onClick={closeMenu}>100% Real-Time Projects</Link>
+                    <Link to="/online-training" onClick={closeMenu}>Live Online Training</Link>
+                    <Link to="/upcoming-batches" onClick={closeMenu}>Upcoming Project Batches</Link>
+                    <Link to="/success-stories" onClick={closeMenu}>Learner Portfolios</Link>
                   </div>
                 </div>
 
@@ -135,8 +129,8 @@ function Navbar() {
                     </span>
                   </Link>
                   <div className={`dropdown-menu ${activeDropdown === 'about' ? 'mobile-open' : ''}`}>
-                    <Link to="/about-us" onClick={closeMenu}>About Institute</Link>
-                    <Link to="/our-trainers" onClick={closeMenu}>Our Trainers</Link>
+                    <Link to="/about-us" onClick={closeMenu}>About Codewizen</Link>
+                    <Link to="/our-trainers" onClick={closeMenu}>Our Mentors</Link>
                     <Link to="/why-choose-us" onClick={closeMenu}>Why Choose Us</Link>
                     <Link to="/student-reviews" onClick={closeMenu}>Student Reviews</Link>
                   </div>
@@ -150,17 +144,11 @@ function Navbar() {
                     </span>
                   </span>
                   <div className={`dropdown-menu ${activeDropdown === 'courses' ? 'mobile-open' : ''}`}>
-                    <Link to="/react-js" onClick={closeMenu}>Full-Stack (React/MERN)</Link>
                     <Link to="/java-full-stack" onClick={closeMenu}>Java Full Stack</Link>
                     <Link to="/python-full-stack" onClick={closeMenu}>Python Full Stack</Link>
-                    <Link to="/generative-ai" onClick={closeMenu}>Generative AI</Link>
+                    <Link to="/generative-ai" onClick={closeMenu}>Generative AI & LLMs</Link>
                     <Link to="/data-science" onClick={closeMenu}>Data Science & ML</Link>
-                    <Link to="/data-analytics" onClick={closeMenu}>Data Analytics</Link>
-                    <Link to="/cloud-computing" onClick={closeMenu}>Cloud Computing</Link>
-                    <Link to="/devops-automation" onClick={closeMenu}>DevOps & Automation</Link>
-                    <Link to="/cyber-security" onClick={closeMenu}>Cybersecurity & Hacking</Link>
-                    <Link to="/software-testing" onClick={closeMenu}>Software Testing</Link>
-                    <Link to="/ui-ux-design" onClick={closeMenu}>UI/UX Design</Link>
+                    <Link to="/contact-us" onClick={closeMenu}>Custom Course (Tailored)</Link>
                   </div>
                 </div>
 
@@ -173,17 +161,17 @@ function Navbar() {
                 </NavLink>
 
                 <div className="nav-dropdown">
-                  <Link to="/placement-assistance" className="nav-link" onClick={closeMenu}>
-                    Placements
-                    <span className="dropdown-toggle" onClick={(e) => toggleDropdown(e, 'placements')}>
-                      <svg className={`dropdown-chevron ${activeDropdown === 'placements' ? 'rotate' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  <Link to="/project-training" className="nav-link" onClick={closeMenu}>
+                    Real-Time Projects
+                    <span className="dropdown-toggle" onClick={(e) => toggleDropdown(e, 'projects')}>
+                      <svg className={`dropdown-chevron ${activeDropdown === 'projects' ? 'rotate' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </span>
                   </Link>
-                  <div className={`dropdown-menu ${activeDropdown === 'placements' ? 'mobile-open' : ''}`}>
-                    <Link to="/placement-assistance" onClick={closeMenu}>Placement Assistance</Link>
-                    <Link to="/placed-students" onClick={closeMenu}>Placed Students</Link>
-                    <Link to="/hiring-partners" onClick={closeMenu}>Hiring Partners</Link>
-                    <Link to="/contact-us" onClick={closeMenu}>Career Support</Link>
+                  <div className={`dropdown-menu ${activeDropdown === 'projects' ? 'mobile-open' : ''}`}>
+                    <Link to="/project-training" onClick={closeMenu}>100% Real-Time Projects</Link>
+                    <Link to="/online-training" onClick={closeMenu}>Live Online Training</Link>
+                    <Link to="/upcoming-batches" onClick={closeMenu}>Upcoming Project Batches</Link>
+                    <Link to="/success-stories" onClick={closeMenu}>Learner Portfolios</Link>
                   </div>
                 </div>
 

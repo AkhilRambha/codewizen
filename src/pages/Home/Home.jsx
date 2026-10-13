@@ -25,7 +25,7 @@ function Home() {
       <Courses />
       <PlacementSupport />
       <Placements />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Companies />
     </>
   );

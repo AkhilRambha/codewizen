@@ -32,7 +32,7 @@ const SuccessStories = () => {
             <div className="section-header center-header" data-aos="fade-up" style={{ marginBottom: '50px', textAlign: 'center' }}>
               <span className="section-eyebrow" style={{ display: 'inline-block', padding: '5px 15px', background: 'rgba(234, 88, 12, 0.1)', color: '#ea580c', borderRadius: '20px', fontSize: '13px', fontWeight: 'bold', marginBottom: '15px' }}>ALUMNI</span>
               <h2 className="success-stories-alumni-h2" style={{ fontSize: '36px', color: '#112255', marginBottom: '15px' }}>Our Recent Achievers</h2>
-              <p style={{ color: '#64748b', fontSize: '18px', maxWidth: '600px', margin: '0 auto' }}>Meet the brilliant minds who transitioned into top IT companies globally with Codewizen.</p>
+              <p style={{ color: '#64748b', fontSize: '18px', maxWidth: '600px', margin: '0 auto' }}>Meet our ambitious learners who built real-world enterprise projects and mastered modern tech stacks with Codewizen.</p>
             </div>
 
             {students.length === 0 ? (
@@ -54,26 +54,26 @@ const SuccessStories = () => {
                           loading="lazy" 
                         />
                       </div>
-                      <div className="ps-company-badge">{student.company}</div>
+                      <div className="ps-company-badge">Verified Learner</div>
                     </div>
                     
                     <div className="ps-content">
                       <h3 className="ps-name">{student.name}</h3>
-                      <p className="ps-role">{student.company} Placement</p>
+                      <p className="ps-role">{student.course}</p>
                       
                       <div className="ps-details-list">
                         <div className="ps-detail-item">
-                          <FaMoneyBillWave className="ps-d-icon orange" />
-                          <span>{student.ctc}</span>
+                          <FaGraduationCap className="ps-d-icon orange" />
+                          <span>Real-Time Projects</span>
                         </div>
                         <div className="ps-detail-item">
                           <FaMapMarkerAlt className="ps-d-icon blue" />
-                          <span>India</span>
+                          <span>Live Online Batch</span>
                         </div>
                       </div>
                       
                       <div className="ps-course">
-                        <FaGraduationCap /> {student.course}
+                        🚀 Production Ready
                       </div>
                     </div>
                   </div>

@@ -30,8 +30,8 @@ const OnlineTraining = () => {
               <ul style={{ color: '#475569', paddingLeft: '20px', lineHeight: '1.8' }}>
                 <li>Industry-aligned curriculum</li>
                 <li>Hands-on practical sessions</li>
-                <li>Expert mentorship</li>
-                <li>Dedicated career support</li>
+                <li>Expert senior mentorship</li>
+                <li>100% Real-Time Projects & Live Exposure</li>
               </ul>
             </div>
             

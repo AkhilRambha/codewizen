@@ -408,6 +408,31 @@
   font-weight: 400;
 }
 
+.footer-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-highlights span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.2px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-highlights span:hover {
+  color: #ea580c;
+  transform: translateX(3px);
+}
+
 
 /* =========================================
    LINKS

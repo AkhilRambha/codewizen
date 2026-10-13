@@ -6,7 +6,7 @@ import './Chatbot.css';
 // dynamic courses will be fetched inside the component
 
 const Chatbot = () => {
-  const coursesList = ["Java Full Stack", "Python Full Stack", "Data Analytics", "Software Testing", "Data Science & ML", "Generative AI", "React JS & Frontend", "DevOps & Cloud"];
+  const coursesList = ["Java Full Stack", "Python Full Stack", "Generative AI", "Data Science & ML", "Custom Course"];
 
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState('name'); // 'name', 'course', 'phone', 'done'

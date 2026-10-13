@@ -50,12 +50,12 @@ const AboutUs = () => {
             <p>Successful Alumni</p>
           </div>
           <div className="about-stat" data-aos="fade-up" data-aos-delay="300">
-            <h2>300+</h2>
-            <p>Hiring Partners</p>
+            <h2>100%</h2>
+            <p>Live Online Training</p>
           </div>
           <div className="about-stat" data-aos="fade-up" data-aos-delay="400">
             <h2>100%</h2>
-            <p>Placement Support</p>
+            <p>Real-Time Exposure</p>
           </div>
         </div>
       </section>
@@ -158,8 +158,8 @@ const AboutUs = () => {
             <div className="approach-step" data-aos="fade-up" data-aos-delay="400">
               <span className="step-number">04</span>
               <div className="step-icon"><FaHandshake color="#16a34a" /></div>
-              <h3>Placement</h3>
-              <p>Exclusive hiring drives and direct referrals to our 300+ partner IT companies.</p>
+              <h3>Production Deployment</h3>
+              <p>Containerize your applications with Docker and deploy live on cloud infrastructure.</p>
             </div>
           </div>
         </div>
@@ -172,7 +172,7 @@ const AboutUs = () => {
             <span className="section-eyebrow">Student Success</span>
             <h2>Your Journey with Codewizen</h2>
             <p>
-              We don't abandon you after the syllabus is finished. We stay with you until you get your offer letter. Here is what your journey looks like:
+              We ensure you master the skills and complete real-time enterprise projects with confidence. Here is what your engineering journey looks like:
             </p>
             
             <div className="career-flow">
@@ -187,7 +187,7 @@ const AboutUs = () => {
               <div className="career-flow-row">
                 <div className="career-flow-step">
                   <div className="cf-num">2</div>
-                  <div className="cf-text">Complete 3 Real-time Projects</div>
+                  <div className="cf-text">Complete Real-time Projects</div>
                 </div>
                 <div className="cf-arrow">↓</div>
               </div>
@@ -195,7 +195,7 @@ const AboutUs = () => {
               <div className="career-flow-row">
                 <div className="career-flow-step">
                   <div className="cf-num">3</div>
-                  <div className="cf-text">Pass the Internal Mock Interviews</div>
+                  <div className="cf-text">Senior Peer Code Reviews & Git PRs</div>
                 </div>
                 <div className="cf-arrow">↓</div>
               </div>
@@ -203,7 +203,7 @@ const AboutUs = () => {
               <div className="career-flow-row">
                 <div className="career-flow-step">
                   <div className="cf-num">4</div>
-                  <div className="cf-text">Attend Drive & Get Placed!</div>
+                  <div className="cf-text">Deploy Live & Launch Portfolio!</div>
                 </div>
               </div>
             </div>

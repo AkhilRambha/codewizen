@@ -19,7 +19,7 @@ const Prices = () => {
         "Core & Advanced Java",
         "Spring Boot & Microservices",
         "React JS Frontend",
-        "100% Placement Support"
+        "100% Real-Time Projects & Exposure"
       ]
     },
     "python": {
@@ -28,9 +28,20 @@ const Prices = () => {
       link: "/python-full-stack",
       features: [
         "Core Python & Advanced Logic",
-        "Django & Flask Frameworks",
+        "Django & FastAPI Frameworks",
         "React JS Frontend",
-        "100% Placement Support"
+        "100% Real-Time Projects & Exposure"
+      ]
+    },
+    "gen-ai": {
+      name: "Generative AI & LLMs",
+      basePrice: 34999,
+      link: "/generative-ai",
+      features: [
+        "LLMs & OpenAI / Claude APIs",
+        "Prompt Engineering & Agents",
+        "LangChain & Vector DBs (Pinecone)",
+        "100% Real-Time Projects & Exposure"
       ]
     },
     "data-science": {
@@ -39,64 +50,20 @@ const Prices = () => {
       link: "/data-science",
       features: [
         "Python Data Stack (Pandas, NumPy)",
-        "Machine Learning Algorithms",
-        "Deep Learning Basics",
-        "100% Placement Support"
+        "Machine Learning & Scikit-Learn",
+        "Deep Learning & Model Deployment",
+        "100% Real-Time Projects & Exposure"
       ]
     },
-    "data-analytics": {
-      name: "Data Analytics",
-      basePrice: 19999,
-      link: "/data-analytics",
+    "custom": {
+      name: "Custom Course (Tailored Track)",
+      basePrice: 22999,
+      link: "/contact-us",
       features: [
-        "Advanced Excel & SQL",
-        "Power BI Dashboards",
-        "Tableau Essentials",
-        "100% Placement Support"
-      ]
-    },
-    "testing": {
-      name: "Software Testing",
-      basePrice: 17999,
-      link: "/software-testing",
-      features: [
-        "Manual Testing Methodologies",
-        "Selenium Automation with Java",
-        "API Testing (Postman)",
-        "100% Placement Support"
-      ]
-    },
-    "gen-ai": {
-      name: "Generative AI",
-      basePrice: 34999,
-      link: "/generative-ai",
-      features: [
-        "LLMs & ChatGPT APIs",
-        "Prompt Engineering",
-        "LangChain & Vector DBs",
-        "100% Placement Support"
-      ]
-    },
-    "react-js": {
-      name: "React JS & Frontend",
-      basePrice: 15999,
-      link: "/course-enquiry?course=React JS",
-      features: [
-        "HTML, CSS, JavaScript",
-        "React JS & Redux",
-        "Tailwind CSS",
-        "100% Placement Support"
-      ]
-    },
-    "devops": {
-      name: "DevOps & Cloud",
-      basePrice: 24999,
-      link: "/course-enquiry?course=DevOps",
-      features: [
-        "AWS Cloud Practitioner",
-        "Docker & Kubernetes",
-        "CI/CD with Jenkins",
-        "100% Placement Support"
+        "Personalized Tech Stack & Roadmap",
+        "1-on-1 Mentor Code Reviews",
+        "Custom Enterprise Project Architecture",
+        "100% Real-Time Projects & Exposure"
       ]
     }
   };
@@ -148,12 +115,9 @@ const Prices = () => {
                 >
                   <option value="java">Java Full Stack</option>
                   <option value="python">Python Full Stack</option>
-                  <option value="data-analytics">Data Analytics</option>
-                  <option value="testing">Software Testing</option>
+                  <option value="gen-ai">Generative AI & LLMs</option>
                   <option value="data-science">Data Science & ML</option>
-                  <option value="gen-ai">Generative AI</option>
-                  <option value="react-js">React JS & Frontend</option>
-                  <option value="devops">DevOps & Cloud</option>
+                  <option value="custom">Custom Course (Tailored Track)</option>
                 </select>
                 <FaChevronDown className="select-icon" />
               </div>

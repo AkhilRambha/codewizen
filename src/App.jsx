@@ -144,10 +144,12 @@ function App() {
           <Route path="/course-registration" element={<CourseRegistration />} />
           <Route path="/course-enquiry" element={<CourseEnquiry />} />
 
-          <Route path="/placement-assistance" element={<PlacementAssistance />} />
-          <Route path="/placed-students" element={<Navigate to="/success-stories" replace />} />
-          <Route path="/hiring-partners" element={<HiringPartners />} />
-          <Route path="/career-support" element={<CareerSupport />} />
+          <Route path="/placement-assistance" element={<Navigate to="/project-training" replace />} />
+          <Route path="/placed-students" element={<Navigate to="/project-training" replace />} />
+          <Route path="/hiring-partners" element={<Navigate to="/project-training" replace />} />
+          <Route path="/career-support" element={<Navigate to="/online-training" replace />} />
+          <Route path="/real-time-projects" element={<Navigate to="/project-training" replace />} />
+          <Route path="/real-time-exposure" element={<Navigate to="/project-training" replace />} />
           <Route path="/student-reviews" element={<Navigate to="/success-stories" replace />} />
           <Route path="/success-stories" element={<SuccessStories />} />
 

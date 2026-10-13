@@ -35,8 +35,8 @@ const CourseFeatures = () => {
           </div>
           <div className="cf-card" data-aos="fade-up" data-aos-delay="200">
             <div className="cf-icon"><FaBriefcase /></div>
-            <h3>100% Placement Support</h3>
-            <p>Dedicated placement cell with assistance until you get hired</p>
+            <h3>100% Real-Time Exposure</h3>
+            <p>Agile sprints, Git branching, Pull Requests, and senior code reviews</p>
           </div>
           <div className="cf-card" data-aos="fade-up" data-aos-delay="250">
             <div className="cf-icon"><FaCertificate /></div>

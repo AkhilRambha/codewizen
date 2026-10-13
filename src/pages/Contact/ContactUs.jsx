@@ -45,7 +45,7 @@ Interested Course: ${formData.course}`;
     <>
       <PageHero 
         title="Let's Connect" 
-        description="Whether you have a question about our courses, placements, or pricing, our team is ready to answer all your questions."
+        description="Whether you have a question about our online courses, real-time projects, or pricing, our team is ready to answer all your questions."
         breadcrumbs={[
           { label: "Contact Us" }
         ]}
@@ -135,12 +135,9 @@ Interested Course: ${formData.course}`;
                         <option value="" disabled>Select Course</option>
                         <option value="Java Full Stack">Java Full Stack</option>
                         <option value="Python Full Stack">Python Full Stack</option>
-                        <option value="Data Analytics">Data Analytics</option>
-                        <option value="Software Testing">Software Testing</option>
+                        <option value="Generative AI">Generative AI & LLMs</option>
                         <option value="Data Science & ML">Data Science & ML</option>
-                        <option value="Generative AI">Generative AI</option>
-                        <option value="React JS & Frontend">React JS & Frontend</option>
-                        <option value="DevOps & Cloud">DevOps & Cloud</option>
+                        <option value="Custom Course">Custom Course (Tailored Track)</option>
                       </select>
                     </div>
                   </div>
@@ -156,8 +153,8 @@ Interested Course: ${formData.course}`;
               <div className="cf-right" data-aos="fade-left">
                 <img src="/images/office2.jpg" alt="Student Counseling" className="cf-image" />
                 <div className="cf-overlay-card">
-                  <h4>Join 15,000+ Alumni</h4>
-                  <p>Start your IT journey today with 100% placement support.</p>
+                  <h4>100% Real-Time Projects</h4>
+                  <p>Start your IT journey today with live online training and real-time industry exposure.</p>
                 </div>
               </div>
 

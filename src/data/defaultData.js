@@ -1,10 +1,10 @@
 export const defaultReviews = [
-  { id: 1, name: "Karthik Reddy", course: "Java Full Stack", text: "The training here is exceptional. The practical approach helped me crack my interviews easily.", rating: 5, avatar: "/images/sneha.png" },
-  { id: 2, name: "Sneha Goud", course: "Data Science & ML", text: "Got placed in a top MNC thanks to the intense curriculum and great mentors at Codewizen.", rating: 5, avatar: "/images/sneha.png" },
-  { id: 3, name: "Praveen Kumar", course: "React JS & Frontend", text: "Best place to learn React. The real-world projects we built were exactly what recruiters look for.", rating: 5, avatar: "/images/sneha.png" },
-  { id: 4, name: "Anjali Rao", course: "Python Full Stack", text: "From zero coding knowledge to a full stack developer. The support team is simply amazing.", rating: 4, avatar: "/images/sneha.png" },
-  { id: 5, name: "Sai Teja", course: "DevOps & Cloud", text: "The AWS deployment sessions were incredibly detailed. I cleared my AWS certification in the first attempt.", rating: 5, avatar: "/images/sneha.png" },
-  { id: 6, name: "Divya Naidu", course: "Data Analytics", text: "Highly recommend their Data Analytics course. The SQL and Tableau modules are industry standard.", rating: 5, avatar: "/images/sneha.png" }
+  { id: 1, name: "Karthik Reddy", course: "Java Full Stack", text: "The training here is exceptional. The practical real-time projects and live code walkthroughs helped me master backend architecture.", rating: 5, avatar: "/images/sneha.png" },
+  { id: 2, name: "Sneha Goud", course: "Data Science & ML", text: "The live online project sessions and architecture reviews at Codewizen gave me immense confidence to build and deploy complex applications.", rating: 5, avatar: "/images/sneha.png" },
+  { id: 3, name: "Praveen Kumar", course: "React JS & Frontend", text: "Best place to learn React. The real-world projects we built with modern state management and clean components were top-notch.", rating: 5, avatar: "/images/sneha.png" },
+  { id: 4, name: "Anjali Rao", course: "Python Full Stack", text: "From zero coding knowledge to building full-stack applications. The mentors and live debugging sessions are simply amazing.", rating: 4, avatar: "/images/sneha.png" },
+  { id: 5, name: "Sai Teja", course: "DevOps & Cloud", text: "The AWS deployment and Kubernetes sessions were incredibly detailed. 100% hands-on infrastructure engineering.", rating: 5, avatar: "/images/sneha.png" },
+  { id: 6, name: "Divya Naidu", course: "Data Analytics", text: "Highly recommend their Data Analytics course. The real-time datasets, SQL pipelines, and dashboards are industry standard.", rating: 5, avatar: "/images/sneha.png" }
 ];
 
 export const defaultPlacements = [

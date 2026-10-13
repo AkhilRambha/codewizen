@@ -33,7 +33,7 @@ const defaultOffersData = [
     originalPrice: 35998,
     discountPrice: 19999,
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
-    features: ["Manual Testing", "Selenium Automation", "Postman API", "100% Placement Support"],
+    features: ["Manual Testing", "Selenium Automation", "Postman API", "100% Real-Time Projects"],
     active: true
   }
 ];

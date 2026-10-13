@@ -46,10 +46,11 @@ function Companies() {
 
         <div className="companies-dashboard" data-aos="zoom-in" data-aos-duration="1000">
           <div className="companies-heading">
+            <span className="section-eyebrow" style={{ color: '#e87500', fontWeight: 'bold', letterSpacing: '1px', textTransform: 'uppercase', fontSize: '0.85rem' }}>YOUR DREAM COMPANY</span>
             <h2>
-              300+ Companies Have Hired Our Learners
+              Get Ready For Your Dream Company
             </h2>
-            <p>Our alumni are working with leading tech giants worldwide</p>
+            <p>Master the real-time enterprise tech stacks, coding standards, and production workflows demanded by top tech giants.</p>
           </div>
 
           <div className="companies-rows">

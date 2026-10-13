@@ -32,12 +32,12 @@ const WhyChooseUs = () => {
               <p>Alumni Worldwide</p>
             </div>
             <div className="wcu-stat-box" data-aos="zoom-in" data-aos-delay="200">
-              <h3>300+</h3>
-              <p>Hiring Partners</p>
+              <h3>100%</h3>
+              <p>Live Online Training</p>
             </div>
             <div className="wcu-stat-box" data-aos="zoom-in" data-aos-delay="300">
               <h3>100%</h3>
-              <p>Placement Support</p>
+              <p>Real-Time Exposure</p>
             </div>
           </div>
         </div>
@@ -48,7 +48,7 @@ const WhyChooseUs = () => {
         <div className="wcu-container">
           <div className="wcu-diff-header" data-aos="fade-up">
             <h2>The Codewizen Difference</h2>
-            <p>What makes our training programs stand out from the rest?</p>
+            <p>What makes our online training programs stand out from the rest?</p>
           </div>
           
           <div className="wcu-diff-grid">
@@ -56,21 +56,21 @@ const WhyChooseUs = () => {
             <div className="wcu-diff-card" data-aos="fade-up" data-aos-delay="100">
               <div className="diff-icon">👨‍🏫</div>
               <h3>Real-Time Expert Trainers</h3>
-              <p>Learn from professionals who currently work in top MNCs. They bring real-world scenarios, best practices, and enterprise-level coding standards into the classroom.</p>
+              <p>Learn from professionals who currently work in top MNCs. They bring real-world scenarios, best practices, and enterprise-level coding standards into our live online sessions.</p>
             </div>
             
             {/* Diff 2 */}
             <div className="wcu-diff-card" data-aos="fade-up" data-aos-delay="200">
               <div className="diff-icon">💻</div>
               <h3>100% Practical Approach</h3>
-              <p>No boring PPTs. Every concept is taught through live coding. You will build mini-projects during modules and a major capstone project at the end of the course.</p>
+              <p>No boring PPTs. Every concept is taught through live coding. You will build modular services during modules and a major enterprise capstone project at the end of the course.</p>
             </div>
             
             {/* Diff 3 */}
             <div className="wcu-diff-card" data-aos="fade-up" data-aos-delay="300">
-              <div className="diff-icon">🏢</div>
-              <h3>Mock Interviews & ATS Resumes</h3>
-              <p>We don't just teach code. Our dedicated placement cell helps you build an ATS-friendly resume and conducts rigorous mock interviews until you are confident.</p>
+              <div className="diff-icon">🚀</div>
+              <h3>100% Real-Time Projects</h3>
+              <p>Work on production architectures, microservices, and live cloud deployments. Build a solid GitHub portfolio that showcases authentic engineering depth.</p>
             </div>
             
             {/* Diff 4 */}

@@ -102,9 +102,9 @@ const UpcomingBatches = () => {
               <p style={{ color: '#475569', lineHeight: '1.6' }}>Code along during classes and get your doubts resolved instantly on the spot.</p>
             </div>
             <div style={{ padding: '30px', background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
-              <div style={{ fontSize: '40px', marginBottom: '15px' }}>💼</div>
-              <h3 style={{ color: '#112255', fontSize: '20px', marginBottom: '10px' }}>Placement Support</h3>
-              <p style={{ color: '#475569', lineHeight: '1.6' }}>Access to our exclusive hiring partners and dedicated interview preparation.</p>
+              <div style={{ fontSize: '40px', marginBottom: '15px' }}>🚀</div>
+              <h3 style={{ color: '#112255', fontSize: '20px', marginBottom: '10px' }}>Real-Time Project Sprints</h3>
+              <p style={{ color: '#475569', lineHeight: '1.6' }}>Build full-scale enterprise capstones with architecture reviews, Git workflows, and cloud deployments.</p>
             </div>
           </div>
         </div>

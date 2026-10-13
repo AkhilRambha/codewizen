@@ -14,9 +14,9 @@ const HomeBatches = () => {
     <section className="home-batches-section" id="upcoming-batches">
       <div className="home-batches-container" data-aos="fade-up">
         <div className="section-header center-header">
-          <span className="section-eyebrow">NEW BATCHES</span>
-          <h2>Upcoming Batches</h2>
-          <p className="section-subtitle">Enroll now to secure your seat in our upcoming batches.</p>
+          <span className="section-eyebrow">LIVE ONLINE BATCHES</span>
+          <h2>Upcoming Live Project Batches</h2>
+          <p className="section-subtitle">100% interactive live online training with dedicated real-time project sprints and cloud lab sessions.</p>
         </div>
 
         {displayBatches.length === 0 ? (
