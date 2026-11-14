@@ -48,6 +48,8 @@ import CareerSupport from "./pages/Placements/CareerSupport";
 import SuccessStories from "./pages/SuccessStories/SuccessStories";
 
 import ContactUs from "./pages/Contact/ContactUs";
+import PrivacyPolicy from "./pages/Policies/PrivacyPolicy";
+import TermsAndConditions from "./pages/Policies/TermsAndConditions";
 import Prices from "./pages/Prices/Prices";
 import Offers from "./pages/Store/Offers";
 import BundleDashboard from "./pages/Dashboard/BundleDashboard";
@@ -154,6 +156,8 @@ function App() {
           <Route path="/success-stories" element={<SuccessStories />} />
 
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/prices" element={<Prices />} />
           <Route path="/offers" element={<Offers />} />
           <Route path="/auth" element={<StudentAuth />} />

@@ -97,10 +97,10 @@ function Footer() {
             >
               {/* Brand Logo */}
               <Link to="/" className="footer-brand" style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', marginBottom: '18px', textDecoration: 'none' }}>
-                <img 
-                  src="/images/logo.png" 
-                  alt="Codewizen Logo" 
-                  style={{ maxHeight: '42px', width: 'auto', filter: 'brightness(1.1) drop-shadow(0 4px 12px rgba(234, 88, 12, 0.3))' }} 
+                <img
+                  src="/images/logo.png"
+                  alt="Codewizen Logo"
+                  style={{ maxHeight: '42px', width: 'auto', filter: 'brightness(1.1) drop-shadow(0 4px 12px rgba(234, 88, 12, 0.3))' }}
                 />
                 <div style={{ fontSize: '24px', fontWeight: '800', color: '#ffffff', letterSpacing: '0.5px' }}>
                   CODE<span style={{ color: '#ea580c' }}>WIZEN</span>
@@ -339,31 +339,31 @@ function Footer() {
 
           <div className="footer-bottom">
 
-            <p>
-              © {new Date().getFullYear()} Codewizen.
-              All Rights Reserved.
-            </p>
+            <div className="footer-bottom-main">
+              <div className="footer-copyright">
+                <p>
+                  © {new Date().getFullYear()} Codewizen.
+                  All Rights Reserved.
+                </p>
+              </div>
 
+              <div className="footer-policy">
+                <Link to="/privacy-policy">
+                  Privacy Policy
+                </Link>
 
-            <div className="footer-policy">
+                <Link to="/terms-and-conditions">
+                  Terms &amp; Conditions
+                </Link>
 
-              <Link to="/contact-us">
-                Privacy Policy
-              </Link>
-
-              <Link to="/contact-us">
-                Terms
-              </Link>
-
-              <Link to="/contact-us">
-                Sitemap
-              </Link>
-              
-              <Link to="/admin-login" style={{ color: '#ea580c', fontWeight: 'bold' }}>
-                Admin Login
-              </Link>
+                <Link to="/admin-login" style={{ color: '#ea580c', fontWeight: 'bold' }}>
+                  Admin Login
+                </Link>
+              </div>
 
             </div>
+
+            <p className="footer-credit">Developed by Sherize Solutions Pvt Ltd</p>
 
           </div>
 
